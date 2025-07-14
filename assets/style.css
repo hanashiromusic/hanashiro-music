@@ -55,22 +55,26 @@ body {
 
 /*────────────────────────────────  
 4. ヒーロー領域
+   （ロゴを＋10％に、下の余白を広げる）
 ────────────────────────────────*/
 .hero {
   text-align: center;
-  margin-bottom: 2rem;
+  /* 余白をより大きくして、説明文→ボタン１行目までが
+     画面内に収まりやすくする */
+  margin-bottom: 4rem;  /* ← 変更: 元は2rem */
 }
 .hero .logo {
   display: block;
   margin: 0 auto 1.5rem;
-  width: 880px;
+  /* 880px → 968px（+10%） */
+  width: 968px;       /* ← 変更 */
   max-width: 100%;
   opacity: 0;
-  /* ロゴは0.3秒後→0.6秒かけてフェードイン */
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 @media (max-width: 1024px) {
   .hero .logo {
+    /* もとからの70%設定はそのまま */
     width: 70%;
     max-width: 616px;
   }
@@ -81,9 +85,10 @@ body {
     max-width: 400px;
   }
 }
-/* キャッチテキストはロゴのあと0.9秒後に出現 */
+
+/* キャッチテキスト下の余白も少し増やしておく */
 .catch {
-  margin: 0 auto;
+  margin: 0 auto 3rem;  /* ← 変更: 下マージンを元の0→3remに */
   font-size: 1rem;
   line-height: 1.8;
   max-width: 800px;
@@ -93,11 +98,14 @@ body {
 
 /*────────────────────────────────  
 5. ナビゲーション（sticky）
+   （スマホでは１行あたり３ボタンにして、
+    ２行目が画面外に隠れるように）
 ────────────────────────────────*/
 .section-nav {
   position: sticky;
   top: 1rem;
   display: grid;
+  /* ↓ 元は auto-fit,minmax(120px,1fr) でしたが… */
   grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
   gap: 0.8rem;
   padding: 0.6rem;
@@ -105,18 +113,12 @@ body {
   z-index: 100;
   margin-bottom: 2rem;
 }
-.section-nav a {
-  display: block;
-  text-align: center;
-  background-color: #fff;
-  color: #000;
-  text-decoration: none;
-  padding: 0.6rem;
-  border-radius: 6px;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
+@media (max-width: 480px) {
+  .section-nav {
+    /* スマホ画面では三列固定にする */
+    grid-template-columns: repeat(3,1fr);  /* ← 追加 */
+  }
+  
 /*────────────────────────────────  
 6. 見出し
 ────────────────────────────────*/
