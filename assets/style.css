@@ -202,11 +202,16 @@ body {
 /*────────────────────────────────  
 11. 見出しサイズ微調整
 ────────────────────────────────*/
+/* iPhone 等のスマホ極小画面用 */
 @media (max-width: 480px) {
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;      /* サイズを小さく */
+    line-height: 1.4;       /* 行間も詰める */
+    letter-spacing: 0;      /* 文字間は標準に */
   }
 }
+
+/* タブレット向け（必要なら調整） */
 @media (min-width: 481px) and (max-width: 768px) {
   h2 {
     font-size: 1.6rem;
