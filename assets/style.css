@@ -28,14 +28,13 @@ body {
 }
 /* 白ブロック */
 .wrapper {
-  /* 幅はデフォルト100%、最大960px */
   width: 100%;
   max-width: 960px;
   margin: 1.5rem auto;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  /* 左右余白を広く */
+  /* 内側左右余白を少し広く */
   padding: 2rem 2rem;
 }
 
@@ -58,7 +57,6 @@ body {
 ────────────────────────────────*/
 .hero {
   text-align: center;
-  /* 上3rem・下4rem */
   margin: 3rem 0 4rem 0;
 }
 .hero .logo {
@@ -181,12 +179,13 @@ body {
 ────────────────────────────────*/
 /* iPad 縦向け（600px～1024px） */
 @media (min-width: 600px) and (max-width: 1024px) {
-  /* 白ブロックを画面幅の80%に */
+  /* 左右余白を上下と同じ3remに */
   .wrapper {
-    width: 80%;
+    width: calc(100% - 6rem);
     max-width: none;
+    margin: 3rem auto;
   }
-  /* ロゴ・紹介文を80%に */
+  /* ロゴ・紹介文を80%に縮小 */
   .hero .logo,
   .hero .catch-img {
     width: 80%;
