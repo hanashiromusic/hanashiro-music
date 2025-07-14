@@ -209,6 +209,7 @@ body {
     font-size: 1.3rem;    /* 小さくして１行におさめやすく */
     line-height: 1.4;     /* 行間も詰めて表示密度を上げる */
     letter-spacing: 0;    /* 文字間は標準に */
+    font-weight: 600;
   }
 }
 
