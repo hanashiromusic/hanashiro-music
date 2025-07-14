@@ -26,6 +26,10 @@ body {
   line-height: 1.6;
   padding: 1rem;
 }
+/* セクション共通余白 */
+.section {
+  margin-bottom: 2rem;
+}
 
 /*────────────────────────────────  
 2. フェードイン用 keyframes
@@ -68,12 +72,38 @@ body {
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
-/* 教室紹介文（画像）のスタイル */
+/* 教室紹介文（画像）のスタイル＆フェードイン */
 .catch-img {
   display: block;
   margin: 0 auto 3rem;
   width: 100%;
   max-width: 800px;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 0.9s forwards;
+}
+
+/*────────────────────────────────  
+コース概要グリッド
+────────────────────────────────*/
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 1rem;
+}
+.overview-grid img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/*────────────────────────────────  
+ボタン群
+────────────────────────────────*/
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 /*────────────────────────────────  
@@ -109,6 +139,15 @@ body {
 }
 
 /*────────────────────────────────  
+区切り線
+────────────────────────────────*/
+.section-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2rem 0;
+}
+
+/*────────────────────────────────  
 6. 見出し
 ────────────────────────────────*/
 h1, h2 {
@@ -119,30 +158,11 @@ h1 { font-size: 2.2rem; }
 h2 { font-size: 1.8rem; }
 
 /*────────────────────────────────  
-7. コース画像グリッド
-────────────────────────────────*/
-.course-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.course-grid img {
-  width: 100%;
-  border-radius: 8px;
-}
-.course-grid figcaption {
-  margin-top: 0.5rem;
-  font-weight: 600;
-}
-
-/*────────────────────────────────  
 8. 料金画像レスポンシブ
 ────────────────────────────────*/
 .fee-images {
   display: grid;
   gap: 1rem;
-  margin-bottom: 2rem;
   grid-template-columns: 1fr;
 }
 @media (min-width: 600px) {
@@ -164,9 +184,6 @@ h2 { font-size: 1.8rem; }
 /*────────────────────────────────  
 9. アクセス（Google Map）
 ────────────────────────────────*/
-#access {
-  margin-bottom: 2rem;
-}
 #access iframe {
   width: 100%;
   height: 320px;
@@ -186,7 +203,6 @@ h2 { font-size: 1.8rem; }
   border-radius: 6px;
   font-weight: 600;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  margin: 0.5rem;
 }
 .btn:hover {
   opacity: 0.9;
@@ -198,19 +214,6 @@ h2 { font-size: 1.8rem; }
 .cta {
   padding: 1.5rem;
   background-color: rgba(190,211,218,0.2);
-  margin-bottom: 2rem;
-}
-
-/*────────────────────────────────  
-12. フッター
-────────────────────────────────*/
-.footer {
-  text-align: center;
-  padding-top: 2rem;
-}
-.footer p {
-  margin: 0;
-  font-size: 0.85rem;
 }
 
 /*────────────────────────────────  
