@@ -1,0 +1,16 @@
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #BED3DA;
+}
+
+a {
+  display: block;
+  margin-top: 1rem;
+  color: #0000EE;
+  text-decoration: none;
+}
