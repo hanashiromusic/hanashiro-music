@@ -22,7 +22,10 @@
 body {
   background-color: #bed3da;
   color: #333;
-  font-family
+  font-family: "M PLUS 1p", sans-serif;
+  line-height: 1.6;
+  padding: 1rem;
+}
 
 /*────────────────────────────────  
 2. フェードイン用 keyframes
@@ -55,39 +58,26 @@ body {
 ────────────────────────────────*/
 .hero {
   text-align: center;
-  margin: 4rem 0;              /* 上下余白を大きめに */
+  margin: 4rem 0;
 }
 .hero .logo {
   display: block;
-  margin: 2.5rem auto;         /* 上下マージン */
-  width: 968px;                /* 880px の約 +10% */
+  margin: 2.5rem auto;
+  width: 968px;
   max-width: 100%;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
-@media (max-width: 1024px) {
-  .hero .logo {
-    width: 70%;
-    max-width: 616px;
-  }
-}
-@media (max-width: 480px) {
-  .hero .logo {
-    width: 90%;
-    max-width: 400px;
-  }
-}
-.catch {
-  margin: 0 auto 3rem;         /* 下余白を増 */
-  font-size: 1rem;
-  line-height: 1.8;
+/* 教室紹介文（画像）のスタイル */
+.catch-img {
+  display: block;
+  margin: 0 auto 3rem;
+  width: 100%;
   max-width: 800px;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out 0.9s forwards;
 }
 
 /*────────────────────────────────  
-5. ナビゲーション（sticky + 最初３つのみ）
+5. ナビゲーション（sticky）
 ────────────────────────────────*/
 .section-nav {
   position: sticky;
@@ -100,20 +90,10 @@ body {
   z-index: 100;
   margin-bottom: 2rem;
 }
-/* スマホでは一行3カラムに */
+/* スマホ縦：強制的に３列 */
 @media (max-width: 480px) {
   .section-nav {
-    grid-template-columns: repeat(3,1fr);
-  }
-}
-/* “limited”付きは4個目以降を隠す */
-.section-nav.limited a:nth-child(n+4) {
-  display: none;
-}
-/* 幅600px以上で全部見せる */
-@media (min-width: 600px) {
-  .section-nav.limited a {
-    display: block;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 .section-nav a {
