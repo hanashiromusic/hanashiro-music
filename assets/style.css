@@ -202,21 +202,26 @@ body {
 /*────────────────────────────────  
 11. 見出しサイズ微調整（スマホ極小向け／タブレット向け）
 ────────────────────────────────*/
-/* iPhone 等のスマホ極小画面用 (<480px) */
+/* iPhone 等スマホ極小画面用 (<480px) */
 @media (max-width: 480px) {
-  /* セクション内の h2 に絞って指定 */
   .section h2 {
-    font-size: 1.3rem;    /* 小さくして１行におさめやすく */
-    line-height: 1.4;     /* 行間も詰めて表示密度を上げる */
-    letter-spacing: 0;    /* 文字間は標準に */
-    font-weight: 900;     /* 文字の太さ */
+    /* 見出しのみ M PLUS 1p の700ウェイトに切り替え */
+    font-family: "M PLUS 1p", sans-serif;
+    font-weight: 700;
+    /* サイズを小さめに */
+    font-size: 1.3rem;
+    /* 行間も少し詰めて表示密度を上げる */
+    line-height: 1.4;
+    /* 文字間は標準 */
+    letter-spacing: 0;
   }
 }
 
 /* タブレット（481px〜768px） */
 @media (min-width: 481px) and (max-width: 768px) {
   .section h2 {
-    font-size: 1.6rem;    /* デフォルトより少し小さめ */
+    /* フォントファミリーはそのまま、サイズだけ調整 */
+    font-size: 1.6rem;
     line-height: 1.5;
   }
 }
