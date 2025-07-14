@@ -9,8 +9,11 @@
 * {
   box-sizing: border-box;
 }
-body {
+html, body {
   margin: 0;
+  padding: 0;
+}
+body {
   /* 両サイドに必ず背景が見えるようにpaddingを確保 */
   padding: 1rem;
   font-family: "M PLUS 1p", sans-serif;
@@ -20,7 +23,7 @@ body {
 }
 
 /*────────────────────────────────  
-  3. 白い角丸ボックス（全.section共通）
+  3. 白い角丸ボックス（.section 共通）
 ────────────────────────────────*/
 .section {
   background-color: #fff;
@@ -37,7 +40,6 @@ body {
   4. ヒーロー領域
 ────────────────────────────────*/
 .hero {
-  /* 他セクションより上下をやや詰める */
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
@@ -48,14 +50,14 @@ body {
   width: 880px;
   max-width: 100%;
 }
-/* iPad 以下（横幅 1024px）ではロゴを 70% に */
+/* iPad 以下（横幅1024px）ではロゴを70%に */
 @media (max-width: 1024px) {
   .hero .logo {
     width: 70%;
-    max-width: 616px; /* 念のため */
+    max-width: 616px;
   }
 }
-/* スマホ極小画面では少しだけ縮小 */
+/* スマホ極小画面では90%に */
 @media (max-width: 480px) {
   .hero .logo {
     width: 90%;
@@ -84,23 +86,38 @@ h2 {
   position: sticky;
   top: 1rem;
   display: flex;
+  flex-wrap: wrap;              /* 幅に応じて折り返し */
   justify-content: center;
-  gap: 0.8rem;
+  gap: 0.8rem;                  /* ボタン間の隙間 */
   margin: 0 auto;
   padding: 0.6rem;
-  background-color: #bed3da;
+  background-color: #bed3da;    /* ページ背景と同じ色 */
   z-index: 100;
 }
 .section-nav a {
+  flex: 1 1 auto;
   display: block;
-  padding: 0.4rem 0.9rem;
   background-color: #fff;
   color: #000;
   text-decoration: none;
+  padding: 0.4rem 0.9rem;
   border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* スマホ（480px以下）で「3つ＋残り2つ」の2行レイアウトに */
+@media (max-width: 480px) {
+  .section-nav {
+    gap: 0.6rem;
+  }
+  .section-nav a {
+    /* 1行目に3つ並ぶくらいの幅 */
+    flex: 1 1 calc((100% - 2 * 0.6rem) / 3);
+    max-width: calc((100% - 2 * 0.6rem) / 3);
+  }
 }
 
 /*────────────────────────────────  
