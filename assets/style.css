@@ -4,221 +4,175 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap");
 
 /*────────────────────────────────  
-  2. 全体リセット＆ベース設定
+  2. リセット＆ボディ
 ────────────────────────────────*/
-* {
-  box-sizing: border-box;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
 body {
-  /* 両サイドに必ず背景が見えるようにpaddingを確保 */
   padding: 1rem;
+  background: #bed3da;
   font-family: "M PLUS 1p", sans-serif;
-  background-color: #bed3da; /* ミント系パステル */
   color: #333;
   line-height: 1.6;
 }
 
 /*────────────────────────────────  
-  3. 白い角丸ボックス（.section 共通）
+  3. ページ全体の白ラッパー
 ────────────────────────────────*/
-.section {
-  background-color: #fff;
+.page-wrapper {
+  background: #fff;
   border-radius: 18px;
   max-width: 900px;
-  width: 100%;
   margin: 2rem auto;
   padding: 2rem 1.5rem;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 /*────────────────────────────────  
-  4. ヒーロー領域
+  4. セクション間スペース
+    （中の .section は背景なしに）
+────────────────────────────────*/
+.section {
+  background: none;
+  margin-bottom: 2rem;
+  padding: 0;            /* 余白はラッパーで取る */
+  text-align: center;
+}
+
+/*────────────────────────────────  
+  5. ヒーロー
 ────────────────────────────────*/
 .hero {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding: 1rem 0 2rem;
 }
 .hero .logo {
   display: block;
   margin: 0 auto 1.5rem;
-  /* デスクトップ幅で 220px×4 = 880px */
-  width: 880px;
-  max-width: 100%;
+  width: 880px; max-width: 100%;
 }
-/* iPad 以下（横幅1024px）ではロゴを70%に */
-@media (max-width: 1024px) {
-  .hero .logo {
-    width: 70%;
-    max-width: 616px;
-  }
+@media (max-width:1024px) {
+  .hero .logo { width: 70%; max-width: 616px; }
 }
-/* スマホ極小画面では90%に */
-@media (max-width: 480px) {
-  .hero .logo {
-    width: 90%;
-    max-width: 400px;
-  }
+@media (max-width:480px) {
+  .hero .logo { width: 90%; max-width: 400px; }
 }
 
 /*────────────────────────────────  
-  5. 見出し
+  6. 見出し
 ────────────────────────────────*/
 h1, h2 {
   margin: 1rem 0;
   font-weight: 700;
 }
-h1 {
-  font-size: 2.2rem;
-}
-h2 {
-  font-size: 1.8rem;
-}
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.8rem; }
 
 /*────────────────────────────────  
-  6. ナビゲーション（セクション外・固定）
+  7. ナビ（固定＋折り返し＋2行レイアウト）
 ────────────────────────────────*/
 .section-nav {
-  position: sticky;
-  top: 1rem;
-  display: flex;
-  flex-wrap: wrap;              /* 幅に応じて折り返し */
-  justify-content: center;
-  gap: 0.8rem;                  /* ボタン間の隙間 */
-  margin: 0 auto;
-  padding: 0.6rem;
-  background-color: #bed3da;    /* ページ背景と同じ色 */
+  position: sticky; top:1rem;
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: .8rem;
+  margin: 0 -1.5rem 2rem; /* ラッパーpaddingを打ち消して両端まで伸ばす */
+  padding: .6rem 1.5rem;
+  background: #bed3da;
   z-index: 100;
 }
 .section-nav a {
   flex: 1 1 auto;
-  display: block;
-  background-color: #fff;
+  max-width: calc((100% - 2*.8rem)/3);
+  background: #bed3da;
   color: #000;
   text-decoration: none;
-  padding: 0.4rem 0.9rem;
+  padding: .4rem .9rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: .9rem; font-weight:600;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-
-/* スマホ（480px以下）で「3つ＋残り2つ」の2行レイアウトに */
-@media (max-width: 480px) {
-  .section-nav {
-    gap: 0.6rem;
-  }
+/* スマホ（480px以下）で 3＋2 の2行に */
+@media (max-width:480px) {
   .section-nav a {
-    /* 1行目に3つ並ぶくらいの幅 */
-    flex: 1 1 calc((100% - 2 * 0.6rem) / 3);
-    max-width: calc((100% - 2 * 0.6rem) / 3);
+    max-width: calc((100% - 2*.6rem)/3);
+    flex: 1 1 calc((100% - 2*.6rem)/3);
   }
 }
 
 /*────────────────────────────────  
-  7. コース画像グリッド
+  8. コース画像グリッド
 ────────────────────────────────*/
 .course-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap:1rem;
 }
-.course-grid img {
-  width: 100%;
-  border-radius: 8px;
-}
-.course-grid figcaption {
-  margin-top: 0.5rem;
-  font-weight: 600;
-}
+.course-grid img { width:100%; border-radius:8px; }
+.course-grid figcaption { margin-top:.5rem; font-weight:600; }
 
 /*────────────────────────────────  
-  8. 料金画像レスポンシブグリッド
+  9. 料金画像グリッド
 ────────────────────────────────*/
 .fee-images {
-  display: grid;
-  gap: 1rem;
-  justify-items: center;
-  grid-template-columns: 1fr;
+  display:grid; gap:1rem; justify-items:center;
+  grid-template-columns:1fr;
 }
-@media (min-width: 600px) {
-  .fee-images {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 900px) {
-  .fee-images {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+@media (min-width:600px) { .fee-images { grid-template-columns:repeat(2,1fr); } }
+@media (min-width:900px) { .fee-images { grid-template-columns:repeat(3,1fr); } }
 .fee-images img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width:100%; height:auto;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
 /*────────────────────────────────  
-  9. アクセス（Google Map）
+ 10. アクセス iframe
 ────────────────────────────────*/
 #access iframe {
-  width: 100%;
-  max-width: 600px;
-  height: 320px;
-  border: 0;
-  margin-bottom: 1rem;
+  width:100%; max-width:600px;
+  height:320px; border:0;
+  margin-bottom:1rem;
 }
 
 /*────────────────────────────────  
- 10. ボタン共通
+ 11. 汎用ボタン
 ────────────────────────────────*/
 .btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background-color: #bed3da;
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display:inline-block;
+  padding:.6rem 1.2rem;
+  background:#bed3da;
+  color:#000;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:600;
+  box-shadow:0 2px 4px rgba(0,0,0,0.05);
 }
-.btn:hover {
-  opacity: 0.9;
-}
+.btn:hover { opacity:.9; }
 
 /*────────────────────────────────  
- 11. 体験レッスン CTA
+ 12. 体験レッスン CTA
 ────────────────────────────────*/
 .cta {
-  background-color: rgba(190, 211, 218, 0.2);
+  background:rgba(190,211,218,0.2);
 }
 
 /*────────────────────────────────  
- 12. フッター
+ 13. フッター
 ────────────────────────────────*/
 #footer {
-  padding: 2rem 1rem;
-  font-size: 0.85rem;
+  margin-bottom:0;
+  font-size:.85rem;
 }
-#footer p {
-  margin: 0;
-}
+#footer p { margin:0; }
 
 /*────────────────────────────────  
- 13. 各種レスポンシブ調整
+ 14. レスポンシブ微調整
 ────────────────────────────────*/
-/* スマホ極小 */
-@media (max-width: 480px) {
-  h1 { font-size: 1.6rem; }
-  h2 { font-size: 1.4rem; }
+@media (max-width:480px){
+  h1{font-size:1.6rem;}
+  h2{font-size:1.4rem;}
 }
-/* タブレット */
-@media (min-width: 481px) and (max-width: 768px) {
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.6rem; }
+@media (min-width:481px) and (max-width:768px){
+  h1{font-size:1.8rem;}
+  h2{font-size:1.6rem;}
 }
