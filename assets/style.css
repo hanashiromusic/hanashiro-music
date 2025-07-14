@@ -205,7 +205,7 @@ body {
 /* iPhone 等のスマホ極小画面用 */
 @media (max-width: 480px) {
   h2 {
-    font-size: 1.0rem;      /* サイズを小さく */
+    font-size: 0.8rem;      /* サイズを小さく */
     line-height: 1.4;       /* 行間も詰める */
     letter-spacing: 0;      /* 文字間は標準に */
   }
