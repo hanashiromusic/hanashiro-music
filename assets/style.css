@@ -50,7 +50,7 @@ body{
 
 /*  スマホ縦 〜 480px */
 @media (max-width:480px){
-  .hero .logo{width:160px;}
+  .hero .logo{width:200px;}
   .hero h1  {font-size:1.9rem;}
 }
 
