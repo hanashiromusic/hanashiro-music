@@ -143,3 +143,44 @@ a {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+/* 全ページ共通の背景色 */
+body{
+  background:#BED3DA;   /* ミント系パステル */
+  margin:0;
+  font-family:sans-serif;
+  line-height:1.6;
+}
+
+/* 角丸の白ボックス */
+.section{
+  background:#fff;
+  border-radius:18px;
+  padding:4rem 1.5rem;
+  max-width:900px;
+  margin:2.5rem auto;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+/* ヒーローだけ若干詰める */
+.hero{
+  padding-top:3rem;
+  padding-bottom:3rem;
+}
+
+/* ナビ（白ボックスの外に固定） */
+.section-nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;gap:.8rem;justify-content:center;
+  padding:.6rem 0;
+  background:#BED3DA;          /* 背景と同じ色で一体感 */
+}
+.section-nav a{
+  background:#fff;color:#000;
+  padding:.4rem .9rem;border-radius:6px;
+  font-size:.9rem;font-weight:600;
+  text-decoration:none;
+  box-shadow:0 2px 4px rgba(0,0,0,.05);
+}
+
+/* 既存グリッドや画像設定はそのまま下に残してOK */
