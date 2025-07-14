@@ -184,3 +184,10 @@ body{
 }
 
 /* 既存グリッドや画像設定はそのまま下に残してOK */
+
+/* style.css の .hero .logo を上書き */
+.hero .logo {
+  width: 880px;      /* 220px × 4 */
+  max-width: 100%;   /* 幅が画面をはみ出さないように */
+}
+
