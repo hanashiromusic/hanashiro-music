@@ -1,5 +1,5 @@
 /*────────────────────────────────  
-  0. スクリーンリーダー用非表示
+0. スクリーンリーダー用非表示
 ────────────────────────────────*/
 .sr-only {
   position: absolute;
@@ -12,7 +12,7 @@
 }
 
 /*────────────────────────────────  
-  1. ベースリセット＆全体設定
+1. ベースリセット＆全体設定
 ────────────────────────────────*/
 * {
   box-sizing: border-box;
@@ -27,56 +27,50 @@ body {
 }
 
 /*────────────────────────────────  
-  2. 全体を包む大きな白ボックス
+2. 全体を包む大きな白ボックス
 ────────────────────────────────*/
-body > header,
-body > nav,
-body > section,
-body > footer {
+.wrapper {
   max-width: 960px;
-  margin: 1rem auto;
-}
-body > header,
-body > section,
-body > footer {
+  margin: 1.5rem auto;
   background-color: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 2rem 1.5rem;
 }
 
 /*────────────────────────────────  
-  3. ヒーロー領域
+3. ヒーロー領域
 ────────────────────────────────*/
 .hero {
   text-align: center;
-  padding: 3rem 1.5rem;
+  margin-bottom: 2rem;
 }
-.logo {
+.hero .logo {
   display: block;
   margin: 0 auto 1.5rem;
-  width: 880px;    /* デスクトップ基準 */
+  width: 880px;
   max-width: 100%;
 }
 @media (max-width: 1024px) {
-  .logo {
+  .hero .logo {
     width: 70%;
     max-width: 616px;
   }
 }
 @media (max-width: 480px) {
-  .logo {
+  .hero .logo {
     width: 90%;
     max-width: 400px;
   }
 }
 .catch {
+  margin: 0;
   font-size: 1rem;
   line-height: 1.8;
-  margin: 0;
 }
 
 /*────────────────────────────────  
-  4. ナビ（画面上部固定）
+4. ナビゲーション（sticky）
 ────────────────────────────────*/
 .section-nav {
   position: sticky;
@@ -87,6 +81,7 @@ body > footer {
   padding: 0.6rem;
   background-color: #bed3da;
   z-index: 100;
+  margin-bottom: 2rem;
 }
 .section-nav a {
   display: block;
@@ -101,7 +96,7 @@ body > footer {
 }
 
 /*────────────────────────────────  
-  5. 見出し
+5. 見出し
 ────────────────────────────────*/
 h1, h2 {
   margin: 1rem 0;
@@ -111,13 +106,13 @@ h1 { font-size: 2.2rem; }
 h2 { font-size: 1.8rem; }
 
 /*────────────────────────────────  
-  6. コース画像グリッド
+6. コース画像グリッド
 ────────────────────────────────*/
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
   gap: 1rem;
-  padding: 1rem;
+  margin-bottom: 2rem;
 }
 .course-grid img {
   width: 100%;
@@ -129,12 +124,12 @@ h2 { font-size: 1.8rem; }
 }
 
 /*────────────────────────────────  
-  7. 料金画像レスポンシブ
+7. 料金画像レスポンシブ
 ────────────────────────────────*/
 .fee-images {
   display: grid;
   gap: 1rem;
-  padding: 1rem;
+  margin-bottom: 2rem;
   grid-template-columns: 1fr;
 }
 @media (min-width: 600px) {
@@ -150,10 +145,10 @@ h2 { font-size: 1.8rem; }
 }
 
 /*────────────────────────────────  
-  8. アクセス（Google Map）
+8. アクセス（Google Map）
 ────────────────────────────────*/
 #access {
-  padding: 1rem;
+  margin-bottom: 2rem;
 }
 #access iframe {
   width: 100%;
@@ -163,7 +158,7 @@ h2 { font-size: 1.8rem; }
 }
 
 /*────────────────────────────────  
-  9. ボタン共通（講師ページ・体験レッスンなど）
+9. ボタン共通
 ────────────────────────────────*/
 .btn {
   display: inline-block;
@@ -181,19 +176,20 @@ h2 { font-size: 1.8rem; }
 }
 
 /*────────────────────────────────  
- 10. 体験レッスン CTA
+10. 体験レッスン CTA
 ────────────────────────────────*/
 .cta {
   padding: 1.5rem;
   background-color: rgba(190,211,218,0.2);
+  margin-bottom: 2rem;
 }
 
 /*────────────────────────────────  
- 11. フッター
+11. フッター
 ────────────────────────────────*/
 .footer {
-  padding: 2rem 1.5rem;
   text-align: center;
+  padding-top: 2rem;
 }
 .footer p {
   margin: 0;
@@ -201,7 +197,7 @@ h2 { font-size: 1.8rem; }
 }
 
 /*────────────────────────────────  
- 12. レスポンシブ微調整
+12. レスポンシブ調整
 ────────────────────────────────*/
 /* スマホ極小 */
 @media (max-width: 480px) {
