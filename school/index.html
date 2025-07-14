@@ -3,43 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>花城音楽教室｜沖縄市 ピアノ教室</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google Fonts: M PLUS 1p -->
   <link
     href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"
     rel="stylesheet"
   >
-
   <!-- 自作スタイル -->
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 
-  <!-- 全体を包む大きな白いボックス -->
   <div class="wrapper">
 
-    <!-- ヒーロー -->
+    <!-- 0. ヒーロー -->
     <header id="hero" class="hero">
-      <!-- SEO用H1を画面非表示 -->
       <h1 class="sr-only">花城音楽教室</h1>
       <img src="../assets/教室ロゴ.jpeg" alt="花城音楽教室" class="logo">
       <p class="catch">
         音楽を、もっと身近に。もっと自由に。<br>
-        花城音楽教室は、あなたの「やってみたい」に寄り添う教室です。
+        花城音楽教室では、あなたの「やってみたい」に寄り添う教室です。
       </p>
+      <!-- 最初に見せたいナビ3つだけ -->
+      <nav id="nav" class="section-nav limited">
+        <a href="#courses">コース</a>
+        <a href="#fee">料金</a>
+        <a href="#access">アクセス</a>
+        <a href="#teacher">講師</a>
+        <a href="#trial">体験レッスン</a>
+      </nav>
     </header>
 
-    <!-- ナビ（sticky） -->
-    <nav id="nav" class="section-nav">
-      <a href="#courses">コース</a>
-      <a href="#fee">料金</a>
-      <a href="#access">アクセス</a>
-      <a href="#teacher">講師</a>
-      <a href="#trial">体験レッスン</a>
-    </nav>
-
-    <!-- コース案内 -->
+    <!-- 1. コース案内 -->
     <section id="courses" class="section">
       <h2>コース案内</h2>
       <div class="course-grid">
@@ -58,7 +54,7 @@
       </div>
     </section>
 
-    <!-- 料金 -->
+    <!-- 2. 料金 -->
     <section id="fee" class="section">
       <h2>料金</h2>
       <div class="fee-images">
@@ -68,7 +64,7 @@
       </div>
     </section>
 
-    <!-- アクセス -->
+    <!-- 3. アクセス -->
     <section id="access" class="section">
       <h2>アクセス</h2>
       <iframe
@@ -79,25 +75,25 @@
       <p>〒904-2174 沖縄市与儀 1-35-1 与儀ファミリー教会1F<br>駐車場あり</p>
     </section>
 
-    <!-- 講師紹介 -->
+    <!-- 4. 講師紹介 -->
     <section id="teacher" class="section">
       <h2>講師紹介</h2>
       <p>花城 光（はなしろ ひかり）<br>ピアニスト / シンガーソングライター。</p>
       <p><a class="btn" href="../artist/index.html">アーティストページへ</a></p>
     </section>
 
-    <!-- 体験レッスン -->
+    <!-- 5. 体験レッスン -->
     <section id="trial" class="section cta">
       <h2>体験レッスン受付中！</h2>
       <a class="btn" href="../contact.html">申し込みフォームへ</a>
     </section>
 
-    <!-- フッター -->
+    <!-- 6. フッター -->
     <footer id="footer" class="footer">
       <p>花城音楽教室｜〒904-2173 沖縄県沖縄市与儀 1-35-1</p>
     </footer>
 
-  </div> <!-- /.wrapper -->
+  </div><!-- /.wrapper -->
 
 </body>
 </html>
