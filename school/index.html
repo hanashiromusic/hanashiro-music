@@ -22,11 +22,19 @@
     <header id="hero" class="hero">
       <h1 class="sr-only">花城音楽教室</h1>
       <img src="../assets/教室ロゴ.jpeg" alt="花城音楽教室" class="logo">
-      <p class="catch">
+
+      <!-- 教室紹介文を画像化（スクリーンリーダー用テキストを先置） -->
+      <p class="sr-only">
         音楽を、もっと身近に。もっと自由に。<br>
         花城音楽教室では、あなたの「やってみたい」に寄り添う教室です。
       </p>
-      <!-- ５つ全部常に表示 -->
+      <img
+        src="../assets/教室紹介文.png"
+        alt="音楽を、もっと身近に。もっと自由に。花城音楽教室では、あなたの『やってみたい』に寄り添う教室です。"
+        class="catch-img"
+      >
+
+      <!-- ナビゲーション（5リンク常時表示） -->
       <nav id="nav" class="section-nav">
         <a href="#courses">コース</a>
         <a href="#fee">料金</a>
