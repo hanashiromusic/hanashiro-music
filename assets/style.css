@@ -54,27 +54,28 @@ body {
 }
 
 /*────────────────────────────────  
-4. ヒーロー領域
-   （ロゴを＋10％に、下の余白を広げる）
+4. ヒーロー領域（余白を増やす）
 ────────────────────────────────*/
 .hero {
   text-align: center;
-  /* 余白をより大きくして、説明文→ボタン１行目までが
-     画面内に収まりやすくする */
-  margin-bottom: 4rem;  /* ← 変更: 元は2rem */
+  /* 上下余白を大きく（元は margin-bottom:4rem; でした） */
+  margin: 4rem 0;    /* 上下それぞれ4remずつあける */
 }
+
 .hero .logo {
   display: block;
-  margin: 0 auto 1.5rem;
-  /* 880px → 968px（+10%） */
-  width: 968px;       /* ← 変更 */
+  /* ロゴ上下のマージンを増やす */
+  margin: 2.5rem auto;  /* ← 上下 2.5rem、左右 auto */
+  /* 大きさはそのまま +10％ の 968px（max-width:100%） */
+  width: 968px;
   max-width: 100%;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
+
+/* 以下、既存のレスポンシブ設定はそのまま */
 @media (max-width: 1024px) {
   .hero .logo {
-    /* もとからの70%設定はそのまま */
     width: 70%;
     max-width: 616px;
   }
@@ -86,9 +87,9 @@ body {
   }
 }
 
-/* キャッチテキスト下の余白も少し増やしておく */
+/* キャッチテキストの下余白も少しだけ増やしておく */
 .catch {
-  margin: 0 auto 3rem;  /* ← 変更: 下マージンを元の0→3remに */
+  margin: 0 auto 3rem;  /* ← 下3remに */
   font-size: 1rem;
   line-height: 1.8;
   max-width: 800px;
