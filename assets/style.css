@@ -206,7 +206,7 @@ body {
 @media (max-width: 480px) {
   /* セクション内の h2 に絞って指定 */
   .section h2 {
-    font-size: 1.2rem;    /* 小さくして１行におさめやすく */
+    font-size: 1.3rem;    /* 小さくして１行におさめやすく */
     line-height: 1.4;     /* 行間も詰めて表示密度を上げる */
     letter-spacing: 0;    /* 文字間は標準に */
   }
