@@ -12,181 +12,130 @@
 }
 
 /*────────────────────────────────  
-1. リセット＆ベーススタイル
+1. ベース
 ────────────────────────────────*/
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#bed3da;
+  color:#333;
+  font-family:"M PLUS 1p",sans-serif;
+  line-height:1.6;
+  padding:1rem;
 }
-body {
-  background-color: #bed3da;
-  color: #333;
-  font-family: "M PLUS 1p", sans-serif;
-  line-height: 1.6;
-  padding: 1rem;
-}
-.wrapper {
-  max-width: 960px;
-  margin: 1.5rem auto;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  padding: 2rem 1.5rem;
+.wrapper{
+  max-width:960px;
+  margin:1.5rem auto;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  padding:2rem 1.5rem;
 }
 
 /*────────────────────────────────  
-2. フェードイン用 keyframes
+2. アニメーション
 ────────────────────────────────*/
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 /*────────────────────────────────  
-3. ヒーロー領域（余白＆アニメ）
+3. ヒーロー
 ────────────────────────────────*/
-.hero {
-  text-align: center;
-  margin: 3rem 0 4rem 0;  /* 上を3remに */
+.hero{
+  text-align:center;
+  margin:3rem 0 4rem 0;
 }
-.hero .logo {
-  display: block;
-  margin: 2.5rem auto;
-  width: 968px;
-  max-width: 100%;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out 0.3s forwards;
+.hero .logo{
+  display:block;
+  margin:2.5rem auto;
+  width:968px;max-width:100%;
+  opacity:0;
+  animation:fadeInUp .6s ease-out .3s forwards;
 }
-.hero .catch-img {
-  display: block;
-  margin: 0 auto 3rem;
-  width: 100%;
-  max-width: 800px;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out 0.9s forwards;
+.hero .catch-img{
+  display:block;
+  margin:0 auto 3rem;
+  width:100%;max-width:800px;
+  opacity:0;
+  animation:fadeInUp .6s ease-out .9s forwards;
 }
 
 /*────────────────────────────────  
-4. コース概要グリッド
+4. コース概要
 ────────────────────────────────*/
-.overview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+.overview-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1rem;
+  margin-bottom:2rem;
 }
-.overview-grid img {
-  width: 100%;
-  border-radius: 8px;
-}
+.overview-grid img{width:100%;border-radius:8px}
 
 /*────────────────────────────────  
 5. ボタン群
 ────────────────────────────────*/
-.btn-group {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+.btn-group{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-bottom:2rem;
 }
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: #bed3da;
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+.btn{
+  display:inline-block;
+  padding:.6rem 1.2rem;
+  background:#bed3da;
+  color:#000;text-decoration:none;
+  border-radius:6px;
+  font-weight:600;
+  box-shadow:0 2px 4px rgba(0,0,0,.05);
 }
-.btn:hover {
-  opacity: 0.9;
-}
+.btn:hover{opacity:.9}
 
 /*────────────────────────────────  
-6. 各セクション共通＆区切り線
+6. セクション
 ────────────────────────────────*/
-.section {
-  margin-bottom: 2rem;
-}
-.section h2 {
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-  font-size: 1.8rem;
-}
-.section-divider {
-  border: none;
-  border-top: 1px solid #ddd;
-  margin: 2rem 0;
-}
+.section{margin-bottom:2rem}
+.section h2{margin-bottom:.5rem;font-weight:700;font-size:1.8rem}
+.section-divider{border:none;border-top:1px solid #ddd;margin:2rem 0}
 
 /*────────────────────────────────  
-7. 料金グリッド
+7. 料金画像
 ────────────────────────────────*/
-.fee-images {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
+.fee-images{
+  display:grid;
+  gap:1rem;
+  grid-template-columns:1fr;
 }
-@media (min-width: 600px) {
-  .fee-images {
-    grid-template-columns: repeat(2,1fr);
-  }
-}
-@media (min-width: 900px) {
-  .fee-images {
-    grid-template-columns: repeat(3,1fr);
-  }
-}
-.fee-images img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+@media(min-width:600px){.fee-images{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.fee-images{grid-template-columns:repeat(3,1fr)}}
+.fee-images img{width:100%;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
 
 /*────────────────────────────────  
-8. アクセス iframe
+8. アクセス
 ────────────────────────────────*/
-#access iframe {
-  width: 100%;
-  height: 320px;
-  border: 0;
-  margin-bottom: 1rem;
-}
+#access iframe{width:100%;height:320px;border:0;margin-bottom:1rem}
 
 /*────────────────────────────────  
-9. 体験CTA
+9. CTA
 ────────────────────────────────*/
-.cta {
-  padding: 1.5rem;
-  background: rgba(190,211,218,0.2);
-  text-align: center;
-}
+.cta{padding:1.5rem;background:rgba(190,211,218,.2);text-align:center}
 
 /*────────────────────────────────  
-10. iPad縦向け調整
+10. ブレークポイント調整
 ────────────────────────────────*/
-@media (max-width: 768px) {
-  /* ロゴと紹介文を80%サイズに */
+/* iPad 縦（概ね 600〜1024px）だけ 80% 縮小 */
+@media(min-width:600px) and (max-width:1024px){
   .hero .logo,
-  .hero .catch-img {
-    width: 80%;
-    max-width: none;
-  }
-  /* コース画像を縦並びに */
-  .overview-grid {
-    grid-template-columns: 1fr;
-  }
+  .hero .catch-img{width:80%;max-width:none}
+  .overview-grid{grid-template-columns:1fr}
 }
+/* スマホ (<600px) は 100% のまま */
+/* タブレット横置き/PC (>1024px) は元サイズ */
 
 /*────────────────────────────────  
-11. レスポンシブ調整（他）
+11. 見出しサイズ微調整
 ────────────────────────────────*/
-@media (max-width: 480px) {
-  h2 { font-size: 1.4rem; }
-}
-@media (min-width: 481px) and (max-width: 768px) {
-  h2 { font-size: 1.6rem; }
-}
+@media(max-width:480px){h2{font-size:1.4rem}}
+@media(min-width:481px) and (max-width:768px){h2{font-size:1.6rem}}
