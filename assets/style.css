@@ -54,26 +54,20 @@ body {
 }
 
 /*────────────────────────────────  
-4. ヒーロー領域（余白を増やす）
+4. ヒーロー領域（余白＆アニメ）
 ────────────────────────────────*/
 .hero {
   text-align: center;
-  /* 上下余白を大きく（元は margin-bottom:4rem; でした） */
-  margin: 4rem 0;    /* 上下それぞれ4remずつあける */
+  margin: 4rem 0;              /* 上下余白を大きめに */
 }
-
 .hero .logo {
   display: block;
-  /* ロゴ上下のマージンを増やす */
-  margin: 2.5rem auto;  /* ← 上下 2.5rem、左右 auto */
-  /* 大きさはそのまま +10％ の 968px（max-width:100%） */
-  width: 968px;
+  margin: 2.5rem auto;         /* 上下マージン */
+  width: 968px;                /* 880px の約 +10% */
   max-width: 100%;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
-
-/* 以下、既存のレスポンシブ設定はそのまま */
 @media (max-width: 1024px) {
   .hero .logo {
     width: 70%;
@@ -86,10 +80,8 @@ body {
     max-width: 400px;
   }
 }
-
-/* キャッチテキストの下余白も少しだけ増やしておく */
 .catch {
-  margin: 0 auto 3rem;  /* ← 下3remに */
+  margin: 0 auto 3rem;         /* 下余白を増 */
   font-size: 1rem;
   line-height: 1.8;
   max-width: 800px;
@@ -98,15 +90,12 @@ body {
 }
 
 /*────────────────────────────────  
-5. ナビゲーション（sticky）
-   （スマホでは１行あたり３ボタンにして、
-    ２行目が画面外に隠れるように）
+5. ナビゲーション（sticky + 最初３つのみ）
 ────────────────────────────────*/
 .section-nav {
   position: sticky;
   top: 1rem;
   display: grid;
-  /* ↓ 元は auto-fit,minmax(120px,1fr) でしたが… */
   grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
   gap: 0.8rem;
   padding: 0.6rem;
@@ -114,12 +103,34 @@ body {
   z-index: 100;
   margin-bottom: 2rem;
 }
+/* スマホでは一行3カラムに */
 @media (max-width: 480px) {
   .section-nav {
-    /* スマホ画面では三列固定にする */
-    grid-template-columns: repeat(3,1fr);  /* ← 追加 */
+    grid-template-columns: repeat(3,1fr);
   }
-  
+}
+/* “limited”付きは4個目以降を隠す */
+.section-nav.limited a:nth-child(n+4) {
+  display: none;
+}
+/* 幅600px以上で全部見せる */
+@media (min-width: 600px) {
+  .section-nav.limited a {
+    display: block;
+  }
+}
+.section-nav a {
+  display: block;
+  text-align: center;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
 /*────────────────────────────────  
 6. 見出し
 ────────────────────────────────*/
@@ -158,10 +169,14 @@ h2 { font-size: 1.8rem; }
   grid-template-columns: 1fr;
 }
 @media (min-width: 600px) {
-  .fee-images { grid-template-columns: repeat(2,1fr); }
+  .fee-images {
+    grid-template-columns: repeat(2,1fr);
+  }
 }
 @media (min-width: 900px) {
-  .fee-images { grid-template-columns: repeat(3,1fr); }
+  .fee-images {
+    grid-template-columns: repeat(3,1fr);
+  }
 }
 .fee-images img {
   width: 100%;
@@ -224,15 +239,10 @@ h2 { font-size: 1.8rem; }
 /*────────────────────────────────  
 13. レスポンシブ調整
 ────────────────────────────────*/
-/* スマホ極小 */
 @media (max-width: 480px) {
   h1 { font-size: 1.6rem; }
   h2 { font-size: 1.4rem; }
-  .section-nav {
-    grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
-  }
 }
-/* タブレット */
 @media (min-width: 481px) and (max-width: 768px) {
   h1 { font-size: 1.8rem; }
   h2 { font-size: 1.6rem; }
