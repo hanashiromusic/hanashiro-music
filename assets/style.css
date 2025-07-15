@@ -12,7 +12,7 @@
 }
 
 /*────────────────────────────────  
-1. リセット＆ベーススタイル
+1. ベースリセット＆全体設定
 ────────────────────────────────*/
 * {
   box-sizing: border-box;
@@ -26,7 +26,6 @@ body {
   line-height: 1.6;
   padding: 1rem;
 }
-/* 白ブロック */
 .wrapper {
   width: 100%;
   max-width: 960px;
@@ -34,7 +33,6 @@ body {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  /* 内側左右余白を少し広く */
   padding: 2rem 2rem;
 }
 
@@ -42,18 +40,12 @@ body {
 2. フェードイン用 keyframes
 ────────────────────────────────*/
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /*────────────────────────────────  
-3. ヒーロー領域（余白＆アニメ）
+3. ヒーロー領域
 ────────────────────────────────*/
 .hero {
   text-align: center;
@@ -62,22 +54,88 @@ body {
 .hero .logo {
   display: block;
   margin: 2.5rem auto;
-  width: 968px;
-  max-width: 100%;
+  width: 968px; max-width: 100%;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
-.hero .catch-img {
-  display: block;
+.hero .catch {
   margin: 0 auto 3rem;
-  width: 100%;
   max-width: 800px;
+  font-size: 1rem;
+  line-height: 1.8;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out 0.9s forwards;
+  animation: fadeInUp 0.6s ease-out 0.6s forwards;
 }
 
 /*────────────────────────────────  
-4. コース概要グリッド
+4. ハンバーガーボタン
+────────────────────────────────*/
+.menu-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #bed3da;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 1.2s forwards;
+  z-index: 200;
+}
+.menu-toggle span {
+  display: block;
+  width: 60%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+.menu-toggle.open {
+  background-color: #333;
+}
+.menu-toggle.open span {
+  background-color: #fff;
+}
+
+/*────────────────────────────────  
+5. ナビゲーション
+────────────────────────────────*/
+.section-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255,255,255,0.95);
+  padding: 4rem 1.5rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 150;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+.section-nav.open {
+  display: grid;
+}
+.section-nav a {
+  display: block;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  background-color: #bed3da;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/*────────────────────────────────  
+6. コース概要グリッド
 ────────────────────────────────*/
 .overview-grid {
   display: grid;
@@ -91,7 +149,7 @@ body {
 }
 
 /*────────────────────────────────  
-5. ボタン群
+7. ボタン群
 ────────────────────────────────*/
 .btn-group {
   display: flex;
@@ -115,7 +173,7 @@ body {
 }
 
 /*────────────────────────────────  
-6. セクション共通＆区切り線
+8. 各セクション＆区切り線
 ────────────────────────────────*/
 .section {
   margin-bottom: 2rem;
@@ -132,7 +190,7 @@ body {
 }
 
 /*────────────────────────────────  
-7. 料金グリッド
+9. 料金グリッド
 ────────────────────────────────*/
 .fee-images {
   display: grid;
@@ -140,14 +198,10 @@ body {
   grid-template-columns: 1fr;
 }
 @media (min-width: 600px) {
-  .fee-images {
-    grid-template-columns: repeat(2,1fr);
-  }
+  .fee-images { grid-template-columns: repeat(2,1fr); }
 }
 @media (min-width: 900px) {
-  .fee-images {
-    grid-template-columns: repeat(3,1fr);
-  }
+  .fee-images { grid-template-columns: repeat(3,1fr); }
 }
 .fee-images img {
   width: 100%;
@@ -156,7 +210,7 @@ body {
 }
 
 /*────────────────────────────────  
-8. アクセス iframe
+10. アクセス iframe
 ────────────────────────────────*/
 #access iframe {
   width: 100%;
@@ -166,7 +220,7 @@ body {
 }
 
 /*────────────────────────────────  
-9. 体験CTA
+11. 体験CTA
 ────────────────────────────────*/
 .cta {
   padding: 1.5rem;
@@ -175,52 +229,58 @@ body {
 }
 
 /*────────────────────────────────  
-10. ブレークポイント調整
+12. タブレット以上のレイアウト
 ────────────────────────────────*/
-/* iPad 縦向け（600px～1024px） */
+@media (min-width: 768px) {
+  .menu-toggle { display: none; }
+  .section-nav {
+    display: grid !important;
+    position: sticky;
+    top: 1rem;
+    inset: auto;
+    background: transparent;
+    grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+    padding: 0;
+  }
+  .section-nav a {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin: 0;
+  }
+}
+
+/*────────────────────────────────  
+13. iPad縦向け調整
+────────────────────────────────*/
 @media (min-width: 600px) and (max-width: 1024px) {
-  /* 左右余白を上下と同じ3remに */
   .wrapper {
     width: calc(100% - 6rem);
     max-width: none;
-    margin: 3rem auto;
   }
-  /* ロゴ・紹介文を80%に縮小 */
   .hero .logo,
-  .hero .catch-img {
+  .hero .catch {
     width: 80%;
     max-width: none;
   }
-  /* コース画像を縦並びに */
   .overview-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* スマホ（<600px）はデフォルトの100% */
-
 /*────────────────────────────────  
-11. 見出しサイズ微調整（スマホ極小向け／タブレット向け）
+14. レスポンシブ見出し調整
 ────────────────────────────────*/
-/* iPhone 等スマホ極小画面用 (<480px) */
 @media (max-width: 480px) {
   .section h2 {
-    /* 見出しのみ M PLUS 1p の700ウェイトに切り替え */
-    font-family: "M PLUS 1p", sans-serif;
-    font-weight: 700;
-    /* サイズを小さめに */
     font-size: 1.3rem;
-    /* 行間も少し詰めて表示密度を上げる */
     line-height: 1.4;
-    /* 文字間は標準 */
     letter-spacing: 0;
+    font-family: "Sawarabi Gothic", sans-serif;
+    font-weight: 600;
   }
 }
-
-/* タブレット（481px〜768px） */
 @media (min-width: 481px) and (max-width: 768px) {
   .section h2 {
-    /* フォントファミリーはそのまま、サイズだけ調整 */
     font-size: 1.6rem;
     line-height: 1.5;
   }
