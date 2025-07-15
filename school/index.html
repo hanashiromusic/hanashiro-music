@@ -5,11 +5,13 @@
   <title>花城音楽教室｜沖縄市 ピアノ教室</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Fonts: Sawarabi Gothic -->
+  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
-    rel="stylesheet"
-  >
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@700&display=swap"
+    rel="stylesheet">
 
   <!-- 自作スタイル -->
   <link rel="stylesheet" href="../assets/style.css">
@@ -23,11 +25,15 @@
       <h1 class="sr-only">花城音楽教室</h1>
       <img src="../assets/教室ロゴ.jpeg" alt="教室ロゴ" class="logo">
 
-      <!-- キャッチテキスト -->
-      <p class="catch">
+      <!-- 教室紹介文を画像化 -->
+      <p class="sr-only">
         音楽を、もっと身近に。もっと自由に。<br>
         花城音楽教室では、あなたの「やってみたい」に寄り添う教室です。
       </p>
+      <img
+        src="../assets/教室紹介文.png"
+        alt="音楽を、もっと身近に。もっと自由に。花城音楽教室では、あなたの『やってみたい』に寄り添う教室です。"
+        class="catch-img">
 
       <!-- ハンバーガーボタン -->
       <button class="menu-toggle" aria-label="メニューを開く">
@@ -35,7 +41,7 @@
       </button>
     </header>
 
-    <!-- ナビ（モバイルはオーバーレイ、タブレット以上は横並び） -->
+    <!-- ナビ -->
     <nav id="nav" class="section-nav">
       <a href="#course-overview">コース概要</a>
       <a href="#fee">料金</a>
@@ -44,7 +50,7 @@
       <a href="#trial">体験レッスン</a>
     </nav>
 
-    <!-- 1. コース概要（画像リンク3つ） -->
+    <!-- 1. コース概要 -->
     <section id="course-overview" class="section">
       <div class="overview-grid">
         <a href="#piano-course"><img src="../assets/ピアノレッスン.jpeg"        alt="ピアノコース"></a>
@@ -53,15 +59,7 @@
       </div>
     </section>
 
-    <!-- 2. ボタン群 -->
-    <div class="btn-group">
-      <a class="btn" href="#fee">料金</a>
-      <a class="btn" href="#access">アクセス</a>
-      <a class="btn" href="#teacher">講師</a>
-      <a class="btn" href="#trial">体験レッスン</a>
-    </div>
-
-    <!-- 3. 各コース詳細 -->
+    <!-- 2. 各コース詳細 -->
     <section id="piano-course" class="section course-section">
       <h2>ピアノコース</h2>
       <p>ピアノコース説明</p>
@@ -80,7 +78,7 @@
       <hr class="section-divider">
     </section>
 
-    <!-- 4. 料金 -->
+    <!-- 3. 料金 -->
     <section id="fee" class="section">
       <h2>料金</h2>
       <div class="fee-images">
@@ -90,19 +88,18 @@
       </div>
     </section>
 
-    <!-- 5. アクセス -->
+    <!-- 4. アクセス -->
     <section id="access" class="section">
       <h2>アクセス</h2>
       <iframe
         src="https://www.google.com/maps/embed?pb=/* Google Map 埋め込みURL */"
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
       <p>〒904-2174 沖縄市与儀 1-35-1 与儀ファミリー教会1F<br>駐車場あり</p>
       <hr class="section-divider">
     </section>
 
-    <!-- 6. 講師紹介 -->
+    <!-- 5. 講師紹介 -->
     <section id="teacher" class="section">
       <h2>講師紹介</h2>
       <p>花城 光（はなしろ ひかり）<br>ピアニスト / シンガーソングライター。</p>
@@ -110,7 +107,7 @@
       <hr class="section-divider">
     </section>
 
-    <!-- 7. 体験レッスン -->
+    <!-- 6. 体験レッスン -->
     <section id="trial" class="section cta">
       <h2>体験レッスン受付中！</h2>
       <a class="btn" href="../contact.html">申し込みフォームへ</a>
@@ -124,17 +121,25 @@
   </div><!-- /.wrapper -->
 
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const btn = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.section-nav');
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn  = document.querySelector('.menu-toggle');
+      const nav  = document.querySelector('.section-nav');
+      const links = nav.querySelectorAll('a');
+
+      const closeMenu = () => {
+        nav.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-label', 'メニューを開く');
+      };
+
       btn.addEventListener('click', () => {
         nav.classList.toggle('open');
         btn.classList.toggle('open');
-        btn.setAttribute(
-          'aria-label',
-          nav.classList.contains('open') ? 'メニューを閉じる' : 'メニューを開く'
-        );
+        const label = nav.classList.contains('open') ? 'メニューを閉じる' : 'メニューを開く';
+        btn.setAttribute('aria-label', label);
       });
+
+      links.forEach(link => link.addEventListener('click', closeMenu));
     });
   </script>
 </body>
