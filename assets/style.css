@@ -14,13 +14,9 @@
 /*────────────────────────────────  
 1. ベースリセット＆全体設定
 ────────────────────────────────*/
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  background-color: #bed3da;
+  background: #bed3da;
   color: #333;
   font-family: "Sawarabi Gothic", sans-serif;
   line-height: 1.6;
@@ -32,12 +28,12 @@ body {
   margin: 1.5rem auto;
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
   padding: 2rem 2rem;
 }
 
 /*────────────────────────────────  
-2. フェードイン用 keyframes
+2. フェードイン
 ────────────────────────────────*/
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(10px); }
@@ -45,26 +41,22 @@ body {
 }
 
 /*────────────────────────────────  
-3. ヒーロー領域
+3. ヒーロー
 ────────────────────────────────*/
-.hero {
-  text-align: center;
-  margin: 3rem 0 4rem 0;
-}
+.hero { text-align: center; margin: 3rem 0 4rem; }
 .hero .logo {
   display: block;
   margin: 2.5rem auto;
   width: 968px; max-width: 100%;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out 0.3s forwards;
+  animation: fadeInUp .6s ease-out .3s forwards;
 }
-.hero .catch {
+.hero .catch-img {
+  display: block;
   margin: 0 auto 3rem;
-  max-width: 800px;
-  font-size: 1rem;
-  line-height: 1.8;
+  width: 100%; max-width: 800px;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out 0.6s forwards;
+  animation: fadeInUp .6s ease-out .6s forwards;
 }
 
 /*────────────────────────────────  
@@ -72,46 +64,35 @@ body {
 ────────────────────────────────*/
 .menu-toggle {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: #bed3da;
+  top: 1rem; right: 1rem;
+  width: 2.5rem; height: 2.5rem;
+  background: #bed3da;
   border: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.3rem;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  gap: .3rem;
   cursor: pointer;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out 1.2s forwards;
+  animation: fadeInUp .6s ease-out 1.2s forwards;
   z-index: 200;
 }
 .menu-toggle span {
   display: block;
-  width: 60%;
-  height: 3px;
-  background-color: #fff;
+  width: 60%; height: 3px;
+  background: #fff;
   border-radius: 2px;
-  transition: background-color 0.3s;
+  transition: background-color .3s;
 }
-.menu-toggle.open {
-  background-color: #333;
-}
-.menu-toggle.open span {
-  background-color: #fff;
-}
+.menu-toggle.open { background: #333; }
+.menu-toggle.open span { background: #fff; }
 
 /*────────────────────────────────  
-5. ナビゲーション
+5. ナビ（モバイル：オーバーレイ）
 ────────────────────────────────*/
 .section-nav {
   display: none;
-  position: fixed;
-  inset: 0;
-  background-color: rgba(255,255,255,0.95);
+  position: fixed; inset: 0;
+  background: rgba(255,255,255,.95);
   padding: 4rem 1.5rem;
   box-sizing: border-box;
   overflow-y: auto;
@@ -119,14 +100,12 @@ body {
   gap: 1rem;
   grid-template-columns: 1fr;
 }
-.section-nav.open {
-  display: grid;
-}
+.section-nav.open { display: grid; }
 .section-nav a {
   display: block;
-  margin: 0.5rem 0;
-  padding: 0.8rem;
-  background-color: #bed3da;
+  margin: .5rem 0;
+  padding: .8rem;
+  background: #bed3da;
   color: #000;
   text-decoration: none;
   border-radius: 6px;
@@ -139,149 +118,72 @@ body {
 ────────────────────────────────*/
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 1rem; margin-bottom: 2rem;
 }
-.overview-grid img {
-  width: 100%;
-  border-radius: 8px;
-}
+.overview-grid img { width: 100%; border-radius: 8px; }
 
 /*────────────────────────────────  
-7. ボタン群
+7. セクション＆見出し
 ────────────────────────────────*/
-.btn-group {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: #bed3da;
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.btn:hover {
-  opacity: 0.9;
-}
-
-/*────────────────────────────────  
-8. 各セクション＆区切り線
-────────────────────────────────*/
-.section {
-  margin-bottom: 2rem;
-}
+.section { margin-bottom: 2rem; }
 .section h2 {
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
+  font-family: "M PLUS 1p", sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
 }
-.section-divider {
-  border: none;
-  border-top: 1px solid #ddd;
-  margin: 2rem 0;
+.section-divider { border: none; border-top: 1px solid #ddd; margin: 2rem 0; }
+
+/*────────────────────────────────  
+8. 料金グリッド
+────────────────────────────────*/
+.fee-images { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media(min-width:600px){ .fee-images{ grid-template-columns:repeat(2,1fr);} }
+@media(min-width:900px){ .fee-images{ grid-template-columns:repeat(3,1fr);} }
+.fee-images img { width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+
+/*────────────────────────────────  
+9. アクセス
+────────────────────────────────*/
+#access iframe { width: 100%; height: 320px; border: 0; margin-bottom: 1rem; }
+
+/*────────────────────────────────  
+10. CTA
+────────────────────────────────*/
+.cta { padding: 1.5rem; background: rgba(190,211,218,.2); text-align: center; }
+.btn { display: inline-block; padding: .6rem 1.2rem; background: #bed3da; color: #000; text-decoration: none; border-radius: 6px; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,.05); }
+.btn:hover { opacity: .9; }
+
+/*────────────────────────────────  
+11. タブレット以上
+────────────────────────────────*/
+@media(min-width:768px){
+  .menu-toggle{ display:none; }
+  .section-nav{
+    display:grid !important;
+    position:sticky; top:1rem; inset:auto;
+    background:transparent; padding:0;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  }
+  .section-nav a{ background:#fff; box-shadow:0 2px 4px rgba(0,0,0,.05); margin:0; }
 }
 
 /*────────────────────────────────  
-9. 料金グリッド
+12. iPad 縦向け
 ────────────────────────────────*/
-.fee-images {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 600px) {
-  .fee-images { grid-template-columns: repeat(2,1fr); }
-}
-@media (min-width: 900px) {
-  .fee-images { grid-template-columns: repeat(3,1fr); }
-}
-.fee-images img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+@media(min-width:600px) and (max-width:1024px){
+  .wrapper{ width:calc(100% - 6rem); max-width:none; }
+  .hero .logo, .hero .catch-img{ width:80%; max-width:none; }
+  .overview-grid{ grid-template-columns:1fr; }
 }
 
 /*────────────────────────────────  
-10. アクセス iframe
+13. スマホ極小／タブレット見出し調整
 ────────────────────────────────*/
-#access iframe {
-  width: 100%;
-  height: 320px;
-  border: 0;
-  margin-bottom: 1rem;
+@media(max-width:480px){
+  .section h2{ font-size:1.3rem; line-height:1.4; }
 }
-
-/*────────────────────────────────  
-11. 体験CTA
-────────────────────────────────*/
-.cta {
-  padding: 1.5rem;
-  background: rgba(190,211,218,0.2);
-  text-align: center;
-}
-
-/*────────────────────────────────  
-12. タブレット以上のレイアウト
-────────────────────────────────*/
-@media (min-width: 768px) {
-  .menu-toggle { display: none; }
-  .section-nav {
-    display: grid !important;
-    position: sticky;
-    top: 1rem;
-    inset: auto;
-    background: transparent;
-    grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
-    padding: 0;
-  }
-  .section-nav a {
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    margin: 0;
-  }
-}
-
-/*────────────────────────────────  
-13. iPad縦向け調整
-────────────────────────────────*/
-@media (min-width: 600px) and (max-width: 1024px) {
-  .wrapper {
-    width: calc(100% - 6rem);
-    max-width: none;
-  }
-  .hero .logo,
-  .hero .catch {
-    width: 80%;
-    max-width: none;
-  }
-  .overview-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*────────────────────────────────  
-14. レスポンシブ見出し調整
-────────────────────────────────*/
-@media (max-width: 480px) {
-  .section h2 {
-    font-size: 1.3rem;
-    line-height: 1.4;
-    letter-spacing: 0;
-    font-family: "Sawarabi Gothic", sans-serif;
-    font-weight: 600;
-  }
-}
-@media (min-width: 481px) and (max-width: 768px) {
-  .section h2 {
-    font-size: 1.6rem;
-    line-height: 1.5;
-  }
+@media(min-width:481px) and (max-width:768px){
+  .section h2{ font-size:1.6rem; line-height:1.5; }
 }
