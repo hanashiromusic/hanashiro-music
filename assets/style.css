@@ -76,11 +76,14 @@ body {
   animation: fadeInUp 0.6s ease-out 0.6s forwards;
 }
 
-/* スマホ表示時に紹介文画像を115%に拡大（はみ出さない） */
+/* スマホ表示時：拡大しつつ中央揃え */
 @media (max-width: 480px) {
   .hero .catch-img {
     width: 115%;
     max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
