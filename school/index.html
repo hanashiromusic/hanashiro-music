@@ -5,15 +5,11 @@
   <title>花城音楽教室｜沖縄市 ピアノ教室</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Fonts: さわらびゴシック -->
-　<link
-  href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
-  rel="stylesheet"
-/>
-<link
-  href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"
-  rel="stylesheet"
-/>
+  <!-- Google Fonts: Sawarabi Gothic -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
+    rel="stylesheet"
+  >
 
   <!-- 自作スタイル -->
   <link rel="stylesheet" href="../assets/style.css">
@@ -27,30 +23,33 @@
       <h1 class="sr-only">花城音楽教室</h1>
       <img src="../assets/教室ロゴ.jpeg" alt="教室ロゴ" class="logo">
 
-      <!-- 教室紹介文（画像化） -->
-      <p class="sr-only">
+      <!-- キャッチテキスト -->
+      <p class="catch">
         音楽を、もっと身近に。もっと自由に。<br>
         花城音楽教室では、あなたの「やってみたい」に寄り添う教室です。
       </p>
-      <img
-        src="../assets/教室紹介文.png"
-        alt="音楽を、もっと身近に。もっと自由に。花城音楽教室では、あなたの『やってみたい』に寄り添う教室です。"
-        class="catch-img"
-      >
+
+      <!-- ハンバーガーボタン -->
+      <button class="menu-toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
     </header>
+
+    <!-- ナビ（モバイルはオーバーレイ、タブレット以上は横並び） -->
+    <nav id="nav" class="section-nav">
+      <a href="#course-overview">コース概要</a>
+      <a href="#fee">料金</a>
+      <a href="#access">アクセス</a>
+      <a href="#teacher">講師</a>
+      <a href="#trial">体験レッスン</a>
+    </nav>
 
     <!-- 1. コース概要（画像リンク3つ） -->
     <section id="course-overview" class="section">
       <div class="overview-grid">
-        <a href="#piano-course">
-          <img src="../assets/ピアノレッスン.jpeg" alt="ピアノコース">
-        </a>
-        <a href="#piano-vocal-course">
-          <img src="../assets/ピアノ弾き語りレッスン.jpeg" alt="ピアノ弾き語りコース">
-        </a>
-        <a href="#voice-training-course">
-          <img src="../assets/ボイストレーニング.jpeg" alt="ボイストレーニングコース">
-        </a>
+        <a href="#piano-course"><img src="../assets/ピアノレッスン.jpeg"        alt="ピアノコース"></a>
+        <a href="#piano-vocal-course"><img src="../assets/ピアノ弾き語りレッスン.jpeg" alt="ピアノ弾き語りコース"></a>
+        <a href="#voice-training-course"><img src="../assets/ボイストレーニング.jpeg"   alt="ボイストレーニングコース"></a>
       </div>
     </section>
 
@@ -124,5 +123,19 @@
 
   </div><!-- /.wrapper -->
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.section-nav');
+      btn.addEventListener('click', () => {
+        nav.classList.toggle('open');
+        btn.classList.toggle('open');
+        btn.setAttribute(
+          'aria-label',
+          nav.classList.contains('open') ? 'メニューを閉じる' : 'メニューを開く'
+        );
+      });
+    });
+  </script>
 </body>
 </html>
