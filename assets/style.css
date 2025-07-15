@@ -63,24 +63,13 @@ body {
 }
 .hero .catch-img {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto 3rem;
   width: 100%;
   max-width: 800px;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out 0.7s forwards;
+  animation: fadeInUp 0.6s ease-out 0.6s forwards;
 }
-/* スマホ：中央基準で 1.15 倍拡大 */
-@media (max-width: 480px) {
-  .hero .catch-img {
-    width: 100%;
-    max-width: none;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%) scale(1.15);
-    transform-origin: center top;
-    margin: 0 0 2rem;
-  }
-}
+
 
 /*──────────────────────────────
 4. ハンバーガーメニュー
