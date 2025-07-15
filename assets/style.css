@@ -12,7 +12,7 @@
 }
 
 /*────────────────────────────────  
-1. ベースリセット＆全体設定
+1. リセット＆ベース設定
 ────────────────────────────────*/
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -23,8 +23,7 @@ body {
   padding: 1rem;
 }
 .wrapper {
-  width: 100%;
-  max-width: 960px;
+  width: 100%; max-width: 960px;
   margin: 1.5rem auto;
   background: #fff;
   border-radius: 18px;
@@ -33,7 +32,7 @@ body {
 }
 
 /*────────────────────────────────  
-2. フェードイン
+2. フェードイン keyframes
 ────────────────────────────────*/
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(10px); }
@@ -43,17 +42,18 @@ body {
 /*────────────────────────────────  
 3. ヒーロー
 ────────────────────────────────*/
-.hero { text-align: center; margin: 3rem 0 4rem; }
+.hero {
+  text-align: center;
+  margin: 3rem 0 4rem;
+}
 .hero .logo {
-  display: block;
-  margin: 2.5rem auto;
+  display: block; margin: 2.5rem auto;
   width: 968px; max-width: 100%;
   opacity: 0;
   animation: fadeInUp .6s ease-out .3s forwards;
 }
 .hero .catch-img {
-  display: block;
-  margin: 0 auto 3rem;
+  display: block; margin: 0 auto 3rem;
   width: 100%; max-width: 800px;
   opacity: 0;
   animation: fadeInUp .6s ease-out .6s forwards;
@@ -63,11 +63,9 @@ body {
 4. ハンバーガーボタン
 ────────────────────────────────*/
 .menu-toggle {
-  position: fixed;
-  top: 1rem; right: 1rem;
+  position: fixed; top: 1rem; right: 1rem;
   width: 2.5rem; height: 2.5rem;
-  background: #bed3da;
-  border: none;
+  background: #bed3da; border: none;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   gap: .3rem;
@@ -77,7 +75,6 @@ body {
   z-index: 200;
 }
 .menu-toggle span {
-  display: block;
   width: 60%; height: 3px;
   background: #fff;
   border-radius: 2px;
@@ -87,30 +84,22 @@ body {
 .menu-toggle.open span { background: #fff; }
 
 /*────────────────────────────────  
-5. ナビ（モバイル：オーバーレイ）
+5. ナビ（オーバーレイ表示）
 ────────────────────────────────*/
 .section-nav {
   display: none;
   position: fixed; inset: 0;
   background: rgba(255,255,255,.95);
-  padding: 4rem 1.5rem;
-  box-sizing: border-box;
-  overflow-y: auto;
-  z-index: 150;
-  gap: 1rem;
-  grid-template-columns: 1fr;
+  padding: 4rem 1.5rem; box-sizing: border-box;
+  overflow-y: auto; z-index: 150;
+  gap: 1rem; grid-template-columns: 1fr;
 }
 .section-nav.open { display: grid; }
 .section-nav a {
-  display: block;
-  margin: .5rem 0;
-  padding: .8rem;
-  background: #bed3da;
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-  text-align: center;
-  font-weight: 600;
+  display: block; margin: .5rem 0; padding: .8rem;
+  background: #bed3da; color: #000;
+  text-decoration: none; border-radius: 6px;
+  text-align: center; font-weight: 600;
 }
 
 /*────────────────────────────────  
@@ -118,13 +107,15 @@ body {
 ────────────────────────────────*/
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
   gap: 1rem; margin-bottom: 2rem;
 }
-.overview-grid img { width: 100%; border-radius: 8px; }
+.overview-grid img {
+  width: 100%; border-radius: 8px;
+}
 
 /*────────────────────────────────  
-7. セクション＆見出し
+7. 見出しと区切り
 ────────────────────────────────*/
 .section { margin-bottom: 2rem; }
 .section h2 {
@@ -133,57 +124,73 @@ body {
   font-weight: 700;
   font-size: 1.8rem;
 }
-.section-divider { border: none; border-top: 1px solid #ddd; margin: 2rem 0; }
+.section-divider {
+  border: none; border-top: 1px solid #ddd;
+  margin: 2rem 0;
+}
 
 /*────────────────────────────────  
 8. 料金グリッド
 ────────────────────────────────*/
-.fee-images { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-@media(min-width:600px){ .fee-images{ grid-template-columns:repeat(2,1fr);} }
-@media(min-width:900px){ .fee-images{ grid-template-columns:repeat(3,1fr);} }
-.fee-images img { width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+.fee-images {
+  display: grid; gap: 1rem; grid-template-columns: 1fr;
+}
+@media(min-width:600px){ .fee-images { grid-template-columns:repeat(2,1fr); } }
+@media(min-width:900px){ .fee-images { grid-template-columns:repeat(3,1fr); } }
+.fee-images img {
+  width: 100%; border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
 
 /*────────────────────────────────  
-9. アクセス
+9. アクセス iframe
 ────────────────────────────────*/
-#access iframe { width: 100%; height: 320px; border: 0; margin-bottom: 1rem; }
+#access iframe {
+  width: 100%; height: 320px; border: 0; margin-bottom: 1rem;
+}
 
 /*────────────────────────────────  
-10. CTA
+10. CTA & ボタン
 ────────────────────────────────*/
-.cta { padding: 1.5rem; background: rgba(190,211,218,.2); text-align: center; }
-.btn { display: inline-block; padding: .6rem 1.2rem; background: #bed3da; color: #000; text-decoration: none; border-radius: 6px; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,.05); }
+.cta {
+  padding: 1.5rem;
+  background: rgba(190,211,218,.2);
+  text-align: center;
+}
+.btn {
+  display: inline-block;
+  padding: .6rem 1.2rem;
+  background: #bed3da;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
 .btn:hover { opacity: .9; }
 
 /*────────────────────────────────  
-11. タブレット以上
+11. iPad縦向け調整
 ────────────────────────────────*/
-@media(min-width:768px){
-  .menu-toggle{ display:none; }
-  .section-nav{
-    display:grid !important;
-    position:sticky; top:1rem; inset:auto;
-    background:transparent; padding:0;
-    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+@media(min-width:600px) and (max-width:1024px) {
+  .wrapper {
+    width: calc(100% - 6rem); max-width: none;
   }
-  .section-nav a{ background:#fff; box-shadow:0 2px 4px rgba(0,0,0,.05); margin:0; }
+  .hero .logo,
+  .hero .catch-img {
+    width: 80%; max-width: none;
+  }
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /*────────────────────────────────  
-12. iPad 縦向け
+12. スマホ／タブレット見出し調整
 ────────────────────────────────*/
-@media(min-width:600px) and (max-width:1024px){
-  .wrapper{ width:calc(100% - 6rem); max-width:none; }
-  .hero .logo, .hero .catch-img{ width:80%; max-width:none; }
-  .overview-grid{ grid-template-columns:1fr; }
+@media(max-width:480px) {
+  .section h2 { font-size:1.3rem; line-height:1.4; }
 }
-
-/*────────────────────────────────  
-13. スマホ極小／タブレット見出し調整
-────────────────────────────────*/
-@media(max-width:480px){
-  .section h2{ font-size:1.3rem; line-height:1.4; }
-}
-@media(min-width:481px) and (max-width:768px){
-  .section h2{ font-size:1.6rem; line-height:1.5; }
+@media(min-width:481px) and (max-width:768px) {
+  .section h2 { font-size:1.6rem; line-height:1.5; }
 }
