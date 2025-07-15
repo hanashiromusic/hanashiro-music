@@ -74,16 +74,19 @@ body {
   max-width: 800px;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 0.6s forwards;
+  /* デフォルトは中央揃え */
 }
-/* スマホ表示時：拡大しつつ中央揃え */
+/* スマホ表示時：拡大しつつ中央揃えをmargin:autoに変更 */
 @media (max-width: 480px) {
   .hero .catch-img {
     width: 115%;
     max-width: none;
     display: block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-left: auto;
+    margin-right: auto;
+    position: static;
+    left: auto;
+    transform: none;
   }
 }
 
@@ -237,36 +240,4 @@ body {
   opacity: 0.9;
 }
 
-/*──────────────────────────────
-11. iPad縦向け調整
-──────────────────────────────*/
-@media (min-width: 600px) and (max-width: 1024px) {
-  .wrapper {
-    width: calc(100% - 6rem);
-    max-width: none;
-  }
-  .hero .logo,
-  .hero .catch-img {
-    width: 80%;
-    max-width: none;
-  }
-  .overview-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*──────────────────────────────
-12. 小画面の見出し調整
-──────────────────────────────*/
-@media (max-width: 480px) {
-  .section h2 {
-    font-size: 1.3rem;
-    line-height: 1.4;
-  }
-}
-@media (min-width: 481px) and (max-width: 768px) {
-  .section h2 {
-    font-size: 1.6rem;
-    line-height: 1.5;
-  }
-}
+/*
