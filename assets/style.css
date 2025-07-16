@@ -7,13 +7,20 @@
 }
 
 /*──────────────────────────────
-◆ 0.5 ページ全体 1 秒フェードイン
+◆ ページ全体 1 秒フェードアウト（白→透明）
 ──────────────────────────────*/
-@keyframes pageFade{from{opacity:0}to{opacity:1}}
+@keyframes pageFade {           /* ← 向きを反転 */
+  from { opacity: 1; }          /* 画面真っ白で開始 */
+  to   { opacity: 0; }          /* 透明になって終了 */
+}
+
 body::before{
-  content:"";position:fixed;inset:0;
-  background:#fff;z-index:9999;pointer-events:none;
-  animation:pageFade 1s ease-out forwards;
+  content:"";
+  position:fixed;inset:0;
+  background:#fff;
+  z-index:9999;
+  pointer-events:none;
+  animation:pageFade 1s ease-out forwards;  /* キーフレーム名は同じ */
 }
 
 /*──────────────────────────────
