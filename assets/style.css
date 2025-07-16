@@ -200,3 +200,18 @@ body {
 @media (min-width: 481px) and (max-width: 768px) {
   .section h2 { font-size: 1.6rem; line-height: 1.5; }
 }
+
+/*──────────────────────────────
+◆ スマホ時：教室紹介文.png を中央基準で 1.15 倍拡大
+──────────────────────────────*/
+@media (max-width: 480px) {
+  .hero .catch-img {
+    width: 100%;          /* 親幅基準で中央揃え */
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) scale(1.15); /* 中央で拡大 */
+    transform-origin: center top;             /* 拡大基準点 */
+    margin: 0 0 2rem;                         /* 下余白だけ */
+  }
+}
