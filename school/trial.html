@@ -8,9 +8,101 @@
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    /* 体験フォーム用追加CSS */
-    .form-block {
+    /* 全体ベース */
+    body {
+      background: #bed3da;
+      color: #333;
+      font-family: "Sawarabi Gothic", "M PLUS 1p", sans-serif;
+      line-height: 1.6;
+      padding: 1rem;
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 960px;
+      margin: 1.5rem auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      padding: 2rem 1.5rem;
+    }
+    @media(max-width: 480px) {
+      .wrapper { padding: 1.2rem 0.3rem; }
+    }
+
+    /* ハンバーガーメニュー */
+    .menu-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #bed3da;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: .3rem;
+      cursor: pointer;
+      z-index: 200;
+    }
+    .menu-toggle span {
+      width: 60%;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+      transition: background-color .3s;
+    }
+    .menu-toggle.open { background: #333; }
+    .menu-toggle.open span { background: #fff; }
+
+    /* ナビ（section-nav） */
+    .section-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 80%;
+      max-width: 320px;
+      height: 100%;
+      background: rgba(255,255,255,.95);
+      padding: 4rem 1.5rem;
+      overflow-y: auto;
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transform: translateX(100%);
+      transition: transform .4s cubic-bezier(.77,0,.18,1);
+    }
+    .section-nav.open { transform: translateX(0); }
+    .section-nav a {
+      display: block;
+      margin: .5rem 0;
+      padding: .8rem;
+      background: #bed3da;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* セクション見出し */
+    .section h2 {
+      font-family: "M PLUS 1p", sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
       margin-bottom: 2.2rem;
+    }
+    @media (max-width: 480px) {
+      .section h2 { font-size: 1.3rem; }
+    }
+
+    /* ────────────────
+       体験フォーム
+    ─────────────────*/
+    .form-block {
+      margin-bottom: 2.1rem;
       padding: 0;
       border: none;
       background: none;
@@ -19,8 +111,9 @@
       display: flex;
       align-items: center;
       font-weight: 700;
-      font-size: 1.15rem;
+      font-size: 1.13rem;
       margin-bottom: 0.5rem;
+      font-family: "M PLUS 1p", sans-serif;
       line-height: 1.1;
     }
     .form-label-bar {
@@ -43,18 +136,24 @@
       vertical-align: middle;
       letter-spacing: 0.04em;
     }
-    fieldset, legend { all: unset; }
-    .trial-form .form-group:not(:last-child) { margin-bottom: 0.8rem; }
-    .radio-group, .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.4em 1em;
-      margin-bottom: 0.7em;
+    .form-caption {
+      font-size: 0.95em;
+      color: #888;
+      margin: 0 0 0.3em 2.3em;
+      line-height: 1.1;
     }
-    .radio-group label, .checkbox-group label {
-      display: flex;
-      align-items: center;
+    @media (max-width: 480px) {
+      .form-label-title { font-size: 1.01rem; margin-bottom: 0.37rem; }
+      .form-label-bar { width: 4px; height: 1.3em; margin-right: 0.4em; }
+      .form-required { font-size: 0.83em; padding: 0.09em 0.7em; }
+      .form-caption { margin-left: 1.8em; font-size: 0.89em; }
+    }
+    .trial-form .form-group:not(:last-child) { margin-bottom: 0.8rem; }
+    .trial-form label {
+      display: block;
+      font-size: 1em;
       font-weight: 500;
+      margin-bottom: 0.12em;
     }
     .trial-form input[type="text"],
     .trial-form input[type="tel"],
@@ -69,10 +168,52 @@
       background: #fff;
       margin-top: .1em;
     }
-    @media (max-width: 480px) {
-      .form-label-title { font-size: 1.01rem; margin-bottom: 0.37rem; }
-      .form-label-bar { width: 4px; height: 1.3em; margin-right: 0.4em; }
-      .form-required { font-size: 0.83em; padding: 0.09em 0.7em; }
+    .trial-form textarea { min-height: 100px; resize: vertical; }
+    .radio-group, .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4em 1em;
+      margin-bottom: 0.7em;
+    }
+    .radio-group label, .checkbox-group label {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      margin-right: 1.2em;
+    }
+    .radio-group input, .checkbox-group input {
+      margin-right: .5em;
+      accent-color: #A66B75;
+      width: 1.1em; height: 1.1em;
+    }
+
+    /* 送信ボタン */
+    .submit-group {
+      text-align: center;
+      margin: 2.8rem 0 0 0;
+    }
+    .btn-submit {
+      display: inline-block;
+      padding: 1.15rem 2.7rem;
+      background: #A66B75;
+      color: #fff;
+      border: none;
+      border-radius: 2em;
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      box-shadow: 0 2px 8px rgba(166,107,117,.09);
+      cursor: pointer;
+      transition: opacity .14s;
+    }
+    .btn-submit:hover, .btn-submit:focus { opacity: 0.92; }
+
+    /* コピーライト */
+    .site-footer {
+      margin-top: 2.4rem;
+      text-align: center;
+      font-size: .91rem;
+      color: #333;
     }
   </style>
 </head>
@@ -93,7 +234,7 @@
 
     <main>
       <section id="trial-form" class="section">
-        <h2 style="margin-bottom:2.2rem;">体験レッスン申し込みフォーム</h2>
+        <h2>体験レッスン申し込みフォーム</h2>
         <form action="/submit-trial" method="post" class="trial-form">
 
           <!-- お名前 -->
@@ -165,34 +306,6 @@
             </div>
           </div>
 
-          <!-- ご住所 -->
-          <div class="form-block">
-            <div class="form-label-title">
-              <span class="form-label-bar"></span>
-              <span>ご住所</span>
-            </div>
-            <div class="form-group">
-              <label for="zipcode">郵便番号（ハイフン不要）</label>
-              <input type="text" id="zipcode" name="zipcode" pattern="\d{7}">
-            </div>
-            <div class="form-group">
-              <label for="prefecture">都道府県</label>
-              <select id="prefecture" name="prefecture">
-                <option value="">選択してください</option>
-                <option>沖縄県</option>
-                <!-- 他の都道府県は必要に応じて追加 -->
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="address1">市区町村・番地</label>
-              <input type="text" id="address1" name="address1">
-            </div>
-            <div class="form-group">
-              <label for="address2">建物名・部屋番号</label>
-              <input type="text" id="address2" name="address2">
-            </div>
-          </div>
-
           <!-- 電話番号 -->
           <div class="form-block">
             <div class="form-label-title">
@@ -234,13 +347,14 @@
             </div>
           </div>
 
-          <!-- レッスン理由 -->
+          <!-- レッスンを希望する理由 -->
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>レッスンを受けたい理由</span>
+              <span>レッスンを希望する理由</span>
               <span class="form-required">必須</span>
             </div>
+            <div class="form-caption">※複数回答可</div>
             <div class="checkbox-group">
               <label><input type="checkbox" name="reason" value="高音が出しづらい"> 高音が出しづらい</label>
               <label><input type="checkbox" name="reason" value="音域を広げたい"> 音域を広げたい</label>
@@ -263,12 +377,14 @@
               <span class="form-required">必須</span>
             </div>
             <div class="radio-group">
-              <label><input type="radio" name="contact_method" value="メール" required> メール</label>
-              <label><input type="radio" name="contact_method" value="電話"> 電話</label>
-              <label><input type="radio" name="contact_method" value="郵送"> 郵送</label>
+              <label><input type="radio" name="contact_method" value="電話" required> 電話</label>
+              <label><input type="radio" name="contact_method" value="メール"> メール</label>
+              <label><input type="radio" name="contact_method" value="LINE"> LINE</label>
+              <label><input type="radio" name="contact_method" value="Instagram DM"> Instagram DM</label>
             </div>
           </div>
 
+          <!-- 送信ボタン -->
           <div class="submit-group">
             <button type="submit" class="btn-submit">送信内容の確認</button>
           </div>
@@ -296,12 +412,4 @@
       };
       btn.addEventListener('click', () => {
         const open = nav.classList.toggle('open');
-        btn.classList.toggle('open');
-        document.body.style.overflow = open ? 'hidden' : '';
-        btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
-      });
-      links.forEach(l => l.addEventListener('click', close));
-    });
-  </script>
-</body>
-</html>
+        btn.class
