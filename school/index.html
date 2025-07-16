@@ -30,7 +30,8 @@
       <a href="#fee">レッスン料金</a>
       <a href="#access">アクセス</a>
       <a href="#teacher">講師紹介</a>
-      <a href="#trial">体験レッスン申込</a>
+      <!-- ここだけ別ページへ遷移 -->
+      <a href="trial.html">体験レッスン申込</a>
     </nav>
 
     <!-- 2. コース概要 -->
@@ -133,10 +134,11 @@
       <hr class="section-divider">
     </section>
 
-    <!-- 7. 体験レッスン -->
+    <!-- 7. 体験レッスン CTA -->
     <section id="trial" class="section cta">
       <h2>◆体験レッスン受付中！</h2>
-      <a class="btn" href="../contact.html">申し込みフォームへ</a>
+      <!-- 同階層の trial.html へ -->
+      <a class="btn" href="trial.html">申し込みフォームへ</a>
     </section>
 
     <!-- 8. コピーライト -->
@@ -148,19 +150,17 @@
 
   <!-- ハンバーガー JS -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', ()=>{
       const btn   = document.querySelector('.menu-toggle');
       const nav   = document.querySelector('.section-nav');
       const links = nav.querySelectorAll('a');
 
-      const close = () => {
-        nav.classList.remove('open');
-        btn.classList.remove('open');
-        document.body.style.overflow = '';
-        btn.setAttribute('aria-label', 'メニューを開く');
+      const close = ()=>{
+        nav.classList.remove('open'); btn.classList.remove('open');
+        document.body.style.overflow=''; btn.setAttribute('aria-label','メニューを開く');
       };
 
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', ()=>{
         const open = nav.classList.toggle('open');
         btn.classList.toggle('open');
         document.body.style.overflow = open ? 'hidden' : '';
