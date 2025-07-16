@@ -1,120 +1,189 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <title>体験レッスン申込フォーム｜花城音楽教室</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>体験レッスン申し込み｜花城音楽教室</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- フォーム用スタイル -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 
-  <div class="form-wrapper">
+  <div class="wrapper">
 
-    <h1>体験レッスン申込フォーム</h1>
+    <!-- ヘッダー -->
+    <header class="hero">
+      <h1 class="sr-only">花城音楽教室</h1>
+      <img src="../assets/教室ロゴ.jpeg" alt="花城音楽教室" class="logo">
+    </header>
 
-    <form action="confirm.html" method="post">
+    <!-- ナビ -->
+    <button class="menu-toggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="section-nav">
+      <a href="../index.html#course-overview">コース</a>
+      <a href="../index.html#fee">料金</a>
+      <a href="../index.html#access">アクセス</a>
+      <a href="../index.html#teacher">講師</a>
+      <a href="../index.html#trial">体験レッスン</a>
+    </nav>
 
-      <!-- お名前 -->
-      <div class="form-group required">
-        <label>お名前<span class="badge">必須</span></label>
-        <div class="two-columns">
-          <input type="text" name="last_name" placeholder="姓" required />
-          <input type="text" name="first_name" placeholder="名" required />
-        </div>
+    <!-- 体験フォームセクション -->
+    <section class="trial-section">
+      <div class="trial-container">
+        <h2 class="section-title">体験レッスン申し込みフォーム</h2>
+        <form action="/submit-trial" method="post" class="trial-form">
+
+          <!-- お名前 -->
+          <fieldset>
+            <legend>お名前 <span class="required">必須</span></legend>
+            <div class="form-group">
+              <label for="lastname">姓</label>
+              <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+              <label for="firstname">名</label>
+              <input type="text" id="firstname" name="firstname" required>
+            </div>
+          </fieldset>
+
+          <!-- ふりがな -->
+          <fieldset>
+            <legend>ふりがな <span class="required">必須</span></legend>
+            <div class="form-group">
+              <label for="furigana-last">せい</label>
+              <input type="text" id="furigana-last" name="furigana_last" required>
+            </div>
+            <div class="form-group">
+              <label for="furigana-first">めい</label>
+              <input type="text" id="furigana-first" name="furigana_first" required>
+            </div>
+          </fieldset>
+
+          <!-- 年齢 -->
+          <div class="form-group">
+            <label for="age">年齢 <span class="required">必須</span></label>
+            <select id="age" name="age" required>
+              <option value="">選択してください</option>
+              <option>〜9歳</option>
+              <option>10〜19歳</option>
+              <option>20〜29歳</option>
+              <option>30〜39歳</option>
+              <option>40〜49歳</option>
+              <option>50〜59歳</option>
+              <option>60歳〜</option>
+            </select>
+          </div>
+
+          <!-- 性別 -->
+          <fieldset>
+            <legend>性別 <span class="required">必須</span></legend>
+            <div class="radio-group">
+              <label><input type="radio" name="gender" value="男性" required> 男性</label>
+              <label><input type="radio" name="gender" value="女性"> 女性</label>
+              <label><input type="radio" name="gender" value="その他"> その他</label>
+            </div>
+          </fieldset>
+
+          <!-- 住所 -->
+          <fieldset>
+            <legend>ご住所</legend>
+            <div class="form-group">
+              <label for="zipcode">郵便番号（ハイフン不要）</label>
+              <input type="text" id="zipcode" name="zipcode" pattern="\d{7}">
+            </div>
+            <div class="form-group">
+              <label for="prefecture">都道府県</label>
+              <select id="prefecture" name="prefecture">
+                <option value="">選択してください</option>
+                <option>沖縄県</option>
+                <!-- 他県は省略 -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="address1">市区町村・番地</label>
+              <input type="text" id="address1" name="address1">
+            </div>
+            <div class="form-group">
+              <label for="address2">建物名・部屋番号</label>
+              <input type="text" id="address2" name="address2">
+            </div>
+          </fieldset>
+
+          <!-- 電話番号 -->
+          <div class="form-group">
+            <label for="tel">電話番号（ハイフン不要） <span class="required">必須</span></label>
+            <input type="tel" id="tel" name="tel" pattern="\d{10,11}" required>
+          </div>
+
+          <!-- メールアドレス -->
+          <div class="form-group">
+            <label for="email">メールアドレス <span class="required">必須</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <!-- 希望コース -->
+          <div class="form-group">
+            <label for="course">希望するコース <span class="required">必須</span></label>
+            <select id="course" name="course" required>
+              <option value="">選択してください</option>
+              <option value="ピアノ">ピアノ</option>
+              <option value="ピアノ弾き語り">ピアノ弾き語り</option>
+              <option value="ボイストレーニング">ボイストレーニング</option>
+            </select>
+          </div>
+
+          <!-- レッスン理由 -->
+          <fieldset>
+            <legend>レッスンを受けたい理由 <span class="required">必須</span></legend>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="reason" value="高音が出しづらい"> 高音が出しづらい</label>
+              <label><input type="checkbox" name="reason" value="音域を広げたい"> 音域を広げたい</label>
+              <label><input type="checkbox" name="reason" value="リズム感を鍛えたい"> リズム感を鍛えたい</label>
+              <label><input type="checkbox" name="reason" value="好きな曲を歌えるようになりたい"> 好きな曲を歌えるようになりたい</label>
+              <label><input type="checkbox" name="reason" value="楽譜が読めるようになりたい"> 楽譜が読めるようになりたい</label>
+              <label><input type="checkbox" name="reason" value="その他"> その他</label>
+            </div>
+            <div class="form-group">
+              <label for="reason-etc">その他理由</label>
+              <textarea id="reason-etc" name="reason_etc"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- 連絡方法 -->
+          <fieldset>
+            <legend>ご希望の連絡方法 <span class="required">必須</span></legend>
+            <div class="radio-group">
+              <label><input type="radio" name="contact_method" value="メール" required> メール</label>
+              <label><input type="radio" name="contact_method" value="電話"> 電話</label>
+              <label><input type="radio" name="contact_method" value="郵送"> 郵送</label>
+            </div>
+          </fieldset>
+
+          <!-- 送信ボタン -->
+          <div class="submit-group">
+            <button type="submit" class="btn-submit">送信内容の確認</button>
+          </div>
+
+        </form>
       </div>
+    </section>
 
-      <!-- ふりがな -->
-      <div class="form-group required">
-        <label>ふりがな<span class="badge">必須</span></label>
-        <div class="two-columns">
-          <input type="text" name="last_kana" placeholder="せい" required />
-          <input type="text" name="first_kana" placeholder="めい" required />
-        </div>
-      </div>
+    <!-- コピーライト -->
+    <footer class="site-footer">
+      <p>&copy; 2025 Hanashiro Music School. All rights reserved.</p>
+    </footer>
 
-      <!-- 電話番号 -->
-      <div class="form-group required">
-        <label>電話番号<span class="badge">必須</span></label>
-        <input
-          type="tel"
-          name="tel"
-          placeholder="例：09012345678"
-          pattern="\d{10,11}"
-          required
-        />
-      </div>
-
-      <!-- メールアドレス -->
-      <div class="form-group required">
-        <label>メールアドレス<span class="badge">必須</span></label>
-        <input
-          type="email"
-          name="email"
-          placeholder="example@domain.com"
-          required
-        />
-      </div>
-
-      <!-- 希望コース -->
-      <div class="form-group required">
-        <label>希望するコース<span class="badge">必須</span></label>
-        <select name="course" required>
-          <option value="" disabled selected>選択してください</option>
-          <option value="piano">ピアノコース</option>
-          <option value="vocal_piano">ピアノ弾き語りコース</option>
-          <option value="voice">ボイストレーニングコース</option>
-        </select>
-      </div>
-
-      <!-- 希望日時 -->
-      <div class="form-group">
-        <label>ご希望の日時（第１希望）</label>
-        <input type="text" name="date1" placeholder="例：7月20日 14:00〜" />
-      </div>
-      <div class="form-group">
-        <label>ご希望の日時（第２希望）</label>
-        <input type="text" name="date2" placeholder="例：7月21日 10:00〜" />
-      </div>
-
-      <!-- レッスンを受けたい理由 -->
-      <div class="form-group required">
-        <label>レッスンを受けたい理由<span class="badge">必須（複数可）</span></label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="reason" value="high_tone" /> 高音が出しづらい</label>
-          <label><input type="checkbox" name="reason" value="song_goal" /> 歌いたい曲がある</label>
-          <label><input type="checkbox" name="reason" value="rhythm" /> リズム感を鍛えたい</label>
-          <label><input type="checkbox" name="reason" value="performance" /> 人前で歌えるようになりたい</label>
-          <label><input type="checkbox" name="reason" value="confidence" /> 自信をつけたい</label>
-          <label><input type="checkbox" name="reason" value="other" /> その他</label>
-        </div>
-        <textarea
-          name="reason_other"
-          placeholder="その他の場合はご記入ください"
-          rows="3"
-        ></textarea>
-      </div>
-
-      <!-- 送信ボタン -->
-      <div class="form-group">
-        <button type="submit" class="submit-btn">送信内容の確認</button>
-      </div>
-
-      <!-- 注意書き -->
-      <div class="note">
-        <p>※ご入力いただいた個人情報は、教室運営の目的でのみ使用します。</p>
-        <p>※数日経っても返信がない場合は、お手数ですが直接お電話ください。</p>
-      </div>
-
-    </form>
   </div>
 
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function(){
+      this.classList.toggle('open');
+      document.querySelector('.section-nav').classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
