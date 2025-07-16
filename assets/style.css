@@ -248,3 +248,32 @@ textarea {
   background: #bed3da;
   border-radius: 2px;
 }
+
+/* 該当フォームブロックの背景は白のまま */
+.trial-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 見出し：左のライン */
+.trial-container .section-title {
+  position: relative;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+}
+.trial-container .section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 4px;
+  height: 1.2em;
+  background: #bed3da;
+  border-radius: 2px;
+}
