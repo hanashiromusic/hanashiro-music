@@ -13,25 +13,8 @@ body::before{content:"";position:fixed;inset:0;background:#fff;z-index:9999;poin
 1. ベース
 ──────────────────────────────*/
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:#bed3da;
-  color:#333;
-  font-family:"Sawarabi Gothic","M PLUS 1p",sans-serif;
-  line-height:1.6;
-  padding:1rem;
-}
-.wrapper{
-  width:100%;
-  max-width:960px;
-  margin:1.5rem auto;
-  background:#fff;
-  border-radius:18px;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-  padding:2rem;               /* ← 左右もトップページと同じ余白に統一 */
-}
-@media(max-width:480px){
-  .wrapper{padding:1.2rem 1rem;} /* モバイルでも左右1rem確保 */
-}
+body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line-height:1.6;padding:1rem}
+.wrapper{width:100%;max-width:960px;margin:1.5rem auto;background:#fff;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:2rem}
 
 /*──────────────────────────────
 2. 共通フェードイン
@@ -39,96 +22,68 @@ body{
 @keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /*──────────────────────────────
-3. ハンバーガーメニュー
+3. ヒーロー
 ──────────────────────────────*/
-.menu-toggle{
-  position:fixed;top:1rem;right:1rem;
-  width:2.5rem;height:2.5rem;
-  background:#bed3da;border:none;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.3rem;
-  cursor:pointer;z-index:200
-}
+.hero{text-align:center;margin:3rem 0 4rem}
+.hero .logo{display:block;margin:2.5rem auto;width:968px;max-width:100%;opacity:0;animation:fadeInUp .6s ease-out .3s forwards}
+.hero .catch-img{display:block;margin:0 auto 3rem;width:100%;max-width:800px;opacity:0;animation:fadeInUp .6s ease-out .6s forwards}
+@media(max-width:480px){.hero .catch-img{margin:0 auto 2rem}}
+
+.menu-toggle{position:fixed;top:1rem;right:1rem;width:2.5rem;height:2.5rem;background:#bed3da;border:none;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.3rem;cursor:pointer;opacity:0;animation:fadeInUp .6s ease-out 1.2s forwards;z-index:200}
 .menu-toggle span{width:60%;height:3px;background:#fff;border-radius:2px;transition:background-color .3s}
-.menu-toggle.open{background:#333}
-.menu-toggle.open span{background:#fff}
+.menu-toggle.open{background:#333}.menu-toggle.open span{background:#fff}
 
 /*──────────────────────────────
 4. ナビ
 ──────────────────────────────*/
-.section-nav{
-  position:fixed;top:0;right:0;width:80%;max-width:320px;height:100%;
-  background:rgba(255,255,255,.95);padding:4rem 1.5rem;overflow-y:auto;z-index:150;
-  display:flex;flex-direction:column;gap:1rem;
-  transform:translateX(100%);transition:transform .4s cubic-bezier(.77,0,.18,1)
-}
+.section-nav{position:fixed;top:0;right:0;width:80%;max-width:320px;height:100%;background:rgba(255,255,255,.95);padding:4rem 1.5rem;overflow-y:auto;z-index:150;display:flex;flex-direction:column;gap:1rem;transform:translateX(100%);transition:transform .4s cubic-bezier(.77,0,.18,1)}
 .section-nav.open{transform:translateX(0)}
-.section-nav a{
-  display:block;margin:.5rem 0;padding:.8rem;
-  background:#bed3da;color:#000;text-decoration:none;border-radius:6px;
-  text-align:center;font-weight:600
-}
+.section-nav a{display:block;margin:.5rem 0;padding:.8rem;background:#bed3da;color:#000;text-decoration:none;border-radius:6px;text-align:center;font-weight:600}
 
 /*──────────────────────────────
-5. セクション見出し
+5. コース概要
 ──────────────────────────────*/
-.section h2{
-  margin-bottom:2.2rem;
-  font-family:"M PLUS 1p",sans-serif;font-weight:700;
-  font-size:2rem;text-align:center;      /* ← 中央揃え指定 */
-}
-@media(max-width:480px){.section h2{font-size:1.3rem}}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:2rem}
+.overview-grid img{width:100%;border-radius:8px}
 
 /*──────────────────────────────
-6. フォーム共通
+6. セクション共通
 ──────────────────────────────*/
-.form-block{margin-bottom:2.1rem}
-.form-label-title{
-  display:flex;align-items:center;
-  font-family:"M PLUS 1p",sans-serif;font-weight:700;font-size:1.13rem;margin-bottom:.5rem
-}
-.form-label-bar{width:5px;height:1.6em;background:#bed3da;border-radius:3px;margin-right:.6em}
-.form-required{
-  background:#bed3da;color:#fff;font-size:.88em;font-weight:500;border-radius:1em;
-  padding:.08em .85em;margin-left:.75em;letter-spacing:.04em
-}
-.form-caption{font-size:.95em;color:#888;margin:.0 0 .3em 2.3em}
-@media(max-width:480px){
-  .form-label-title{font-size:1.01rem;margin-bottom:.37rem}
-  .form-label-bar{width:4px;height:1.3em;margin-right:.4em}
-  .form-required{font-size:.83em;padding:.09em .7em}
-  .form-caption{margin-left:1.8em;font-size:.89em}
-}
-.trial-form label{display:block;font-weight:500;margin-bottom:.12em}
-.trial-form input[type="text"],
-.trial-form input[type="tel"],
-.trial-form input[type="email"],
-.trial-form select,
-.trial-form textarea{
-  width:100%;padding:.68rem .7rem;font-size:1rem;
-  border:1px solid #ccc;border-radius:6px;background:#fff;margin-top:.1em
-}
-.trial-form textarea{min-height:100px;resize:vertical}
-.radio-group,.checkbox-group{
-  display:flex;flex-wrap:wrap;gap:1.4em 1em;margin-bottom:.7em
-}
-.radio-group label,.checkbox-group label{display:flex;align-items:center;font-weight:500}
-.radio-group input,.checkbox-group input{
-  margin-right:.5em;width:1.1em;height:1.1em;accent-color:#A66B75
-}
+.section{margin-bottom:2rem}
+.section h2{margin-bottom:.5rem;font-family:"M PLUS 1p",sans-serif;font-weight:700;font-size:1.8rem}
+.section-divider{border:none;border-top:1px solid #ddd;margin:2rem 0}
 
 /*──────────────────────────────
-7. 送信ボタン
+7. 講師写真・名前
 ──────────────────────────────*/
-.submit-group{text-align:center;margin-top:2.8rem}
-.btn-submit{
-  display:inline-block;padding:1.15rem 2.7rem;
-  background:#A66B75;color:#fff;border:none;border-radius:2em;
-  font-size:1.22rem;font-weight:700;letter-spacing:.1em;
-  box-shadow:0 2px 8px rgba(166,107,117,.09);cursor:pointer;transition:opacity .14s
-}
-.btn-submit:hover,.btn-submit:focus{opacity:.92}
+.teacher-photo{display:block;margin:1.5rem auto;width:100%;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.teacher-name{font-size:1.25rem;font-weight:700;margin:1rem 0 .5em}
 
 /*──────────────────────────────
-8. コピーライト
+8. 料金表
 ──────────────────────────────*/
-.site-footer{text-align:center;font-size:.91rem;color:#333;margin-top:2.4rem}
+.fee-images{display:grid;gap:1rem;grid-template-columns:1fr}
+.fee-images img{width:100%;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+
+/*──────────────────────────────
+9. アクセス
+──────────────────────────────*/
+#access iframe{width:100%;height:320px;border:0;margin-bottom:1rem}
+
+/*──────────────────────────────
+10. CTA・ボタン
+──────────────────────────────*/
+.cta{padding:1.5rem;background:rgba(190,211,218,.2);text-align:center}
+.btn{display:inline-block;padding:.6rem 1.2rem;background:#bed3da;color:#000;text-decoration:none;border-radius:6px;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,.05)}
+.btn:hover{opacity:.9}
+
+/*──────────────────────────────
+11. コピーライト（wrapper 内）
+──────────────────────────────*/
+.site-footer{margin-top:2rem;text-align:center;font-size:.85rem;color:#333}
+
+/*──────────────────────────────
+12. 見出しサイズ調整
+──────────────────────────────*/
+@media(max-width:480px){.section h2{font-size:1.3rem;line-height:1.4}}
+@media(min-width:481px) and (max-width:768px){.section h2{font-size:1.6rem;line-height:1.5}}
