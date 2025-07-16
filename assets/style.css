@@ -1,10 +1,10 @@
 /*──────────────────────────────
-0. スクリーンリーダー用非表示
+0. SR-only
 ──────────────────────────────*/
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /*──────────────────────────────
-0.5 ページフェード（白→透明 1s）
+0.5 ページフェード（白→透明）
 ──────────────────────────────*/
 @keyframes pageFade{from{opacity:1}to{opacity:0}}
 body::before{content:"";position:fixed;inset:0;background:#fff;z-index:9999;pointer-events:none;animation:pageFade 1s ease-out forwards}
