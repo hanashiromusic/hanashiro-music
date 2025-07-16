@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>体験レッスン申込フォーム｜花城音楽教室</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- フォーム用スタイル -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="form-wrapper">
+
+    <h1>体験レッスン申込フォーム</h1>
+
+    <form action="confirm.html" method="post">
+
+      <!-- お名前 -->
+      <div class="form-group required">
+        <label>お名前<span class="badge">必須</span></label>
+        <div class="two-columns">
+          <input type="text" name="last_name" placeholder="姓" required />
+          <input type="text" name="first_name" placeholder="名" required />
+        </div>
+      </div>
+
+      <!-- ふりがな -->
+      <div class="form-group required">
+        <label>ふりがな<span class="badge">必須</span></label>
+        <div class="two-columns">
+          <input type="text" name="last_kana" placeholder="せい" required />
+          <input type="text" name="first_kana" placeholder="めい" required />
+        </div>
+      </div>
+
+      <!-- 電話番号 -->
+      <div class="form-group required">
+        <label>電話番号<span class="badge">必須</span></label>
+        <input
+          type="tel"
+          name="tel"
+          placeholder="例：09012345678"
+          pattern="\d{10,11}"
+          required
+        />
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="form-group required">
+        <label>メールアドレス<span class="badge">必須</span></label>
+        <input
+          type="email"
+          name="email"
+          placeholder="example@domain.com"
+          required
+        />
+      </div>
+
+      <!-- 希望コース -->
+      <div class="form-group required">
+        <label>希望するコース<span class="badge">必須</span></label>
+        <select name="course" required>
+          <option value="" disabled selected>選択してください</option>
+          <option value="piano">ピアノコース</option>
+          <option value="vocal_piano">ピアノ弾き語りコース</option>
+          <option value="voice">ボイストレーニングコース</option>
+        </select>
+      </div>
+
+      <!-- 希望日時 -->
+      <div class="form-group">
+        <label>ご希望の日時（第１希望）</label>
+        <input type="text" name="date1" placeholder="例：7月20日 14:00〜" />
+      </div>
+      <div class="form-group">
+        <label>ご希望の日時（第２希望）</label>
+        <input type="text" name="date2" placeholder="例：7月21日 10:00〜" />
+      </div>
+
+      <!-- レッスンを受けたい理由 -->
+      <div class="form-group required">
+        <label>レッスンを受けたい理由<span class="badge">必須（複数可）</span></label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="reason" value="high_tone" /> 高音が出しづらい</label>
+          <label><input type="checkbox" name="reason" value="song_goal" /> 歌いたい曲がある</label>
+          <label><input type="checkbox" name="reason" value="rhythm" /> リズム感を鍛えたい</label>
+          <label><input type="checkbox" name="reason" value="performance" /> 人前で歌えるようになりたい</label>
+          <label><input type="checkbox" name="reason" value="confidence" /> 自信をつけたい</label>
+          <label><input type="checkbox" name="reason" value="other" /> その他</label>
+        </div>
+        <textarea
+          name="reason_other"
+          placeholder="その他の場合はご記入ください"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <!-- 送信ボタン -->
+      <div class="form-group">
+        <button type="submit" class="submit-btn">送信内容の確認</button>
+      </div>
+
+      <!-- 注意書き -->
+      <div class="note">
+        <p>※ご入力いただいた個人情報は、教室運営の目的でのみ使用します。</p>
+        <p>※数日経っても返信がない場合は、お手数ですが直接お電話ください。</p>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
