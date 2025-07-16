@@ -256,3 +256,20 @@ body {
 @media (min-width: 481px) and (max-width: 768px) {
   .section h2 { font-size: 1.6rem; line-height: 1.5; }
 }
+
+/* 講師写真を大きく */
+.teacher-photo{
+  display:block;
+  margin:1.5rem auto;
+  width:100%;          /* ← 他画像と同じ幅 */
+  max-width: none;
+  border-radius:8px;   /* 他画像に合わせて 8px */
+  box-shadow:0 4px 16px rgba(0,0,0,.1);
+}
+
+/* 名前行を強調し、本文との間に0.5行分の余白 */
+.teacher-name{
+  font-size:1.25rem;
+  font-weight:700;
+  margin:1rem 0 0.5em; /* 上1rem，下0.5行分 */
+}
