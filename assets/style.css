@@ -38,10 +38,8 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 ──────────────────────────────*/
 .section-nav{position:fixed;top:0;right:0;width:80%;max-width:320px;height:100%;background:rgba(255,255,255,.95);padding:4rem 1.5rem;overflow-y:auto;z-index:150;display:flex;flex-direction:column;gap:1rem;transform:translateX(100%);transition:transform .4s cubic-bezier(.77,0,.18,1)}
 .section-nav.open{transform:translateX(0)}
-.section-nav a{display:block;margin:.5rem 0;padding:.8rem;background:#bed3da;color:#000;text-decoration:none;border-radius:6px;text-align:center;font-weight:600}
-.section-nav a {
-  font-family: "M PLUS 1p", sans-serif;
-}
+.section-nav a{display:block;margin:.5rem 0;padding:.8rem;background:#bed3da;color:#000;text-decoration:none;border-radius:6px;text-align:center;font-weight:600;font-family:"M PLUS 1p",sans-serif}
+
 /*──────────────────────────────
 5. コース概要
 ──────────────────────────────*/
@@ -59,7 +57,7 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 7. 講師写真・名前
 ──────────────────────────────*/
 .teacher-photo{display:block;margin:1.5rem auto;width:100%;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
-.teacher-name{font-size:1.25rem;font-weight:700;margin:1rem 0 .5em}
+.teacher-name{font-size:1.25rem;font-weight:700;margin:1rem 0 .5em;text-align:center}/*★中央揃え維持*/
 
 /*──────────────────────────────
 8. 料金表
@@ -80,9 +78,9 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 .btn:hover{opacity:.9}
 
 /*──────────────────────────────
-11. コピーライト（wrapper 内）
+11. コピーライト
 ──────────────────────────────*/
-.site-footer{margin-top:2rem;text-align:center;font-size:.85rem;color:#333}
+.site-footer{text-align:center;font-size:.7rem;color:#333}/*★0.85→0.70rem*/
 
 /*──────────────────────────────
 12. 見出しサイズ調整
