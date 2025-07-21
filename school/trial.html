@@ -5,10 +5,15 @@
   <title>体験レッスン申し込み｜花城音楽教室</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Google Fonts: Sawarabi Gothic & M PLUS 1p -->
-  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    /* 全体ベース */
+    /* ──────────────────────────────
+       ページ共通ベース
+    ──────────────────────────────*/
     body {
       background: #bed3da;
       color: #333;
@@ -16,6 +21,10 @@
       line-height: 1.6;
       padding: 1rem;
     }
+
+    /* ──────────────────────────────
+       白ブロック（wrapper）の余白
+    ──────────────────────────────*/
     .wrapper {
       width: 100%;
       max-width: 960px;
@@ -23,13 +32,19 @@
       background: #fff;
       border-radius: 18px;
       box-shadow: 0 4px 12px rgba(0,0,0,.08);
-      padding: 2rem 1.5rem;
+      /* ← 余白を大きめに調整 */
+      padding: 3rem;
     }
-    @media(max-width: 480px) {
-      .wrapper { padding: 1.2rem 0.3rem; }
+    @media (max-width: 480px) {
+      .wrapper {
+        /* ← モバイルでも左右たっぷり */
+        padding: 2rem 1.5rem;
+      }
     }
 
-    /* ハンバーガーメニュー */
+    /* ──────────────────────────────
+       ハンバーガーメニュー
+    ──────────────────────────────*/
     .menu-toggle {
       position: fixed;
       top: 1rem;
@@ -56,7 +71,9 @@
     .menu-toggle.open { background: #333; }
     .menu-toggle.open span { background: #fff; }
 
-    /* ナビ（section-nav） */
+    /* ──────────────────────────────
+       サイドナビ
+    ──────────────────────────────*/
     .section-nav {
       position: fixed;
       top: 0;
@@ -87,20 +104,23 @@
       font-weight: 600;
     }
 
-    /* セクション見出し */
+    /* ──────────────────────────────
+       セクション見出し
+    ──────────────────────────────*/
     .section h2 {
       font-family: "M PLUS 1p", sans-serif;
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 2.2rem;
+      text-align: center;
     }
     @media (max-width: 480px) {
       .section h2 { font-size: 1.3rem; }
     }
 
-    /* ────────────────
-       体験フォーム
-    ─────────────────*/
+    /* ──────────────────────────────
+       体験フォーム共通
+    ──────────────────────────────*/
     .form-block {
       margin-bottom: 2.1rem;
       padding: 0;
@@ -110,54 +130,46 @@
     .form-label-title {
       display: flex;
       align-items: center;
-      font-weight: 700;
-      font-size: 1.13rem;
-      margin-bottom: 0.5rem;
       font-family: "M PLUS 1p", sans-serif;
+      font-size: 1.13rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
       line-height: 1.1;
     }
     .form-label-bar {
-      display: inline-block;
       width: 5px;
       height: 1.6em;
       background: #bed3da;
       border-radius: 3px;
-      margin-right: 0.6em;
+      margin-right: .6em;
     }
     .form-required {
       display: inline-block;
       background: #bed3da;
       color: #fff;
-      font-size: 0.88em;
+      font-size: .88em;
       font-weight: 500;
       border-radius: 1em;
-      padding: 0.08em 0.85em 0.07em 0.85em;
-      margin-left: 0.75em;
-      vertical-align: middle;
-      letter-spacing: 0.04em;
+      padding: .08em .85em .07em .85em;
+      margin-left: .75em;
+      letter-spacing: .04em;
     }
     .form-caption {
-      font-size: 0.95em;
+      font-size: .95em;
       color: #888;
-      margin: 0 0 0.3em 2.3em;
+      margin: 0 0 .3em 2.3em;
       line-height: 1.1;
     }
     @media (max-width: 480px) {
-      .form-label-title { font-size: 1.01rem; margin-bottom: 0.37rem; }
-      .form-label-bar { width: 4px; height: 1.3em; margin-right: 0.4em; }
-      .form-required { font-size: 0.83em; padding: 0.09em 0.7em; }
-      .form-caption { margin-left: 1.8em; font-size: 0.89em; }
+      .form-caption { margin-left: 1.8em; font-size: .89em; }
     }
-    .trial-form .form-group:not(:last-child) { margin-bottom: 0.8rem; }
     .trial-form label {
       display: block;
       font-size: 1em;
       font-weight: 500;
-      margin-bottom: 0.12em;
+      margin-bottom: .12em;
     }
-    .trial-form input[type="text"],
-    .trial-form input[type="tel"],
-    .trial-form input[type="email"],
+    .trial-form input,
     .trial-form select,
     .trial-form textarea {
       width: 100%;
@@ -169,28 +181,34 @@
       margin-top: .1em;
     }
     .trial-form textarea { min-height: 100px; resize: vertical; }
-    .radio-group, .checkbox-group {
+    .radio-group,
+    .checkbox-group {
       display: flex;
       flex-wrap: wrap;
       gap: 1.4em 1em;
-      margin-bottom: 0.7em;
+      margin-bottom: .7em;
     }
-    .radio-group label, .checkbox-group label {
+    .radio-group label,
+    .checkbox-group label {
       display: flex;
       align-items: center;
       font-weight: 500;
       margin-right: 1.2em;
     }
-    .radio-group input, .checkbox-group input {
+    .radio-group input,
+    .checkbox-group input {
       margin-right: .5em;
       accent-color: #A66B75;
-      width: 1.1em; height: 1.1em;
+      width: 1.1em;
+      height: 1.1em;
     }
 
-    /* 送信ボタン */
+    /* ──────────────────────────────
+       送信ボタン
+    ──────────────────────────────*/
     .submit-group {
       text-align: center;
-      margin: 2.8rem 0 0 0;
+      margin-top: 2.8rem;
     }
     .btn-submit {
       display: inline-block;
@@ -206,25 +224,28 @@
       cursor: pointer;
       transition: opacity .14s;
     }
-    .btn-submit:hover, .btn-submit:focus { opacity: 0.92; }
+    .btn-submit:hover,
+    .btn-submit:focus { opacity: .92; }
 
-    /* コピーライト */
+    /* ──────────────────────────────
+       コピーライト
+    ──────────────────────────────*/
     .site-footer {
-      margin-top: 2.4rem;
       text-align: center;
       font-size: .91rem;
       color: #333;
+      margin-top: 2.4rem;
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
 
-    <!-- ハンバーガーメニュー＆ナビ -->
+    <!-- ハンバーガー＆ナビ -->
     <button class="menu-toggle" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
-    <nav id="nav" class="section-nav">
+    <nav class="section-nav">
       <a href="../index.html#course-overview">コース概要</a>
       <a href="../index.html#fee">レッスン料金</a>
       <a href="../index.html#access">アクセス</a>
@@ -241,7 +262,7 @@
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>お名前</span>
+              お名前
               <span class="form-required">必須</span>
             </div>
             <div class="form-group">
@@ -258,7 +279,7 @@
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>ふりがな</span>
+              ふりがな
               <span class="form-required">必須</span>
             </div>
             <div class="form-group">
@@ -275,7 +296,7 @@
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>年齢</span>
+              年齢
               <span class="form-required">必須</span>
             </div>
             <div class="form-group">
@@ -296,7 +317,7 @@
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>性別</span>
+              性別
               <span class="form-required">必須</span>
             </div>
             <div class="radio-group">
@@ -310,7 +331,7 @@
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>電話番号</span>
+              電話番号
               <span class="form-required">必須</span>
             </div>
             <div class="form-group">
@@ -322,7 +343,7 @@
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>メールアドレス</span>
+              メールアドレス
               <span class="form-required">必須</span>
             </div>
             <div class="form-group">
@@ -330,11 +351,11 @@
             </div>
           </div>
 
-          <!-- 希望コース -->
+          <!-- 希望するコース -->
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>希望するコース</span>
+              希望するコース
               <span class="form-required">必須</span>
             </div>
             <div class="form-group">
@@ -351,7 +372,7 @@
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>レッスンを希望する理由</span>
+              レッスンを希望する理由
               <span class="form-required">必須</span>
             </div>
             <div class="form-caption">※複数回答可</div>
@@ -373,7 +394,7 @@
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>
-              <span>ご希望の連絡方法</span>
+              ご希望の連絡方法
               <span class="form-required">必須</span>
             </div>
             <div class="radio-group">
@@ -388,6 +409,7 @@
           <div class="submit-group">
             <button type="submit" class="btn-submit">送信内容の確認</button>
           </div>
+
         </form>
       </section>
     </main>
@@ -398,18 +420,29 @@
     </footer>
   </div><!-- /.wrapper -->
 
-  <!-- ハンバーガーJS -->
+  <!-- ハンバーガーメニュー動作 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const btn   = document.querySelector('.menu-toggle');
       const nav   = document.querySelector('.section-nav');
       const links = nav.querySelectorAll('a');
-      const close = () => {
-        nav.classList.remove('open');
-        btn.classList.remove('open');
-        document.body.style.overflow = '';
-        btn.setAttribute('aria-label', 'メニューを開く');
-      };
+
       btn.addEventListener('click', () => {
         const open = nav.classList.toggle('open');
-        btn.class
+        btn.classList.toggle('open');
+        document.body.style.overflow = open ? 'hidden' : '';
+        btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      });
+
+      links.forEach(link =>
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          btn.classList.remove('open');
+          document.body.style.overflow = '';
+          btn.setAttribute('aria-label', 'メニューを開く');
+        })
+      );
+    });
+  </script>
+</body>
+</html>
