@@ -21,10 +21,14 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
   background:#fff;
   border-radius:18px;
   box-shadow:0 4px 12px rgba(0,0,0,.08);
-  padding:2rem;                 /* ← ここを左右も 2rem に統一 */
+  /* ★ 余白を大きく */
+  padding:3rem;                /* 上下左右すべて 3rem */
 }
 @media(max-width:480px){
-  .wrapper{padding:1.5rem 1rem;} /* ← スマホでも左右 1rem の余白確保 */
+  .wrapper{
+    /* ★ スマホでも十分な左右余白 */
+    padding:2rem 1.5rem;       /* 上下 2rem, 左右 1.5rem */
+  }
 }
 
 /*──────────────────────────────
