@@ -87,3 +87,52 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 ──────────────────────────────*/
 @media(max-width:480px){.section h2{font-size:1.3rem;line-height:1.4}}
 @media(min-width:481px) and (max-width:768px){.section h2{font-size:1.6rem;line-height:1.5}}
+
+/* SNSリンクセクション */
+.sns-links {
+  text-align: center;
+  background: rgba(190, 211, 218, 0.1);
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  margin-top: 3rem;
+}
+
+.sns-links h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: "M PLUS 1p", sans-serif;
+}
+
+.sns-text {
+  margin: 1rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.sns-link {
+  font-weight: 700;
+  color: #0077b6;
+  text-decoration: none;
+  border-bottom: 1px dashed #0077b6;
+}
+.sns-link:hover {
+  opacity: 0.8;
+}
+
+/* SNSアイコン */
+.social-icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+.social-icons li img {
+  width: 40px;
+  height: 40px;
+}
+.social-icons a:hover img {
+  opacity: 0.8;
+}
+
