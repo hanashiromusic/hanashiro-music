@@ -4,30 +4,23 @@
   <meta charset="UTF-8">
   <title>体験レッスン申し込み｜花城音楽教室</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google Fonts: Sawarabi Gothic & M PLUS 1p -->
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    /* 必要部分のみ抜粋（基本は既存CSS流用） */
     .hidden { display: none !important; }
     .disabled-label { color: #bbb !important; cursor: not-allowed !important; opacity: 0.7; }
     .contact-block { margin-top: 1.5rem; }
     .contact-img { display: block; margin: 1em auto 0 auto; max-width: 240px; }
-    /* 時間帯セクションの余白 */
     .time-group-wrap { margin-bottom: 1.3em; }
-    /* インライン注意文 */
     .contact-note { font-size: .95em; color: #888; margin-top: .7em; line-height: 1.4; }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <!-- ハンバーガー＆ナビは省略（既存で可） -->
-
     <main>
       <section id="trial-form" class="section">
         <h2>体験レッスン申し込みフォーム</h2>
         <form action="/submit-trial" method="post" class="trial-form">
-
           <!-- お名前 -->
           <div class="form-block">
             <div class="form-label-title">
@@ -180,14 +173,13 @@
               <label><input type="checkbox" name="weekday" value="土曜日"> 土曜日</label>
               <label><input type="checkbox" name="weekday" value="日曜日"> 日曜日</label>
             </div>
-            <!-- 時間帯グループは曜日ごとに動的表示 -->
             <div id="time-group-list"></div>
             <div class="form-group">
               <label for="free-request">要相談（自由記入）</label>
               <textarea id="free-request" name="free_request"></textarea>
             </div>
           </div>
-          <!-- ご希望の連絡方法 -->
+          <!-- ご希望の連絡方法と分岐ブロック -->
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>ご希望の連絡方法 <span class="form-required">必須</span>
@@ -198,7 +190,7 @@
               <label><input type="radio" name="contact_method" value="LINE"> LINE</label>
               <label><input type="radio" name="contact_method" value="Instagram DM"> Instagram DM</label>
             </div>
-            <!-- 各連絡方法ごとの入力欄・注意文 -->
+            <!-- 電話 -->
             <div class="contact-block hidden" id="contact-phone">
               <div class="form-group">
                 <label for="contact-phone-tel">お電話番号 <span class="form-required">必須</span></label>
@@ -215,10 +207,59 @@
               </div>
               <div class="contact-note">
                 体験レッスンお申し込み後、３日以内に代表・花城よりお電話いたします。<br>
-               
-              
-              
-              <script>
+                もし３日以上経ってもご連絡がない場合は、お申し込みが届いていない可能性がありますので、恐れ入りますが再度お申し込みください。
+              </div>
+            </div>
+            <!-- メール -->
+            <div class="contact-block hidden" id="contact-mail">
+              <div class="form-group">
+                <label for="contact-mail-address">メールアドレス <span class="form-required">必須</span></label>
+                <input type="email" id="contact-mail-address" name="contact_mail_address">
+              </div>
+              <div class="contact-note">
+                体験レッスンお申し込み後、３日以内に教室公式メール（hanashiro.music.school@gmail.com）よりご連絡いたします。<br>
+                万が一届かない場合は、迷惑メールフォルダをご確認のうえ、再度お申し込みください。
+              </div>
+            </div>
+            <!-- LINE -->
+            <div class="contact-block hidden" id="contact-line">
+              <div class="form-group">
+                <label for="contact-line-name">LINEアカウント名 <span class="form-required">必須</span></label>
+                <input type="text" id="contact-line-name" name="contact_line_name">
+              </div>
+              <div class="contact-note">
+                以下の公式LINEを【友だち追加】し、トークで「体験レッスン希望」とメッセージをお送りください。<br>
+                その後、こちらからご連絡いたします。<br>
+                ※教室側からお客様を一方的に追加できない仕組みのため、お手数ですが必ずご自身で友だち追加をお願いいたします。<br>
+                <a href="https://lin.ee/＊＊＊＊＊" target="_blank"><img src="../assets/line.jpeg" alt="花城音楽教室 公式LINE" class="contact-img"></a>
+              </div>
+            </div>
+            <!-- Instagram DM -->
+            <div class="contact-block hidden" id="contact-insta">
+              <div class="form-group">
+                <label for="contact-insta-name">Instagramアカウント名 <span class="form-required">必須</span></label>
+                <input type="text" id="contact-insta-name" name="contact_insta_name">
+              </div>
+              <div class="contact-note">
+                教室公式アカウント（@hanashiro_music_school）をフォローのうえ、DMで「体験レッスン希望」とご連絡ください。<br>
+                ※非公開アカウントでもDMは送れますが、「メッセージリクエスト」として届くため、承認されないと見られない場合があります。<br>
+                <a href="https://instagram.com/hanashiro_music_school" target="_blank"><img src="../assets/instagram.png" alt="花城音楽教室 Instagram" class="contact-img"></a>
+              </div>
+            </div>
+          </div>
+          <!-- 送信ボタン -->
+          <div class="submit-group">
+            <button type="submit" class="btn-submit">送信内容の確認</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; 2025 Hanashiro Music School. All rights reserved.</p>
+    </footer>
+  </div>
+  <!-- 分岐js -->
+  <script>
 document.addEventListener("DOMContentLoaded", function(){
   // コース分岐
   const courseSelect = document.getElementById('course');
@@ -289,4 +330,6 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   });
 });
-</script>
+  </script>
+</body>
+</html>
