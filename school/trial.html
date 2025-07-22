@@ -278,7 +278,6 @@ document.addEventListener("DOMContentLoaded", function(){
   // 曜日→時間分岐
   const weekdayGroup = document.getElementById('weekday-group');
   const timeGroupList = document.getElementById('time-group-list');
-  // 各曜日ごとの時間帯（disableパターン含む）データ
   const dayTimeDefs = {
     "月曜日":   [["午前（10:00～12:00）", true], ["午後（13:00～16:00）", true], ["夕方（16:00～19:00）", true], ["夜間（19:00～21:00）", true]],
     "火曜日":   [["午前（10:00～12:00）", true], ["午後（13:00～16:00）", true], ["夕方（16:00～19:00）", true], ["夜間（19:00～21:00）", true]],
@@ -290,13 +289,11 @@ document.addEventListener("DOMContentLoaded", function(){
   };
   function updateTimeGroups(){
     timeGroupList.innerHTML = "";
-    // 選択された曜日を収集
     Array.from(weekdayGroup.querySelectorAll('input[type="checkbox"]')).forEach(checkbox => {
       if(checkbox.checked){
         const weekday = checkbox.value;
         const def = dayTimeDefs[weekday];
         if(def){
-          // 時間帯ブロックを生成
           let html = `<div class="time-group-wrap"><strong>${weekday}：</strong><div class="checkbox-group">`;
           def.forEach(([label, enabled], idx) => {
             if(enabled){
@@ -313,19 +310,22 @@ document.addEventListener("DOMContentLoaded", function(){
   }
   weekdayGroup.addEventListener('change', updateTimeGroups);
 
-  // 連絡方法分岐
+  // 連絡方法分岐（空白・全角にも強く）
   const contactRadios = document.querySelectorAll('input[name="contact_method"]');
   const contactBlocks = {
     "電話": document.getElementById("contact-phone"),
     "メール": document.getElementById("contact-mail"),
     "LINE": document.getElementById("contact-line"),
-    "Instagram DM": document.getElementById("contact-insta")
+    "InstagramDM": document.getElementById("contact-insta") // 空白無し
   };
   contactRadios.forEach(radio => {
     radio.addEventListener('change', function(){
       Object.values(contactBlocks).forEach(el=>{if(el)el.classList.add('hidden')});
-      if(contactBlocks[this.value]){
-        contactBlocks[this.value].classList.remove('hidden');
+      // value正規化（全角スペースや半角空白、全て除去）
+      let key = this.value.replace(/\s+/g, '').replace(/　/g, '');
+      if(key === "InstagramDM") key = "InstagramDM"; // 特別処理
+      if(contactBlocks[key]){
+        contactBlocks[key].classList.remove('hidden');
       }
     });
   });
