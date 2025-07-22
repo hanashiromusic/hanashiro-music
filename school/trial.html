@@ -4,363 +4,316 @@
   <meta charset="UTF-8">
   <title>体験レッスン申し込み｜花城音楽教室</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
-
   <!-- 共通スタイル -->
   <link rel="stylesheet" href="../assets/style.css">
 
-  <!-- このページ専用の上書き -->
+  <!-- このページ専用 -->
   <style>
-    /* 白ブロック余白をゆったり */
+    /* ─ 白ブロック余白 ─────────────────── */
     .wrapper{padding:3rem}
     @media(max-width:480px){.wrapper{padding:2rem 1.5rem}}
 
-    /* 非表示ユーティリティ */
+    /* ─ utility ─────────────── */
     .is-hidden{display:none;}
-
-    /* 休講スロット（グレー表示） */
-    .slot-disabled{
-      color:#aaa;
-      cursor:not-allowed;
-      user-select:none;
-    }
+    .slot-disabled{color:#aaa;cursor:not-allowed;user-select:none;}
     .slot-disabled input{display:none;}
-
-    /* 画像を小さめに整える */
-    .info-image{
-      display:block;
-      max-width:220px;
-      width:100%;
-      margin:1rem auto;
-    }
+    .info-image{display:block;max-width:220px;width:100%;margin:1rem auto}
   </style>
 </head>
+
 <body>
-  <div class="wrapper">
+<div class="wrapper">
+  <!-- ハンバーガー & ナビ -->
+  <button class="menu-toggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+  <nav class="section-nav">
+    <a href="../index.html#course-overview">コース概要</a>
+    <a href="../index.html#fee">レッスン料金</a>
+    <a href="../index.html#access">アクセス</a>
+    <a href="../index.html#teacher">講師紹介</a>
+    <a href="../index.html#trial">体験レッスン申込</a>
+  </nav>
 
-    <!-- ハンバーガー -->
-    <button class="menu-toggle" aria-label="メニューを開く">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="section-nav">
-      <a href="../index.html#course-overview">コース概要</a>
-      <a href="../index.html#fee">レッスン料金</a>
-      <a href="../index.html#access">アクセス</a>
-      <a href="../index.html#teacher">講師紹介</a>
-      <a href="../index.html#trial">体験レッスン申込</a>
-    </nav>
+  <main>
+    <section class="section" id="trial-form">
+      <h2>体験レッスン申し込みフォーム</h2>
 
-    <main>
-      <section class="section" id="trial-form">
-        <h2>体験レッスン申し込みフォーム</h2>
-
-        <form class="trial-form" action="/submit-trial" method="post">
-
-          <!-- お名前 -->
-          <div class="form-block">
-            <div class="form-label-title"><span class="form-label-bar"></span>お名前<span class="form-required">必須</span></div>
-            <div class="form-group">
-              <label for="lastname">姓</label>
-              <input id="lastname" name="lastname" type="text" required>
-            </div>
-            <div class="form-group">
-              <label for="firstname">名</label>
-              <input id="firstname" name="firstname" type="text" required>
-            </div>
-          </div>
-
-          <!-- ふりがな -->
-          <div class="form-block">
-            <div class="form-label-title"><span class="form-label-bar"></span>ふりがな<span class="form-required">必須</span></div>
-            <div class="form-group">
-              <label for="furigana-last">せい</label>
-              <input id="furigana-last" name="furigana_last" type="text" required>
-            </div>
-            <div class="form-group">
-              <label for="furigana-first">めい</label>
-              <input id="furigana-first" name="furigana_first" type="text" required>
-            </div>
-          </div>
-
-          <!-- 年齢 -->
-          <div class="form-block">
-            <div class="form-label-title"><span class="form-label-bar"></span>年齢<span class="form-required">必須</span></div>
-            <div class="form-group">
-              <select id="age" name="age" required>
-                <option value="">選択してください</option>
-                <option>〜9歳</option><option>10〜19歳</option><option>20〜29歳</option>
-                <option>30〜39歳</option><option>40〜49歳</option><option>50〜59歳</option><option>60歳〜</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- コース選択 -->
-          <div class="form-block">
-            <div class="form-label-title"><span class="form-label-bar"></span>希望するコース<span class="form-required">必須</span></div>
-            <div class="form-group">
-              <select id="course" name="course" required>
-                <option value="">選択してください</option>
-                <option value="piano">ピアノコース</option>
-                <option value="piano-vocal">ピアノ弾き語りコース</option>
-                <option value="voice">ボイストレーニングコース</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- ★ 理由（コースごとに切り替え） -->
-          <div class="form-block">
-            <div class="form-label-title"><span class="form-label-bar"></span>レッスンを希望する理由<span class="form-required">必須</span></div>
-            <div class="form-caption">※複数回答可</div>
-
-            <!-- ピアノ -->
-            <div class="checkbox-group reason-set is-hidden" data-course="piano">
-              <label><input type="checkbox" name="reason_piano[]" value="好きな曲を弾きたい"> 好きな曲を弾きたい</label>
-              <label><input type="checkbox" name="reason_piano[]" value="楽譜が読めるようになりたい"> 楽譜が読めるようになりたい</label>
-              <label><input type="checkbox" name="reason_piano[]" value="姿勢や指使いなど基礎から"> 姿勢や指使いなど基礎から身につけたい</label>
-              <label><input type="checkbox" name="reason_piano[]" value="趣味で楽しみたい"> 趣味として気軽に楽しみたい</label>
-              <label><input type="checkbox" name="reason_piano[]" value="伴奏やコード弾き"> 伴奏やコード弾きができるようになりたい</label>
-              <label><input type="checkbox" name="reason_piano[]" value="作曲やアレンジに活かしたい"> 作曲・アレンジに活かしたい</label>
-              <label><input type="checkbox" name="reason_piano[]" value="人前で演奏目標"> 人前で演奏する目標に挑戦したい</label>
-              <label><input type="checkbox" name="reason_piano[]" value="スキルアップ音大受験"> スキルアップや音大受験を視野に学びたい</label>
-              <label><input type="checkbox" name="reason_piano[]" value="子供の習い事"> お子さんの習い事・情操教育として</label>
-              <label><input type="checkbox" name="reason_piano[]" value="その他"> その他（自由記入）</label>
-            </div>
-
-            <!-- ピアノ弾き語り -->
-            <div class="checkbox-group reason-set is-hidden" data-course="piano-vocal">
-              <label><input type="checkbox" name="reason_pv[]" value="好きな曲を弾き語り"> 好きな曲を弾き語りしたい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="コードで弾ける"> コードで弾けるようになりたい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="趣味でゆったり"> 趣味としてゆったり楽しみたい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="自作の歌を表現"> 自作の歌を弾き語りで表現したい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="ライブ発表会に向けて"> ライブ・発表会に向けて準備したい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="SNS投稿"> 弾き語り動画をSNSに投稿したい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="活動スキル"> 音楽活動に必要なスキルを身につけたい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="コードアレンジ"> 歌に合ったコードやアレンジを学びたい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="発声も学びたい"> 声の出し方や発声も一緒に学びたい</label>
-              <label><input type="checkbox" name="reason_pv[]" value="その他"> その他（自由記入）</label>
-            </div>
-
-            <!-- ボイトレ -->
-            <div class="checkbox-group reason-set is-hidden" data-course="voice">
-              <label><input type="checkbox" name="reason_voice[]" value="好きな歌を歌いたい"> 好きな歌を歌えるようになりたい</label>
-              <label><input type="checkbox" name="reason_voice[]" value="音程安定"> 音程を安定させたい</label>
-              <label><input type="checkbox" name="reason_voice[]" value="高音を出したい"> 高い声を出せるようになりたい</label>
-              <label><input type="checkbox" name="reason_voice[]" value="喉が枯れない"> 喉が枯れない歌い方を知りたい</label>
-              <label><input type="checkbox" name="reason_voice[]" value="カラオケ上達"> カラオケでもっと上手く歌いたい</label>
-              <label><input type="checkbox" name="reason_voice[]" value="人前で歌う準備"> 人前で歌う機会に向けて練習したい</label>
-              <label><input type="checkbox" name="reason_voice[]" value="滑舌発音改善"> 滑舌や発音を良くしたい</label>
-              <label><input type="checkbox" name="reason_voice[]" value="声が小さい"> 声が小さい・通らないのが悩み</label>
-              <label><input type="checkbox" name="reason_voice[]" value="その他"> その他（自由記入）</label>
-            </div>
-          </div>
-
-          <!-- ★ 曜日・時間帯 -->
-          <div class="form-block">
-            <div class="form-label-title"><span class="form-label-bar"></span>レッスンを希望する曜日<span class="form-required">必須</span></div>
-            <div class="form-caption">※複数選択可</div>
-
-            <!-- 曜日チェック -->
-            <div class="checkbox-group" id="weekday-group">
-              <label><input type="checkbox" data-day="mon" name="weekday[]" value="月"> 月曜日</label>
-              <label><input type="checkbox" data-day="tue" name="weekday[]" value="火"> 火曜日</label>
-              <label><input type="checkbox" data-day="wed" name="weekday[]" value="水"> 水曜日</label>
-              <label><input type="checkbox" data-day="thu" name="weekday[]" value="木"> 木曜日</label>
-              <label><input type="checkbox" data-day="fri" name="weekday[]" value="金"> 金曜日</label>
-              <label><input type="checkbox" data-day="sat" name="weekday[]" value="土"> 土曜日</label>
-              <label><input type="checkbox" data-day="sun" name="weekday[]" value="日"> 日曜日</label>
-            </div>
-
-            <!-- ▼ 月〜日 時間帯セット -->
-            <div id="time-slot-container">
-
-              <!-- 時間テンプレを JS で複製するので空で OK -->
-
-            </div>
-
-            <!-- 要相談フリーテキスト -->
-            <div class="form-group" style="margin-top:1rem">
-              <label for="time-other">要相談（自由記入）</label>
-              <textarea id="time-other" name="time_other"></textarea>
-            </div>
-          </div>
-
-          <!-- ★ 連絡方法 -->
-          <div class="form-block">
-            <div class="form-label-title"><span class="form-label-bar"></span>ご希望の連絡方法<span class="form-required">必須</span></div>
-
-            <div class="radio-group">
-              <label><input type="radio" name="contact_method" value="tel" required> 電話</label>
-              <label><input type="radio" name="contact_method" value="mail"> メール</label>
-              <label><input type="radio" name="contact_method" value="line"> LINE</label>
-              <label><input type="radio" name="contact_method" value="insta"> Instagram DM</label>
-            </div>
-
-            <!-- ▼ 電話 -->
-            <div class="is-hidden contact-set" data-method="tel">
-              <div class="form-group">
-                <label for="tel-num">お電話番号 <span class="form-required">必須</span></label>
-                <input id="tel-num" name="tel_num" type="tel" pattern="\d{10,11}">
-              </div>
-              <div class="form-group">
-                <label>ご都合の良いお時間帯（任意）</label>
-                <div class="checkbox-group">
-                  <label><input type="checkbox" name="tel_time[]" value="午前"> 午前（10:00～12:00）</label>
-                  <label><input type="checkbox" name="tel_time[]" value="午後"> 午後（13:00～16:00）</label>
-                  <label><input type="checkbox" name="tel_time[]" value="夕方"> 夕方（16:00～19:00）</label>
-                  <label><input type="checkbox" name="tel_time[]" value="夜間"> 夜間（19:00～21:00）</label>
-                </div>
-              </div>
-              <p class="form-caption">
-                体験レッスンお申し込み後、３日以内に代表・花城よりお電話いたします。<br>
-                もし３日以上経ってもご連絡がない場合は、お申し込みが届いていない可能性がありますので、恐れ入りますが再度お申し込みください。
-              </p>
-            </div>
-
-            <!-- ▼ メール -->
-            <div class="is-hidden contact-set" data-method="mail">
-              <div class="form-group">
-                <label for="email">メールアドレス <span class="form-required">必須</span></label>
-                <input id="email" name="email" type="email">
-              </div>
-              <p class="form-caption">
-                体験レッスンお申し込み後、３日以内に教室公式メール<br>
-                （hanashiro.music.school@gmail.com）よりご連絡いたします。<br>
-                万が一届かない場合は、迷惑メールフォルダをご確認のうえ、再度お申し込みください。
-              </p>
-            </div>
-
-            <!-- ▼ LINE -->
-            <div class="is-hidden contact-set" data-method="line">
-              <div class="form-group">
-                <label for="line-id">LINE アカウント名 <span class="form-required">必須</span></label>
-                <input id="line-id" name="line_id" type="text">
-              </div>
-              <p class="form-caption">
-                以下の公式LINEを【友だち追加】し、トークで「体験レッスン希望」とメッセージをお送りください。<br>
-                その後、こちらからご連絡いたします。<br>
-                ※教室側からお客様を一方的に追加できない仕組みのため、<br>
-                お手数ですが必ずご自身で友だち追加をお願いいたします。
-              </p>
-              <a href="https://lin.ee/＊＊＊＊＊" target="_blank">
-                <img src="../assets/line.jpeg" alt="花城音楽教室公式LINE" class="info-image">
-              </a>
-            </div>
-
-            <!-- ▼ Instagram -->
-            <div class="is-hidden contact-set" data-method="insta">
-              <div class="form-group">
-                <label for="insta-id">Instagram アカウント名 <span class="form-required">必須</span></label>
-                <input id="insta-id" name="insta_id" type="text">
-              </div>
-              <p class="form-caption">
-                教室公式アカウント（@hanashiro_music_school）をフォローのうえ、<br>
-                DMで「体験レッスン希望」とご連絡ください。<br>
-                ※非公開アカウントでもDMは送れますが、「メッセージリクエスト」として届くため、承認されないと見られない場合があります。
-              </p>
-              <img src="../assets/instagram.png" alt="花城音楽教室 公式Instagram" class="info-image">
-            </div>
-          </div>
-
-          <!-- 送信 -->
-          <div class="submit-group">
-            <button class="btn-submit" type="submit">送信内容の確認</button>
-          </div>
-
-        </form>
-      </section>
-    </main>
-
-    <footer class="site-footer">&copy; 2025 Hanashiro Music School. All rights reserved.</footer>
-  </div>
-
-  <!-- JS ----------------------------------------------------------- -->
-  <script>
-    // ハンバーガー
-    document.querySelector('.menu-toggle').addEventListener('click', e=>{
-      e.currentTarget.classList.toggle('open');
-      const nav=document.querySelector('.section-nav');
-      const open=nav.classList.toggle('open');
-      document.body.style.overflow=open?'hidden':'';
-    });
-    document.querySelectorAll('.section-nav a').forEach(a=>a.addEventListener('click',()=>{
-      document.querySelector('.section-nav').classList.remove('open');
-      document.querySelector('.menu-toggle').classList.remove('open');
-      document.body.style.overflow='';
-    }));
-
-    // ▼ コース→理由
-    const courseSel=document.getElementById('course');
-    const reasonSets=document.querySelectorAll('.reason-set');
-    const toggleReason=()=>{
-      reasonSets.forEach(s=>{
-        s.classList.toggle('is-hidden', s.dataset.course!==courseSel.value);
-      });
-    };
-    courseSel.addEventListener('change',toggleReason);
-
-    // ▼ 曜日→時間
-    const timeContainer=document.getElementById('time-slot-container');
-    const timeTemplate=(dayLabel,dayKey)=>`
-      <div class="form-group time-set" data-day="${dayKey}">
-        <div class="form-label-title" style="margin-top:.8rem"><span class="form-label-bar"></span>${dayLabel} の時間帯</div>
-        <div class="checkbox-group">
-          ${makeTimeCheckbox(dayKey,'morning','午前（10:00～12:00）')}
-          ${makeTimeCheckbox(dayKey,'afternoon','午後（13:00～16:00）')}
-          ${makeTimeCheckbox(dayKey,'evening','夕方（16:00～19:00）')}
-          ${makeTimeCheckbox(dayKey,'night','夜間（19:00～21:00）')}
+      <form class="trial-form" action="/submit-trial" method="post">
+        <!-- ▼ お名前 -->
+        <div class="form-block">
+          <div class="form-label-title"><span class="form-label-bar"></span>お名前<span class="form-required">必須</span></div>
+          <div class="form-group"><label for="lastname">姓</label><input id="lastname" name="lastname" required></div>
+          <div class="form-group"><label for="firstname">名</label><input id="firstname" name="firstname" required></div>
         </div>
-      </div>`;
-    // 休講スロット表
-    const closedMap={
-      sun:['morning','afternoon','evening'],
-      sat:['afternoon','evening'],
-      fri:['morning','afternoon'],
-      thu:['evening','night']
-    };
-    // 土曜午前は時間帯表記変更
-    function makeTimeCheckbox(day,key,label){
-      if(day==='sat'&&key==='morning') label='午前（9:00～12:00）';
-      const closed=closedMap[day]?.includes(key);
-      return closed
-        ? `<label class="slot-disabled">${label}</label>`
-        : `<label><input type="checkbox" name="time_${day}[]" value="${label}"> ${label}</label>`;
+
+        <!-- ▼ ふりがな -->
+        <div class="form-block">
+          <div class="form-label-title"><span class="form-label-bar"></span>ふりがな<span class="form-required">必須</span></div>
+          <div class="form-group"><label for="furigana-last">せい</label><input id="furigana-last" name="furigana_last" required></div>
+          <div class="form-group"><label for="furigana-first">めい</label><input id="furigana-first" name="furigana_first" required></div>
+        </div>
+
+        <!-- ▼ 年齢 -->
+        <div class="form-block">
+          <div class="form-label-title"><span class="form-label-bar"></span>年齢<span class="form-required">必須</span></div>
+          <div class="form-group">
+            <select id="age" name="age" required>
+              <option value="">選択してください</option>
+              <option>〜9歳</option><option>10〜19歳</option><option>20〜29歳</option>
+              <option>30〜39歳</option><option>40〜49歳</option><option>50〜59歳</option><option>60歳〜</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ▼ コース -->
+        <div class="form-block">
+          <div class="form-label-title"><span class="form-label-bar"></span>希望するコース<span class="form-required">必須</span></div>
+          <div class="form-group">
+            <select id="course" name="course" required>
+              <option value="">選択してください</option>
+              <option value="piano">ピアノコース</option>
+              <option value="piano-vocal">ピアノ弾き語りコース</option>
+              <option value="voice">ボイストレーニングコース</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ▼ 理由セット -->
+        <div class="form-block">
+          <div class="form-label-title"><span class="form-label-bar"></span>レッスンを希望する理由<span class="form-required">必須</span></div>
+          <div class="form-caption">※複数回答可</div>
+
+          <!-- ピアノ -->
+          <div class="checkbox-group reason-set is-hidden" data-course="piano">
+            <!-- （チェックボックスは省略せず全行収めています） -->
+            <label><input type="checkbox" name="reason_piano[]" value="好きな曲を弾きたい"> 好きな曲を弾きたい</label>
+            <label><input type="checkbox" name="reason_piano[]" value="楽譜が読めるようになりたい"> 楽譜が読めるようになりたい</label>
+            <label><input type="checkbox" name="reason_piano[]" value="姿勢や指使い基礎"> 姿勢や指使いなど基礎から身につけたい</label>
+            <label><input type="checkbox" name="reason_piano[]" value="趣味"> 趣味として気軽に楽しみたい</label>
+            <label><input type="checkbox" name="reason_piano[]" value="伴奏コード弾き"> 伴奏やコード弾きができるようになりたい</label>
+            <label><input type="checkbox" name="reason_piano[]" value="作曲アレンジ"> 作曲・アレンジに活かしたい</label>
+            <label><input type="checkbox" name="reason_piano[]" value="人前で演奏"> 人前で演奏する目標に挑戦したい</label>
+            <label><input type="checkbox" name="reason_piano[]" value="音大受験"> スキルアップや音大受験を視野に学びたい</label>
+            <label><input type="checkbox" name="reason_piano[]" value="子どもの習い事"> お子さんの習い事・情操教育として</label>
+            <label><input type="checkbox" name="reason_piano[]" value="その他"> その他（自由記入）</label>
+          </div>
+
+          <!-- ピアノ弾き語り -->
+          <div class="checkbox-group reason-set is-hidden" data-course="piano-vocal">
+            <label><input type="checkbox" name="reason_pv[]" value="好きな曲を弾き語り"> 好きな曲を弾き語りしたい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="コードで弾ける"> コードで弾けるようになりたい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="趣味ゆったり"> 趣味としてゆったり楽しみたい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="自作歌を表現"> 自作の歌を弾き語りで表現したい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="ライブ準備"> ライブ・発表会に向けて準備したい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="SNS投稿"> 弾き語り動画をSNSに投稿したい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="活動スキル"> 音楽活動に必要なスキルを身につけたい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="コードアレンジ"> 歌に合ったコードやアレンジを学びたい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="発声も学びたい"> 声の出し方や発声も一緒に学びたい</label>
+            <label><input type="checkbox" name="reason_pv[]" value="その他"> その他（自由記入）</label>
+          </div>
+
+          <!-- ボイトレ -->
+          <div class="checkbox-group reason-set is-hidden" data-course="voice">
+            <label><input type="checkbox" name="reason_voice[]" value="好きな歌を歌いたい"> 好きな歌を歌えるようになりたい</label>
+            <label><input type="checkbox" name="reason_voice[]" value="音程安定"> 音程を安定させたい</label>
+            <label><input type="checkbox" name="reason_voice[]" value="高音"> 高い声を出せるようになりたい</label>
+            <label><input type="checkbox" name="reason_voice[]" value="喉枯れない"> 喉が枯れない歌い方を知りたい</label>
+            <label><input type="checkbox" name="reason_voice[]" value="カラオケ"> カラオケでもっと上手く歌いたい</label>
+            <label><input type="checkbox" name="reason_voice[]" value="人前で歌う"> 人前で歌う機会に向けて練習したい</label>
+            <label><input type="checkbox" name="reason_voice[]" value="滑舌発音"> 滑舌や発音を良くしたい</label>
+            <label><input type="checkbox" name="reason_voice[]" value="声小さい"> 声が小さい・通らないのが悩み</label>
+            <label><input type="checkbox" name="reason_voice[]" value="その他"> その他（自由記入）</label>
+          </div>
+        </div>
+
+        <!-- ▼ 曜日 -->
+        <div class="form-block">
+          <div class="form-label-title"><span class="form-label-bar"></span>レッスンを希望する曜日<span class="form-required">必須</span></div>
+          <div class="form-caption">※複数選択可</div>
+
+          <div class="checkbox-group" id="weekday-group">
+            <label><input type="checkbox" data-day="mon" name="weekday[]" value="月"> 月曜日</label>
+            <label><input type="checkbox" data-day="tue" name="weekday[]" value="火"> 火曜日</label>
+            <label><input type="checkbox" data-day="wed" name="weekday[]" value="水"> 水曜日</label>
+            <label><input type="checkbox" data-day="thu" name="weekday[]" value="木"> 木曜日</label>
+            <label><input type="checkbox" data-day="fri" name="weekday[]" value="金"> 金曜日</label>
+            <label><input type="checkbox" data-day="sat" name="weekday[]" value="土"> 土曜日</label>
+            <label><input type="checkbox" data-day="sun" name="weekday[]" value="日"> 日曜日</label>
+          </div>
+
+          <!-- 時間帯が JS で挿入される -->
+          <div id="time-slot-container"></div>
+
+          <div class="form-group" style="margin-top:1rem">
+            <label for="time-other">要相談（自由記入）</label>
+            <textarea id="time-other" name="time_other"></textarea>
+          </div>
+        </div>
+
+        <!-- ▼ 連絡方法 -->
+        <div class="form-block">
+          <div class="form-label-title"><span class="form-label-bar"></span>ご希望の連絡方法<span class="form-required">必須</span></div>
+          <div class="radio-group">
+            <label><input type="radio" name="contact_method" value="tel" required> 電話</label>
+            <label><input type="radio" name="contact_method" value="mail"> メール</label>
+            <label><input type="radio" name="contact_method" value="line"> LINE</label>
+            <label><input type="radio" name="contact_method" value="insta"> Instagram DM</label>
+          </div>
+
+          <!-- ▼ 電話 -->
+          <div class="is-hidden contact-set" data-method="tel">
+            <div class="form-group">
+              <label for="tel-num">お電話番号 <span class="form-required">必須</span></label>
+              <input id="tel-num" name="tel_num" type="tel" pattern="\d{10,11}">
+            </div>
+            <div class="form-group">
+              <label>ご都合の良いお時間帯（任意）</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="tel_time[]" value="午前"> 午前（10:00～12:00）</label>
+                <label><input type="checkbox" name="tel_time[]" value="午後"> 午後（13:00～16:00）</label>
+                <label><input type="checkbox" name="tel_time[]" value="夕方"> 夕方（16:00～19:00）</label>
+                <label><input type="checkbox" name="tel_time[]" value="夜間"> 夜間（19:00～21:00）</label>
+              </div>
+            </div>
+            <p class="form-caption">
+              体験レッスンお申し込み後、３日以内に代表・花城よりお電話いたします。<br>
+              もし３日以上経ってもご連絡がない場合は、お申し込みが届いていない可能性がありますので、恐れ入りますが再度お申し込みください。
+            </p>
+          </div>
+
+          <!-- ▼ メール -->
+          <div class="is-hidden contact-set" data-method="mail">
+            <div class="form-group">
+              <label for="email">メールアドレス <span class="form-required">必須</span></label>
+              <input id="email" name="email" type="email">
+            </div>
+            <p class="form-caption">
+              体験レッスンお申し込み後、３日以内に教室公式メール（hanashiro.music.school@gmail.com）よりご連絡いたします。<br>
+              万が一届かない場合は、迷惑メールフォルダをご確認のうえ、再度お申し込みください。
+            </p>
+          </div>
+
+          <!-- ▼ LINE -->
+          <div class="is-hidden contact-set" data-method="line">
+            <div class="form-group">
+              <label for="line-id">LINE アカウント名 <span class="form-required">必須</span></label>
+              <input id="line-id" name="line_id" type="text">
+            </div>
+            <p class="form-caption">
+              以下の公式LINEを【友だち追加】し、トークで「体験レッスン希望」とメッセージをお送りください。<br>
+              その後、こちらからご連絡いたします。<br>
+              ※教室側からお客様を一方的に追加できない仕組みのため、必ずご自身で友だち追加をお願いいたします。
+            </p>
+            <a href="https://lin.ee/＊＊＊＊＊" target="_blank"><img src="../assets/line.jpeg" alt="花城音楽教室公式LINE" class="info-image"></a>
+          </div>
+
+          <!-- ▼ Instagram -->
+          <div class="is-hidden contact-set" data-method="insta">
+            <div class="form-group">
+              <label for="insta-id">Instagram アカウント名 <span class="form-required">必須</span></label>
+              <input id="insta-id" name="insta_id" type="text">
+            </div>
+            <p class="form-caption">
+              教室公式アカウント（@hanashiro_music_school）をフォローのうえ、DMで「体験レッスン希望」とご連絡ください。<br>
+              ※非公開アカウントでもDMは送れますが、「メッセージリクエスト」として届くため、承認されないと見られない場合があります。
+            </p>
+            <img src="../assets/instagram.png" alt="花城音楽教室 公式Instagram" class="info-image">
+          </div>
+        </div>
+
+        <div class="submit-group"><button class="btn-submit">送信内容の確認</button></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">&copy; 2025 Hanashiro Music School. All rights reserved.</footer>
+</div>
+
+<!-- ─ JS ─────────────────────────────── -->
+<script>
+/* ハンバーガー ------------------------------------------------- */
+document.querySelector('.menu-toggle').addEventListener('click',e=>{
+  e.currentTarget.classList.toggle('open');
+  const nav=document.querySelector('.section-nav');
+  const open=nav.classList.toggle('open');
+  document.body.style.overflow=open?'hidden':'';
+});
+document.querySelectorAll('.section-nav a').forEach(a=>a.addEventListener('click',()=>{
+  document.querySelector('.section-nav').classList.remove('open');
+  document.querySelector('.menu-toggle').classList.remove('open');
+  document.body.style.overflow='';
+}));
+
+/* ▼ コース → 理由 -------------------------------------------- */
+const courseSel=document.getElementById('course');
+const reasonSets=document.querySelectorAll('.reason-set');
+const toggleReason=()=>{
+  reasonSets.forEach(set=>{
+    set.classList.toggle('is-hidden', set.dataset.course!==courseSel.value);
+  });
+};
+courseSel.addEventListener('change',toggleReason);
+
+/* ▼ 曜日 → 時間帯 ------------------------------------------- */
+const timeContainer=document.getElementById('time-slot-container');
+const closedMap={
+  sun:['morning','afternoon','evening','night'],
+  sat:['afternoon','evening'],
+  fri:['morning','afternoon','night'],
+  thu:['evening','night']
+};
+const makeTimeCheckbox=(day,key,label)=>{
+  if(day==='sat'&&key==='morning') label='午前（9:00～12:00）';
+  const closed=closedMap[day]?.includes(key);
+  return closed
+    ? `<label class="slot-disabled">${label}</label>`
+    : `<label><input type="checkbox" name="time_${day}[]" value="${label}"> ${label}</label>`;
+};
+const timeTemplate=(dayLabel,dayKey)=>`
+  <div class="form-group time-set" data-day="${dayKey}">
+    <div class="form-label-title" style="margin-top:.8rem"><span class="form-label-bar"></span>${dayLabel} の時間帯</div>
+    <div class="checkbox-group">
+      ${makeTimeCheckbox(dayKey,'morning','午前（10:00～12:00）')}
+      ${makeTimeCheckbox(dayKey,'afternoon','午後（13:00～16:00）')}
+      ${makeTimeCheckbox(dayKey,'evening','夕方（16:00～19:00）')}
+      ${makeTimeCheckbox(dayKey,'night','夜間（19:00～21:00）')}
+    </div>
+  </div>`;
+document.querySelectorAll('#weekday-group input[type=checkbox]').forEach(cb=>{
+  cb.addEventListener('change',e=>{
+    const day=e.target.dataset.day;
+    const existing=document.querySelector('.time-set[data-day="'+day+'"]');
+    if(e.target.checked){
+      if(!existing){
+        const label=e.target.parentNode.textContent.trim();
+        timeContainer.insertAdjacentHTML('beforeend',timeTemplate(label,day));
+      }
+    }else{
+      existing?.remove();
     }
-    // 曜日チェック変更
-    document.querySelectorAll('#weekday-group input[type=checkbox]').forEach(cb=>{
-      cb.addEventListener('change',e=>{
-        const day=e.target.dataset.day;
-        const existing=document.querySelector(\`.time-set[data-day="\${day}"]\`);
-        if(e.target.checked){
-          if(!existing){
-            const label=e.target.parentNode.textContent.trim();
-            timeContainer.insertAdjacentHTML('beforeend',timeTemplate(label,day));
-          }
-        }else{
-          existing?.remove();
-        }
-      });
+  });
+});
+
+/* ▼ 連絡方法 -------------------------------------------------- */
+const contactSets=document.querySelectorAll('.contact-set');
+function toggleContact(){
+  const val=document.querySelector('input[name=contact_method]:checked')?.value;
+  contactSets.forEach(set=>{
+    const visible=set.dataset.method===val;
+    set.classList.toggle('is-hidden',!visible);
+    set.querySelectorAll('input').forEach(inp=>{
+      if(inp.closest('label,div').textContent.includes('必須')){
+        visible ? inp.setAttribute('required','') : inp.removeAttribute('required');
+      }
     });
+  });
+}
+document.querySelectorAll('input[name=contact_method]').forEach(r=>r.addEventListener('change',toggleContact));
 
-    // ▼ 連絡方法
-    const contactRadios=document.querySelectorAll('input[name=contact_method]');
-    const contactSets=document.querySelectorAll('.contact-set');
-    const toggleContact=()=>{
-      const val=document.querySelector('input[name=contact_method]:checked')?.value;
-      contactSets.forEach(set=>{
-        set.classList.toggle('is-hidden', set.dataset.method!==val);
-        // 必須属性の切り替え
-        set.querySelectorAll('input').forEach(inp=>{
-          inp.required = !set.classList.contains('is-hidden') && inp.closest('label,div').innerText.includes('必須');
-        });
-      });
-    };
-    contactRadios.forEach(r=>r.addEventListener('change',toggleContact));
-
-    // 初期化
-    toggleReason();
-    toggleContact();
-  </script>
+/* 初期表示 ---------------------------------------------------- */
+toggleReason();
+toggleContact();
+</script>
 </body>
 </html>
