@@ -5,117 +5,43 @@
   <title>体験レッスン申し込み｜花城音楽教室</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Google Fonts: Sawarabi Gothic & M PLUS 1p -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    body {
-      background: #bed3da;
-      color: #333;
-      font-family: "Sawarabi Gothic", "M PLUS 1p", sans-serif;
-      line-height: 1.6;
-      padding: 1rem;
-    }
-    .wrapper {
-      width: 100%;
-      max-width: 960px;
-      margin: 1.5rem auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.08);
-      padding: 3rem;
-    }
-    @media (max-width: 480px) {
-      .wrapper { padding: 2rem 1.5rem; }
-    }
-    .menu-toggle {
-      position: fixed; top: 1rem; right: 1rem;
-      width: 2.5rem; height: 2.5rem;
-      background: #bed3da;
-      border: none;
-      display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .3rem;
-      cursor: pointer; z-index: 200;
-    }
-    .menu-toggle span {
-      width: 60%; height: 3px;
-      background: #fff; border-radius: 2px; transition: background-color .3s;
-    }
-    .menu-toggle.open { background: #333; }
-    .menu-toggle.open span { background: #fff; }
-    .section-nav {
-      position: fixed; top: 0; right: 0;
-      width: 80%; max-width: 320px; height: 100%;
-      background: rgba(255,255,255,.95);
-      padding: 4rem 1.5rem;
-      overflow-y: auto; z-index: 150;
-      display: flex; flex-direction: column; gap: 1rem;
-      transform: translateX(100%);
-      transition: transform .4s cubic-bezier(.77,0,.18,1);
-    }
-    .section-nav.open { transform: translateX(0); }
-    .section-nav a {
-      display: block; margin: .5rem 0; padding: .8rem;
-      background: #bed3da; color: #000; text-decoration: none;
-      border-radius: 6px; text-align: center; font-weight: 600;
-    }
-    .section h2 {
-      font-family: "M PLUS 1p", sans-serif;
-      font-size: 2rem; font-weight: 700; margin-bottom: 2.2rem; text-align: center;
-    }
-    @media (max-width: 480px) { .section h2 { font-size: 1.3rem; } }
-    .form-block { margin-bottom: 2.1rem; padding: 0; border: none; background: none; }
-    .form-label-title {
-      display: flex; align-items: center; font-family: "M PLUS 1p", sans-serif;
-      font-size: 1.13rem; font-weight: 700; margin-bottom: .5rem; line-height: 1.1;
-    }
-    .form-label-bar {
-      width: 5px; height: 1.6em;
-      background: #bed3da; border-radius: 3px; margin-right: .6em;
-    }
-    .form-required {
-      display: inline-block; background: #bed3da; color: #fff;
-      font-size: .88em; font-weight: 500; border-radius: 1em;
-      padding: .08em .85em .07em .85em; margin-left: .75em; letter-spacing: .04em;
-    }
-    .form-caption {
-      font-size: .95em; color: #888; margin: 0 0 .3em 2.3em; line-height: 1.1;
-    }
+    body { background: #bed3da; color: #333; font-family: "Sawarabi Gothic", "M PLUS 1p", sans-serif; line-height: 1.6; padding: 1rem; }
+    .wrapper { width: 100%; max-width: 960px; margin: 1.5rem auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 12px rgba(0,0,0,.08); padding: 3rem; }
+    @media (max-width: 480px) { .wrapper { padding: 2rem 1.5rem; } }
+    .form-block { margin-bottom: 2.1rem; }
+    .form-label-title { display: flex; align-items: center; font-family: "M PLUS 1p", sans-serif; font-size: 1.13rem; font-weight: 700; margin-bottom: .5rem; line-height: 1.1; }
+    .form-label-bar { width: 5px; height: 1.6em; background: #bed3da; border-radius: 3px; margin-right: .6em; }
+    .form-required { display: inline-block; background: #bed3da; color: #fff; font-size: .88em; font-weight: 500; border-radius: 1em; padding: .08em .85em .07em .85em; margin-left: .75em; letter-spacing: .04em; }
+    .form-caption { font-size: .95em; color: #888; margin: 0 0 .3em 2.3em; line-height: 1.1; }
     @media (max-width: 480px) { .form-caption { margin-left: 1.8em; font-size: .89em; } }
     .trial-form label { display: block; font-size: 1em; font-weight: 500; margin-bottom: .12em; }
-    .trial-form input, .trial-form select, .trial-form textarea {
-      width: 100%; padding: .68rem .7rem; border: 1px solid #ccc; border-radius: 6px;
-      font-size: 1rem; background: #fff; margin-top: .1em;
-    }
+    .trial-form input, .trial-form select, .trial-form textarea { width: 100%; padding: .68rem .7rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; background: #fff; margin-top: .1em; }
     .trial-form textarea { min-height: 100px; resize: vertical; }
-    .radio-group, .checkbox-group {
-      display: flex; flex-wrap: wrap; gap: 1.4em 1em; margin-bottom: .7em;
-    }
-    .radio-group label, .checkbox-group label {
-      display: flex; align-items: center; font-weight: 500; margin-right: 1.2em;
-    }
-    .radio-group input, .checkbox-group input {
-      margin-right: .5em; accent-color: #A66B75;
-      width: 1.1em; height: 1.1em;
-    }
+    .radio-group, .checkbox-group { display: flex; flex-wrap: wrap; gap: 1.4em 1em; margin-bottom: .7em; }
+    .radio-group label, .checkbox-group label { display: flex; align-items: center; font-weight: 500; margin-right: 1.2em; }
+    .radio-group input, .checkbox-group input { margin-right: .5em; accent-color: #A66B75; width: 1.1em; height: 1.1em; }
     .submit-group { text-align: center; margin-top: 2.8rem; }
-    .btn-submit {
-      display: inline-block; padding: 1.15rem 2.7rem; background: #A66B75;
-      color: #fff; border: none; border-radius: 2em; font-size: 1.22rem;
-      font-weight: 700; letter-spacing: .1em;
-      box-shadow: 0 2px 8px rgba(166,107,117,.09); cursor: pointer; transition: opacity .14s;
-    }
+    .btn-submit { display: inline-block; padding: 1.15rem 2.7rem; background: #A66B75; color: #fff; border: none; border-radius: 2em; font-size: 1.22rem; font-weight: 700; letter-spacing: .1em; box-shadow: 0 2px 8px rgba(166,107,117,.09); cursor: pointer; transition: opacity .14s; }
     .btn-submit:hover, .btn-submit:focus { opacity: .92; }
     .site-footer { text-align: center; font-size: .91rem; color: #333; margin-top: 2.4rem; }
-
-    /* --- 分岐用追加CSS --- */
     .hidden { display: none !important; }
     .disabled-label { color: #bbb !important; cursor: not-allowed !important; opacity: 0.7; }
     .contact-block { margin-top: 1.5rem; }
     .contact-img { display: block; margin: 1em auto 0 auto; max-width: 240px; }
     .time-group-wrap { margin-bottom: 1.3em; }
     .contact-note { font-size: .95em; color: #888; margin-top: .7em; line-height: 1.4; }
+    /* 確認モーダル用 */
+    #confirm-modal { position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:500;background:rgba(0,0,0,0.32);display:flex;align-items:center;justify-content:center; }
+    #confirm-modal .confirm-box { background:#fff;padding:2rem 1.5rem;border-radius:1.2em;max-width:94vw;width:390px;box-shadow:0 4px 18px rgba(166,107,117,.09);}
+    #confirm-modal h3 { font-size:1.15em;text-align:center;margin-bottom:.8em;}
+    #confirm-contents { margin:1.1em 0 1.5em 0; font-size:0.97em; }
+    #confirm-modal button { margin:.5em 0;}
+    #confirm-modal .btn-submit { width:95%; }
+    #confirm-modal .btn-cancel { margin-top:.6em;color:#888;background:none;border:none;display:block;width:100%;font-size:.98em;cursor:pointer; }
+    #confirm-modal.hidden { display:none!important; }
   </style>
 </head>
 <body>
@@ -295,7 +221,7 @@
               <textarea id="free-request" name="free_request"></textarea>
             </div>
           </div>
-          <!-- ご希望の連絡方法 -->
+          <!-- ご希望の連絡方法と分岐ブロック -->
           <div class="form-block">
             <div class="form-label-title">
               <span class="form-label-bar"></span>ご希望の連絡方法 <span class="form-required">必須</span>
@@ -347,10 +273,7 @@
                 以下の公式LINEを【友だち追加】し、トークで「体験レッスン希望」とメッセージをお送りください。<br>
                 その後、こちらからご連絡いたします。<br>
                 ※教室側からお客様を一方的に追加できない仕組みのため、お手数ですが必ずご自身で友だち追加をお願いいたします。<br>
-                <a href="https://line.me/R/ti/p/@857gvbrj" target="_blank">
-                  <img src="../assets/line.jpeg" alt="花城音楽教室 公式LINE" class="contact-img">
-                  <div style="text-align:center; font-size:1em; margin-top:.4em;">@857gvbrj</div>
-                </a>
+                <a href="https://lin.ee/@857gvbrj" target="_blank"><img src="../assets/line.jpeg" alt="花城音楽教室 公式LINE" class="contact-img"></a>
               </div>
             </div>
             <!-- Instagram DM -->
@@ -362,16 +285,13 @@
               <div class="contact-note">
                 教室公式アカウント（@hanashiro_music_school）をフォローのうえ、DMで「体験レッスン希望」とご連絡ください。<br>
                 ※非公開アカウントでもDMは送れますが、「メッセージリクエスト」として届くため、承認されないと見られない場合があります。<br>
-                <a href="https://instagram.com/hanashiro_music_school" target="_blank">
-                  <img src="../assets/instagram.png" alt="花城音楽教室 Instagram" class="contact-img">
-                  <div style="text-align:center; font-size:1em; margin-top:.4em;">@hanashiro_music_school</div>
-                </a>
+                <a href="https://instagram.com/hanashiro_music_school" target="_blank"><img src="../assets/instagram.png" alt="花城音楽教室 Instagram" class="contact-img"></a>
               </div>
             </div>
           </div>
           <!-- 送信ボタン -->
           <div class="submit-group">
-            <button type="submit" class="btn-submit">送信内容の確認</button>
+            <button type="button" class="btn-submit">送信内容の確認</button>
           </div>
         </form>
       </section>
@@ -379,7 +299,7 @@
     <footer class="site-footer">
       <p>&copy; 2025 Hanashiro Music School. All rights reserved.</p>
     </footer>
-  </div><!-- /.wrapper -->
+  </div>
 
   <!-- ハンバーガーメニュー動作 -->
   <script>
@@ -404,7 +324,7 @@
     });
   </script>
 
-  <!-- 分岐js -->
+  <!-- 分岐・確認モーダルJS -->
   <script>
 document.addEventListener("DOMContentLoaded", function(){
   // コース分岐
@@ -456,24 +376,95 @@ document.addEventListener("DOMContentLoaded", function(){
   }
   weekdayGroup.addEventListener('change', updateTimeGroups);
 
-  // 連絡方法分岐（空白・全角にも強く）
+  // 連絡方法分岐
   const contactRadios = document.querySelectorAll('input[name="contact_method"]');
   const contactBlocks = {
     "電話": document.getElementById("contact-phone"),
     "メール": document.getElementById("contact-mail"),
     "LINE": document.getElementById("contact-line"),
-    "InstagramDM": document.getElementById("contact-insta") // 空白無し
+    "Instagram DM": document.getElementById("contact-insta")
   };
   contactRadios.forEach(radio => {
     radio.addEventListener('change', function(){
       Object.values(contactBlocks).forEach(el=>{if(el)el.classList.add('hidden')});
-      // value正規化（全角スペースや半角空白、全て除去）
-      let key = this.value.replace(/\s+/g, '').replace(/　/g, '');
-      if(key === "InstagramDM") key = "InstagramDM";
-      if(contactBlocks[key]){
-        contactBlocks[key].classList.remove('hidden');
+      if(contactBlocks[this.value]){
+        contactBlocks[this.value].classList.remove('hidden');
       }
     });
+  });
+
+  // ======== 送信内容の確認モーダル ========
+  // モーダルHTML追加
+  const modalDiv = document.createElement('div');
+  modalDiv.id = "confirm-modal";
+  modalDiv.className = "hidden";
+  modalDiv.innerHTML = `
+    <div class="confirm-box">
+      <h3>送信内容のご確認</h3>
+      <div id="confirm-contents"></div>
+      <button id="confirm-send" class="btn-submit">この内容で送信</button>
+      <button id="confirm-cancel" class="btn-cancel">戻る</button>
+    </div>
+  `;
+  document.body.appendChild(modalDiv);
+
+  // 確認→送信のロジック
+  const form = document.querySelector('.trial-form');
+  const btn = form.querySelector('.btn-submit');
+  const confirmModal = document.getElementById('confirm-modal');
+  const confirmContents = document.getElementById('confirm-contents');
+
+  btn.addEventListener('click', function(){
+    // 入力内容収集
+    let html = "";
+    html += "<b>お名前：</b>" + (form.lastname.value || "") + " " + (form.firstname.value || "") + "<br>";
+    html += "<b>ふりがな：</b>" + (form.furigana_last.value || "") + " " + (form.furigana_first.value || "") + "<br>";
+    html += "<b>年齢：</b>" + (form.age.value || "") + "<br>";
+    html += "<b>性別：</b>" + (form.gender.value || "") + "<br>";
+    html += "<b>希望するコース：</b>" + (form.course.value || "") + "<br>";
+    // レッスン理由
+    let course = form.course.value;
+    if(course && reasonBlocks[course]){
+      const block = reasonBlocks[course];
+      const reasons = Array.from(block.querySelectorAll('input[type="checkbox"]:checked')).map(el=>el.value);
+      html += "<b>レッスン理由：</b>" + (reasons.length ? reasons.join('、') : "未選択") + "<br>";
+      let etc = block.querySelector('textarea');
+      if(etc && etc.value) html += "<b>その他理由：</b>" + etc.value + "<br>";
+    }
+    // 曜日・時間
+    const days = Array.from(form.querySelectorAll('input[name="weekday"]:checked')).map(el=>el.value);
+    html += "<b>希望曜日：</b>" + (days.length ? days.join('、') : "未選択") + "<br>";
+    if(days.length){
+      days.forEach(day=>{
+        const times = Array.from(form.querySelectorAll(`input[name="time_${day}"]:checked`)).map(el=>el.value);
+        html += "&nbsp;&nbsp;・"+day+"：";
+        html += (times.length ? times.join('、') : "（時間未選択）") + "<br>";
+      });
+    }
+    html += "<b>要相談：</b>" + (form['free_request'].value || "") + "<br>";
+    // 連絡方法
+    let cmethod = form['contact_method'].value;
+    html += "<b>連絡方法：</b>" + (cmethod || "") + "<br>";
+    if(cmethod){
+      if(cmethod==="電話"){
+        html += "<b>電話番号：</b>"+(form['contact_phone_tel'].value||"") + "<br>";
+        let ctime = Array.from(form.querySelectorAll('input[name="contact_phone_time"]:checked')).map(el=>el.value);
+        html += "<b>電話希望時間：</b>"+(ctime.length ? ctime.join('、'):"") + "<br>";
+      }else if(cmethod==="メール"){
+        html += "<b>メールアドレス：</b>"+(form['contact_mail_address'].value||"") + "<br>";
+      }else if(cmethod==="LINE"){
+        html += "<b>LINEアカウント名：</b>"+(form['contact_line_name'].value||"") + "<br>";
+      }else if(cmethod==="Instagram DM"){
+        html += "<b>Instagramアカウント名：</b>"+(form['contact_insta_name'].value||"") + "<br>";
+      }
+    }
+    confirmContents.innerHTML = html;
+    confirmModal.classList.remove('hidden');
+  });
+
+  document.body.addEventListener('click', function(e){
+    if(e.target.id==="confirm-cancel") confirmModal.classList.add('hidden');
+    if(e.target.id==="confirm-send") form.submit();
   });
 });
   </script>
