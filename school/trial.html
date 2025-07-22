@@ -4,48 +4,90 @@
   <meta charset="UTF-8">
   <title>体験レッスン申し込み｜花城音楽教室</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google Fonts: Sawarabi Gothic & M PLUS 1p -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
-  <style>
-    /* ───── 既存スタイルはそのまま ───── */
-    body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic","M PLUS 1p",sans-serif;line-height:1.6;padding:1rem}
-    .wrapper{width:100%;max-width:960px;margin:1.5rem auto;background:#fff;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:3rem}
-    @media(max-width:480px){.wrapper{padding:2rem 1.5rem}}
-    /* …（中略：元の CSS 全部そのまま）… */
 
-    /* ▼ 今回追加するユーティリティ */
+  <style>
+    /* もとの CSS＋ユーティリティだけ追記 */
+    body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic","M PLUS 1p",sans-serif;line-height:1.6;padding:1rem}
+    .wrapper{max-width:960px;margin:1.5rem auto;background:#fff;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:3rem}
+    @media(max-width:480px){.wrapper{padding:2rem 1.5rem}}
+    /* …(他の既存スタイルは省略しても OK)… */
     .is-hidden{display:none;}
   </style>
 </head>
 
 <body>
-<div class="wrapper">
+  <div class="wrapper">
 
-  <!-- ハンバーガー＆ナビ（変更なし） -->
-  <button class="menu-toggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
-  <nav class="section-nav">
-    <a href="../index.html#course-overview">コース概要</a>
-    <a href="../index.html#fee">レッスン料金</a>
-    <a href="../index.html#access">アクセス</a>
-    <a href="../index.html#teacher">講師紹介</a>
-    <a href="../index.html#trial">体験レッスン申込</a>
-  </nav>
+    <!-- ハンバーガー -->
+    <button class="menu-toggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+    <nav class="section-nav">
+      <a href="../index.html#course-overview">コース概要</a>
+      <a href="../index.html#fee">レッスン料金</a>
+      <a href="../index.html#access">アクセス</a>
+      <a href="../index.html#teacher">講師紹介</a>
+      <a href="../index.html#trial">体験レッスン申込</a>
+    </nav>
 
-  <main>
-    <section id="trial-form" class="section">
-      <h2>体験レッスン申し込みフォーム</h2>
-      <form action="/submit-trial" method="post" class="trial-form">
+    <main>
+      <section id="trial-form" class="section">
+        <h2>体験レッスン申し込みフォーム</h2>
 
-        <!-- ここまでの入力欄は元のまま（お名前 / ふりがな / 年齢 …） -->
-        <!-- 年齢ブロックの直後にある “希望するコース” も元のまま残しています -->
+        <form class="trial-form" action="/submit-trial" method="post">
 
-        <!-- ───────── 希望するコース（変更なし） ───────── -->
-        <div class="form-block">
-          <div class="form-label-title">
-            <span class="form-label-bar"></span>希望するコース<span class="form-required">必須</span>
+          <!-- お名前 -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>お名前<span class="form-required">必須</span></div>
+            <div class="form-group"><label for="lastname">姓</label><input id="lastname" name="lastname" type="text" required></div>
+            <div class="form-group"><label for="firstname">名</label><input id="firstname" name="firstname" type="text" required></div>
           </div>
-          <div class="form-group">
+
+          <!-- ふりがな -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>ふりがな<span class="form-required">必須</span></div>
+            <div class="form-group"><label for="furigana-last">せい</label><input id="furigana-last" name="furigana_last" type="text" required></div>
+            <div class="form-group"><label for="furigana-first">めい</label><input id="furigana-first" name="furigana_first" type="text" required></div>
+          </div>
+
+          <!-- 年齢 -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>年齢<span class="form-required">必須</span></div>
+            <div class="form-group">
+              <select id="age" name="age" required>
+                <option value="">選択してください</option>
+                <option>〜9歳</option><option>10〜19歳</option><option>20〜29歳</option>
+                <option>30〜39歳</option><option>40〜49歳</option><option>50〜59歳</option><option>60歳〜</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 性別 -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>性別<span class="form-required">必須</span></div>
+            <div class="radio-group">
+              <label><input type="radio" name="gender" value="男性" required>男性</label>
+              <label><input type="radio" name="gender" value="女性">女性</label>
+              <label><input type="radio" name="gender" value="その他">その他</label>
+            </div>
+          </div>
+
+          <!-- 電話番号 -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>電話番号<span class="form-required">必須</span></div>
+            <input id="tel" name="tel" type="tel" pattern="\d{10,11}" required>
+          </div>
+
+          <!-- メールアドレス -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>メールアドレス<span class="form-required">必須</span></div>
+            <input id="email" name="email" type="email" required>
+          </div>
+
+          <!-- コース選択 -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>希望するコース<span class="form-required">必須</span></div>
             <select id="course" name="course" required>
               <option value="">選択してください</option>
               <option value="piano">ピアノコース</option>
@@ -53,100 +95,104 @@
               <option value="voice">ボイストレーニングコース</option>
             </select>
           </div>
-        </div>
 
-        <!-- ───────── レッスンを希望する理由（ここを置き換え） ───────── -->
-        <div class="form-block">
-          <div class="form-label-title">
-            <span class="form-label-bar"></span>レッスンを希望する理由<span class="form-required">必須</span>
+          <!-- 理由（コースに応じて表示） -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>レッスンを希望する理由<span class="form-required">必須</span></div>
+            <div class="form-caption">※複数回答可</div>
+
+            <!-- ピアノ -->
+            <div class="checkbox-group reason-set is-hidden" data-course="piano">
+              <label><input type="checkbox" name="reason_piano[]" value="好きな曲を弾きたい">好きな曲を弾きたい</label>
+              <label><input type="checkbox" name="reason_piano[]" value="楽譜が読めるようになりたい">楽譜が読めるようになりたい</label>
+              <label><input type="checkbox" name="reason_piano[]" value="基礎から身につけたい">姿勢や指使いなど基礎から身につけたい</label>
+              <label><input type="checkbox" name="reason_piano[]" value="趣味として楽しみたい">趣味として気軽に楽しみたい</label>
+              <label><input type="checkbox" name="reason_piano[]" value="伴奏やコード弾き">伴奏やコード弾きができるようになりたい</label>
+              <label><input type="checkbox" name="reason_piano[]" value="作曲アレンジに活かしたい">作曲・アレンジに活かしたい</label>
+              <label><input type="checkbox" name="reason_piano[]" value="人前で演奏目標">人前で演奏する目標に挑戦したい</label>
+              <label><input type="checkbox" name="reason_piano[]" value="音大受験等">スキルアップや音大受験を視野に学びたい</label>
+              <label><input type="checkbox" name="reason_piano[]" value="子どもの習い事">お子さんの習い事・情操教育として</label>
+              <label><input type="checkbox" name="reason_piano[]" value="その他">その他（自由記入）</label>
+            </div>
+
+            <!-- ピアノ弾き語り -->
+            <div class="checkbox-group reason-set is-hidden" data-course="piano-vocal">
+              <label><input type="checkbox" name="reason_pv[]" value="好きな曲を弾き語り">好きな曲を弾き語りしたい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="コードで弾けるようになりたい">コードで弾けるようになりたい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="趣味として楽しみたい">趣味としてゆったり楽しみたい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="自作曲を表現したい">自作の歌を弾き語りで表現したい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="ライブ発表会準備">ライブ・発表会に向けて準備したい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="SNS投稿">弾き語り動画をSNSに投稿したい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="活動スキル">音楽活動に必要なスキルを身につけたい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="コードアレンジ">歌に合ったコードやアレンジを学びたい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="発声も学びたい">声の出し方や発声も一緒に学びたい</label>
+              <label><input type="checkbox" name="reason_pv[]" value="その他">その他（自由記入）</label>
+            </div>
+
+            <!-- ボイトレ -->
+            <div class="checkbox-group reason-set is-hidden" data-course="voice">
+              <label><input type="checkbox" name="reason_voice[]" value="好きな歌">好きな歌を歌えるようになりたい</label>
+              <label><input type="checkbox" name="reason_voice[]" value="音程安定">音程を安定させたい</label>
+              <label><input type="checkbox" name="reason_voice[]" value="高い声">高い声を出せるようになりたい</label>
+              <label><input type="checkbox" name="reason_voice[]" value="喉を傷めない">喉が枯れない歌い方を知りたい</label>
+              <label><input type="checkbox" name="reason_voice[]" value="カラオケ上達">カラオケでもっと上手く歌いたい</label>
+              <label><input type="checkbox" name="reason_voice[]" value="人前で歌う">人前で歌う機会に向けて練習したい</label>
+              <label><input type="checkbox" name="reason_voice[]" value="滑舌発音">滑舌や発音を良くしたい</label>
+              <label><input type="checkbox" name="reason_voice[]" value="声量悩み">声が小さい・通らないのが悩み</label>
+              <label><input type="checkbox" name="reason_voice[]" value="その他">その他（自由記入）</label>
+            </div>
           </div>
-          <div class="form-caption">※複数回答可</div>
 
-          <!-- ▼ ピアノコース -->
-          <div class="checkbox-group reason-set is-hidden" data-course="piano">
-            <label><input type="checkbox" name="reason_piano[]" value="好きな曲を弾きたい"> 好きな曲を弾きたい</label>
-            <label><input type="checkbox" name="reason_piano[]" value="楽譜が読めるようになりたい"> 楽譜が読めるようになりたい</label>
-            <label><input type="checkbox" name="reason_piano[]" value="基礎を身につけたい"> 姿勢や指使いなど基礎から身につけたい</label>
-            <label><input type="checkbox" name="reason_piano[]" value="趣味で楽しみたい"> 趣味として気軽に楽しみたい</label>
-            <label><input type="checkbox" name="reason_piano[]" value="伴奏コード弾き"> 伴奏やコード弾きができるようになりたい</label>
-            <label><input type="checkbox" name="reason_piano[]" value="作曲アレンジ"> 作曲・アレンジに活かしたい</label>
-            <label><input type="checkbox" name="reason_piano[]" value="人前で演奏"> 人前で演奏する目標に挑戦したい</label>
-            <label><input type="checkbox" name="reason_piano[]" value="音大受験"> スキルアップや音大受験を視野に学びたい</label>
-            <label><input type="checkbox" name="reason_piano[]" value="子どもの習い事"> お子さんの習い事・情操教育として</label>
-            <label><input type="checkbox" name="reason_piano[]" value="その他"> その他（自由記入）</label>
+          <!-- ご希望の連絡方法（元のまま） -->
+          <div class="form-block">
+            <div class="form-label-title"><span class="form-label-bar"></span>ご希望の連絡方法<span class="form-required">必須</span></div>
+            <div class="radio-group">
+              <label><input type="radio" name="contact_method" value="電話" required>電話</label>
+              <label><input type="radio" name="contact_method" value="メール">メール</label>
+              <label><input type="radio" name="contact_method" value="LINE">LINE</label>
+              <label><input type="radio" name="contact_method" value="Instagram DM">Instagram DM</label>
+            </div>
           </div>
 
-          <!-- ▼ ピアノ弾き語り -->
-          <div class="checkbox-group reason-set is-hidden" data-course="piano-vocal">
-            <label><input type="checkbox" name="reason_pv[]" value="好きな曲を弾き語り"> 好きな曲を弾き語りしたい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="コードで弾きたい"> コードで弾けるようになりたい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="趣味ゆったり"> 趣味としてゆったり楽しみたい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="自作曲を表現"> 自作の歌を弾き語りで表現したい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="ライブ準備"> ライブ・発表会に向けて準備したい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="SNS投稿"> 弾き語り動画をSNSに投稿したい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="活動スキル"> 音楽活動に必要なスキルを身につけたい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="コードアレンジ"> 歌に合ったコードやアレンジを学びたい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="発声も学びたい"> 声の出し方や発声も一緒に学びたい</label>
-            <label><input type="checkbox" name="reason_pv[]" value="その他"> その他（自由記入）</label>
-          </div>
+          <!-- 送信 -->
+          <div class="submit-group"><button class="btn-submit" type="submit">送信内容の確認</button></div>
 
-          <!-- ▼ ボイストレーニング -->
-          <div class="checkbox-group reason-set is-hidden" data-course="voice">
-            <label><input type="checkbox" name="reason_voice[]" value="好きな歌を歌いたい"> 好きな歌を歌えるようになりたい</label>
-            <label><input type="checkbox" name="reason_voice[]" value="音程安定"> 音程を安定させたい</label>
-            <label><input type="checkbox" name="reason_voice[]" value="高い声"> 高い声を出せるようになりたい</label>
-            <label><input type="checkbox" name="reason_voice[]" value="喉を傷めない"> 喉が枯れない歌い方を知りたい</label>
-            <label><input type="checkbox" name="reason_voice[]" value="カラオケ上達"> カラオケでもっと上手く歌いたい</label>
-            <label><input type="checkbox" name="reason_voice[]" value="人前で歌う"> 人前で歌う機会に向けて練習したい</label>
-            <label><input type="checkbox" name="reason_voice[]" value="滑舌発音"> 滑舌や発音を良くしたい</label>
-            <label><input type="checkbox" name="reason_voice[]" value="声量悩み"> 声が小さい・通らないのが悩み</label>
-            <label><input type="checkbox" name="reason_voice[]" value="その他"> その他（自由記入）</label>
-          </div>
-        </div>
+        </form>
+      </section>
+    </main>
 
-        <!-- 以降（連絡方法・送信ボタンなど）は元のまま -->
-        <!-- …………………………… -->
+    <footer class="site-footer">&copy; 2025 Hanashiro Music School. All rights reserved.</footer>
+  </div>
 
-      </form>
-    </section>
-  </main>
+  <!-- ---------- JS ---------- -->
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
 
-  <footer class="site-footer">&copy; 2025 Hanashiro Music School. All rights reserved.</footer>
-</div>
-
-<!-- ─────────── JS（理由セット切替えのみ追加） ─────────── -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* ハンバーガー（元のまま） */
-  const btn = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.section-nav');
-  btn.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    btn.classList.toggle('open');
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  nav.querySelectorAll('a').forEach(link =>
-    link.addEventListener('click', () => {
+    /* ハンバーガー */
+    const btn=document.querySelector('.menu-toggle');
+    const nav=document.querySelector('.section-nav');
+    btn.addEventListener('click',()=>{
+      const open=nav.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow=open?'hidden':'';
+    });
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
       nav.classList.remove('open');
       btn.classList.remove('open');
-      document.body.style.overflow = '';
-    })
-  );
+      document.body.style.overflow='';
+    }));
 
-  /* ▼ コース ➡ 理由セット切替え ------------------------------ */
-  const courseSel  = document.getElementById('course');
-  const reasonSets = document.querySelectorAll('.reason-set');
-
-  function toggleReason() {
-    reasonSets.forEach(set => {
-      set.classList.toggle('is-hidden', set.dataset.course !== courseSel.value);
-    });
-  }
-  courseSel.addEventListener('change', toggleReason);
-  toggleReason();           // ページ読み込み時に初期化
-
-});
-</script>
+    /* ▼ コース→理由セット */
+    const courseSel=document.getElementById('course');
+    const reasonSets=document.querySelectorAll('.reason-set');
+    function toggleReason(){
+      reasonSets.forEach(set=>{
+        set.classList.toggle('is-hidden', set.dataset.course!==courseSel.value);
+      });
+    }
+    courseSel.addEventListener('change',toggleReason);
+    toggleReason();   // 初期化
+  });
+  </script>
 </body>
 </html>
