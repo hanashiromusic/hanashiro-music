@@ -652,9 +652,11 @@ document.addEventListener("DOMContentLoaded", function(){
 });
   </script>
   
+  
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('.trial-form');
+  const btn = form.querySelector('.btn-submit');
 
   // 必須入力フィールドのid一覧
   const requiredTextIds = [
@@ -730,8 +732,8 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   });
 
-  // 送信時にまとめてカスタムバリデーション
-  form.addEventListener('submit', function(e) {
+  // モーダル開く前にもこのバリデーションを使う
+  function validateForm() {
     let valid = true;
 
     // テキスト必須
@@ -829,14 +831,29 @@ document.addEventListener("DOMContentLoaded", function(){
       });
     }
 
-    // 不正時は標準バリデーション出す
-    if (!valid) {
+    return valid;
+  }
+
+  // 送信内容の確認ボタンにも適用
+  btn.addEventListener('click', function(e) {
+    if (!form.checkValidity() || !validateForm()) {
+      form.reportValidity();
+      return;
+    }
+    // ここから下は既存のモーダル表示処理に繋げる
+    // （省略しているが、btnのクリックでモーダルを開くJSが既に入っていればOK）
+  });
+
+  // 本送信にも必ず適用
+  form.addEventListener('submit', function(e) {
+    if (!validateForm()) {
       e.preventDefault();
       form.reportValidity();
     }
   });
 });
-</script>
+  </script>
+  
   
 </body>
 </html>
