@@ -654,74 +654,143 @@ document.addEventListener("DOMContentLoaded", function(){
   
   
   <script>
-document.addEventListener("DOMContentLoaded", function(){
-  // ...省略（分岐JS部分・モーダルJS部分はそのまま）...
-
-  // === バリデーションJSここから追加 ===
+document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('.trial-form');
   const btn = form.querySelector('.btn-submit');
-  // ...以下バリデーション関数等はそのまま...
+  const courseSelect = document.getElementById('course');
 
-  // ↓↓↓ ここだけ要修正 ↓↓↓
+  // ======== リアルタイムバリデーション追加 ========
+  // コース理由：コース変更・チェック時に必ず更新
+  function updateReasonValidity() {
+    let valid = true;
+    const course = courseSelect.value;
+    if (course === 'ピアノ') {
+      const checks = form.querySelectorAll('[name="reason_piano"]');
+      if (![...checks].some(cb => cb.checked)) {
+        checks[0].setCustomValidity('選択してください');
+        valid = false;
+      } else {
+        checks.forEach(cb => cb.setCustomValidity(''));
+      }
+    }
+    if (course === 'ピアノ弾き語り') {
+      const checks = form.querySelectorAll('[name="reason_singplay"]');
+      if (![...checks].some(cb => cb.checked)) {
+        checks[0].setCustomValidity('選択してください');
+        valid = false;
+      } else {
+        checks.forEach(cb => cb.setCustomValidity(''));
+      }
+    }
+    if (course === 'ボイストレーニング') {
+      const checks = form.querySelectorAll('[name="reason_voice"]');
+      if (![...checks].some(cb => cb.checked)) {
+        checks[0].setCustomValidity('選択してください');
+        valid = false;
+      } else {
+        checks.forEach(cb => cb.setCustomValidity(''));
+      }
+    }
+    return valid;
+  }
+  // 曜日・時間帯
+  function updateWeekdayValidity() {
+    const checks = form.querySelectorAll('[name="weekday"]');
+    if (![...checks].some(cb => cb.checked)) {
+      checks[0].setCustomValidity('選択してください');
+      return false;
+    } else {
+      checks.forEach(cb => cb.setCustomValidity(''));
+    }
+    // 各曜日で時間帯も必須（最低1つ）
+    let valid = true;
+    form.querySelectorAll('[name="weekday"]:checked').forEach(cb => {
+      const times = form.querySelectorAll(`input[name="time_${cb.value}"]`);
+      if (![...times].some(tb => tb.checked)) {
+        times[0].setCustomValidity('選択してください');
+        valid = false;
+      } else {
+        times.forEach(tb => tb.setCustomValidity(''));
+      }
+    });
+    return valid;
+  }
+  // 連絡方法ごとの個別必須
+  function updateContactValidity() {
+    const method = form.contact_method.value;
+    let valid = true;
+    if (method === '電話' && !form.contact_phone_tel.value) {
+      form.contact_phone_tel.setCustomValidity('入力してください');
+      valid = false;
+    } else if (form.contact_phone_tel) {
+      form.contact_phone_tel.setCustomValidity('');
+    }
+    if (method === 'メール' && !form.contact_mail_address.value) {
+      form.contact_mail_address.setCustomValidity('入力してください');
+      valid = false;
+    } else if (form.contact_mail_address) {
+      form.contact_mail_address.setCustomValidity('');
+    }
+    if (method === 'LINE' && !form.contact_line_name.value) {
+      form.contact_line_name.setCustomValidity('入力してください');
+      valid = false;
+    } else if (form.contact_line_name) {
+      form.contact_line_name.setCustomValidity('');
+    }
+    if (method === 'Instagram DM' && !form.contact_insta_name.value) {
+      form.contact_insta_name.setCustomValidity('入力してください');
+      valid = false;
+    } else if (form.contact_insta_name) {
+      form.contact_insta_name.setCustomValidity('');
+    }
+    return valid;
+  }
+
+  // イベントハンドラ登録
+  // コース理由
+  ['reason_piano', 'reason_singplay', 'reason_voice'].forEach(name => {
+    form.querySelectorAll(`[name="${name}"]`).forEach(cb => {
+      cb.addEventListener('change', updateReasonValidity);
+    });
+  });
+  courseSelect.addEventListener('change', updateReasonValidity);
+
+  // 曜日
+  form.querySelectorAll('[name="weekday"]').forEach(cb => {
+    cb.addEventListener('change', updateWeekdayValidity);
+  });
+  // 時間帯（曜日選択時に生成される場合は生成後にもイベント付与が必要）
+
+  // 連絡方法
+  form.querySelectorAll('[name="contact_method"]').forEach(radio => {
+    radio.addEventListener('change', updateContactValidity);
+  });
+  ['contact_phone_tel','contact_mail_address','contact_line_name','contact_insta_name'].forEach(id=>{
+    const el = form[id];
+    if(el) el.addEventListener('input', updateContactValidity);
+  });
+
+  // 「確認」ボタン/submit時
   btn.addEventListener('click', function(e){
-    // まず必ずカスタムバリデーション
-    if (!validateForm() || !form.checkValidity()) {
+    // すべてのバリデーションを明示的に走らせる
+    const valid =
+      updateReasonValidity() &
+      updateWeekdayValidity() &
+      updateContactValidity();
+    if (!form.checkValidity() || !valid) {
       form.reportValidity();
       return;
     }
-    // ここでモーダル表示処理
-    let html = "";
-    html += "<b>お名前：</b>" + (form.lastname.value || "") + " " + (form.firstname.value || "") + "<br>";
-    html += "<b>ふりがな：</b>" + (form.furigana_last.value || "") + " " + (form.furigana_first.value || "") + "<br>";
-    html += "<b>年齢：</b>" + (form.age.value || "") + "<br>";
-    html += "<b>性別：</b>" + (form.gender.value || "") + "<br>";
-    html += "<b>希望するコース：</b>" + (form.course.value || "") + "<br>";
-    // レッスン理由
-    let course = form.course.value;
-    if(course && reasonBlocks[course]){
-      const block = reasonBlocks[course];
-      const reasons = Array.from(block.querySelectorAll('input[type="checkbox"]:checked')).map(el=>el.value);
-      html += "<b>レッスン理由：</b>" + (reasons.length ? reasons.join('、') : "未選択") + "<br>";
-      let etc = block.querySelector('textarea');
-      if(etc && etc.value) html += "<b>その他理由：</b>" + etc.value + "<br>";
-    }
-    // 曜日・時間
-    const days = Array.from(form.querySelectorAll('input[name="weekday"]:checked')).map(el=>el.value);
-    html += "<b>希望曜日：</b>" + (days.length ? days.join('、') : "未選択") + "<br>";
-    if(days.length){
-      days.forEach(day=>{
-        const times = Array.from(form.querySelectorAll(`input[name="time_${day}"]:checked`)).map(el=>el.value);
-        html += "&nbsp;&nbsp;・"+day+"：";
-        html += (times.length ? times.join('、') : "（時間未選択）") + "<br>";
-      });
-    }
-    if(form.free_request.value) html += "<b>要相談：</b>" + form.free_request.value + "<br>";
-    // 連絡方法
-    const cm = form.contact_method.value;
-    html += "<b>ご希望の連絡方法：</b>" + cm + "<br>";
-    if(cm === "電話"){
-      html += "<b>お電話番号：</b>"+ (form.contact_phone_tel.value || "") + "<br>";
-      const cTimes = Array.from(form.querySelectorAll('input[name="contact_phone_time"]:checked')).map(el=>el.value);
-      html += "<b>ご都合の良いお時間：</b>" + (cTimes.length ? cTimes.join('、') : "未指定") + "<br>";
-    }
-    if(cm === "メール"){
-      html += "<b>メールアドレス：</b>"+ (form.contact_mail_address.value || "") + "<br>";
-    }
-    if(cm === "LINE"){
-      html += "<b>LINEアカウント名：</b>"+ (form.contact_line_name.value || "") + "<br>";
-    }
-    if(cm === "Instagram DM"){
-      html += "<b>Instagramアカウント名：</b>"+ (form.contact_insta_name.value || "") + "<br>";
-    }
-    confirmContents.innerHTML = html;
-    confirmModal.classList.remove('hidden');
+    // ... ここから下はモーダル表示ロジック ...
   });
 
-  // ...あとのイベント（モーダルの閉じる・送信）はそのまま...
-  // 本送信（form.submit）時も同じvalidateFormで防御
-
+  // form submitも同じ
   form.addEventListener('submit', function(e) {
-    if (!validateForm()) {
+    const valid =
+      updateReasonValidity() &
+      updateWeekdayValidity() &
+      updateContactValidity();
+    if (!form.checkValidity() || !valid) {
       e.preventDefault();
       form.reportValidity();
     }
