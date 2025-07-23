@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>お申し込みありがとうございました｜花城音楽教室</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    body {
+      background: #bed3da;
+      color: #333;
+      font-family: "Sawarabi Gothic", "M PLUS 1p", sans-serif;
+      line-height: 1.7;
+      padding: 1rem;
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 640px;
+      margin: 3rem auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .thanks-main {
+      font-family: "M PLUS 1p", sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2.2rem;
+      letter-spacing: 0.02em;
+      color: #333;
+    }
+    .thanks-sub {
+      font-size: 1.12rem;
+      margin-bottom: 1.7rem;
+    }
+    .thanks-note {
+      font-size: 1rem;
+      color: #444;
+      line-height: 2.1;
+      margin-top: 1.5rem;
+      text-align: left;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(190,211,218,.1);
+      border-radius: 9px;
+      padding: 1.1rem 1.4rem;
+    }
+    .sns-icons {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      margin-top: 1.1rem;
+      margin-left: 0.2rem;
+    }
+    .sns-icons a img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(0,0,0,.08);
+      transition: opacity .13s;
+    }
+    .sns-icons a:hover img { opacity: 0.78; }
+    @media (max-width: 520px) {
+      .wrapper { padding: 2.2rem 0.7rem; }
+      .thanks-main { font-size: 1.25rem; }
+      .thanks-note { font-size: 0.98rem; padding: 1rem 0.5rem; }
+      .sns-icons { gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
 
+    <!-- ハンバーガー＆ナビ -->
+    <button class="menu-toggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="section-nav">
+      <a href="/school/">トップ</a>
+      <a href="/school/index.html#course-overview">コース概要</a>
+      <a href="/school/index.html#fee">レッスン料金</a>
+      <a href="/school/index.html#access">アクセス</a>
+      <a href="/school/index.html#teacher">講師紹介</a>
+      <a href="/school/index.html#trial">体験レッスン申込</a>
+    </nav>
+
+    <div class="thanks-main">
+      体験レッスン申し込みありがとうございました
+    </div>
+    <div class="thanks-sub">
+      3日以内に担当よりご連絡させていただきますので、今しばらくお待ちくださいませ。
+    </div>
+    <div class="thanks-note">
+      もし3日以上経ってもご連絡がない場合は、<b>システムエラー等の可能性</b>がございます。<br>
+      お手数ですが、再度体験フォームからお申し込みいただくか、<br>
+      下記のいずれかの方法でご連絡をお願いいたします。<br><br>
+      ・LINE公式アカウント（@857gvbrj）<br>
+      ・Instagram（@Hanashiro_music_school）<br>
+      ・メール（hanashiro.music.school@gmail.com）
+      <div class="sns-icons">
+        <a href="https://line.me/R/ti/p/@857gvbrj" target="_blank" rel="noopener" title="LINE公式アカウント（@857gvbrj）">
+          <img src="../assets/line.jpeg" alt="LINE公式アカウント（@857gvbrj）">
+        </a>
+        <a href="https://instagram.com/Hanashiro_music_school" target="_blank" rel="noopener" title="Instagramアカウント（@Hanashiro_music_school）">
+          <img src="../assets/instagram.png" alt="Instagramアカウント（@Hanashiro_music_school）">
+        </a>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <p>&copy; 2025 Hanashiro Music School. All rights reserved.</p>
+  </footer>
+
+  <!-- ハンバーガーメニュー動作 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn   = document.querySelector('.menu-toggle');
+      const nav   = document.querySelector('.section-nav');
+      const links = nav.querySelectorAll('a');
+      btn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        btn.classList.toggle('open');
+        document.body.style.overflow = open ? 'hidden' : '';
+        btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      });
+      links.forEach(link =>
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          btn.classList.remove('open');
+          document.body.style.overflow = '';
+          btn.setAttribute('aria-label', 'メニューを開く');
+        })
+      );
+    });
+  </script>
+</body>
+</html>
