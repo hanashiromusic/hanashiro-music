@@ -114,3 +114,31 @@ SNSリンクセクション
 .social-icons{list-style:none;display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;padding:0}
 .social-icons li img{width:40px;height:40px}
 .social-icons a:hover img{opacity:.8}
+
+/*──────────────────────────────
+必須・任意ラベルの幅統一
+──────────────────────────────*/
+.form-required,
+.form-optional {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #bed3da;
+  color: #fff;
+  font-size: 0.97em;
+  font-weight: 500;
+  border-radius: 1em;
+  padding: .08em 0.85em .07em 0.85em;
+  margin-left: .75em;
+  letter-spacing: .04em;
+  min-width: 3.5em;    /* ← 必須と任意で幅が統一される */
+  height: 1.7em;
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+/* 任意ラベル用（必要なら） */
+.form-optional {
+  background: #bed3da;
+  color: #fff;
+}
