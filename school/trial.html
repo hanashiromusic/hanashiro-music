@@ -654,197 +654,72 @@ document.addEventListener("DOMContentLoaded", function(){
   
   
   <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function(){
+  // ...省略（分岐JS部分・モーダルJS部分はそのまま）...
+
+  // === バリデーションJSここから追加 ===
   const form = document.querySelector('.trial-form');
   const btn = form.querySelector('.btn-submit');
+  // ...以下バリデーション関数等はそのまま...
 
-  // 必須入力フィールドのid一覧
-  const requiredTextIds = [
-    'lastname', 'firstname', 'furigana-last', 'furigana-first'
-  ];
-  const requiredSelectIds = ['age', 'course'];
-  const requiredRadioNames = ['gender', 'contact_method'];
-
-  // 動的なチェックボックス/ラジオグループのチェック
-  function groupChecked(name) {
-    return form.querySelectorAll(`[name="${name}"]:checked`).length > 0;
-  }
-
-  // コース別「理由」グループの判定
-  function courseReasonChecked() {
-    const course = form.course.value;
-    if (!course) return true; // コース未選択なら理由は問わない
-    if (course === 'ピアノ')        return groupChecked('reason_piano');
-    if (course === 'ピアノ弾き語り') return groupChecked('reason_singplay');
-    if (course === 'ボイストレーニング') return groupChecked('reason_voice');
-    return true;
-  }
-
-  // 曜日・時間（曜日も時間も最低ひとつは必要）
-  function weekdayChecked() {
-    return groupChecked('weekday');
-  }
-  function timeForEachDayChecked() {
-    // 曜日が選択されていたら、各曜日でひとつ以上時間帯がチェックされているか判定
-    let valid = true;
-    form.querySelectorAll('input[name="weekday"]:checked').forEach(cb => {
-      const times = form.querySelectorAll(`input[name="time_${cb.value}"]:checked`);
-      if (!times.length) valid = false;
-    });
-    return valid;
-  }
-
-  // 連絡方法ごとの個別入力
-  function contactFieldsValid() {
-    const method = form.contact_method.value;
-    if (method === '電話' && !form.contact_phone_tel.value) return false;
-    if (method === 'メール' && !form.contact_mail_address.value) return false;
-    if (method === 'LINE' && !form.contact_line_name.value) return false;
-    if (method === 'Instagram DM' && !form.contact_insta_name.value) return false;
-    return true;
-  }
-
-  // 各フィールドにリアルタイムバリデーション
-  requiredTextIds.forEach(id => {
-    const el = form.querySelector(`#${id}`);
-    if (el) {
-      el.addEventListener('input', () => {
-        el.setCustomValidity(el.value ? '' : '入力してください');
-      });
-    }
-  });
-  requiredSelectIds.forEach(id => {
-    const el = form.querySelector(`#${id}`);
-    if (el) {
-      el.addEventListener('change', () => {
-        el.setCustomValidity(el.value ? '' : '選択してください');
-      });
-    }
-  });
-
-  // ラジオボタンはchangeイベント
-  requiredRadioNames.forEach(name => {
-    form.querySelectorAll(`[name="${name}"]`).forEach(radio => {
-      radio.addEventListener('change', () => {
-        // グループすべて解除
-        form.querySelectorAll(`[name="${name}"]`).forEach(r => r.setCustomValidity(''));
-      });
-    });
-  });
-
-  // モーダル開く前にもこのバリデーションを使う
-  function validateForm() {
-    let valid = true;
-
-    // テキスト必須
-    requiredTextIds.forEach(id => {
-      const el = form.querySelector(`#${id}`);
-      if (el && !el.value) {
-        el.setCustomValidity('入力してください');
-        valid = false;
-      } else if (el) {
-        el.setCustomValidity('');
-      }
-    });
-
-    // セレクト必須
-    requiredSelectIds.forEach(id => {
-      const el = form.querySelector(`#${id}`);
-      if (el && !el.value) {
-        el.setCustomValidity('選択してください');
-        valid = false;
-      } else if (el) {
-        el.setCustomValidity('');
-      }
-    });
-
-    // ラジオ必須
-    requiredRadioNames.forEach(name => {
-      if (!groupChecked(name)) {
-        // 最初の要素にエラーセット
-        const radios = form.querySelectorAll(`[name="${name}"]`);
-        if (radios.length) radios[0].setCustomValidity('選択してください');
-        valid = false;
-      } else {
-        form.querySelectorAll(`[name="${name}"]`).forEach(r => r.setCustomValidity(''));
-      }
-    });
-
-    // コース理由
-    if (!courseReasonChecked()) {
-      // 表示中の理由グループに1つセット
-      const course = form.course.value;
-      let reasonGroup = null;
-      if (course === 'ピアノ') reasonGroup = form.querySelectorAll('[name="reason_piano"]');
-      if (course === 'ピアノ弾き語り') reasonGroup = form.querySelectorAll('[name="reason_singplay"]');
-      if (course === 'ボイストレーニング') reasonGroup = form.querySelectorAll('[name="reason_voice"]');
-      if (reasonGroup && reasonGroup.length) reasonGroup[0].setCustomValidity('選択してください');
-      valid = false;
-    } else {
-      ['reason_piano','reason_singplay','reason_voice'].forEach(name =>
-        form.querySelectorAll(`[name="${name}"]`).forEach(cb => cb.setCustomValidity(''))
-      );
-    }
-
-    // 曜日
-    if (!weekdayChecked()) {
-      const cb = form.querySelector('input[name="weekday"]');
-      if (cb) cb.setCustomValidity('選択してください');
-      valid = false;
-    } else {
-      form.querySelectorAll('input[name="weekday"]').forEach(cb => cb.setCustomValidity(''));
-    }
-
-    // 各曜日の時間帯
-    if (weekdayChecked() && !timeForEachDayChecked()) {
-      // 各曜日ごとに一つも選択がなければエラー（最初のチェックボックスにセット）
-      form.querySelectorAll('input[name="weekday"]:checked').forEach(cb => {
-        const day = cb.value;
-        const timeBoxes = form.querySelectorAll(`input[name="time_${day}"]`);
-        if (timeBoxes.length && !Array.from(timeBoxes).some(tb => tb.checked)) {
-          timeBoxes[0].setCustomValidity('選択してください');
-          valid = false;
-        } else {
-          timeBoxes.forEach(tb => tb.setCustomValidity(''));
-        }
-      });
-    } else {
-      // 全曜日クリア
-      ['月曜日','火曜日','水曜日','木曜日','金曜日','土曜日','日曜日'].forEach(day =>
-        form.querySelectorAll(`input[name="time_${day}"]`).forEach(cb => cb.setCustomValidity(''))
-      );
-    }
-
-    // 連絡方法ごとの必須
-    if (!contactFieldsValid()) {
-      const cm = form.contact_method.value;
-      let f = null;
-      if (cm === '電話') f = form.contact_phone_tel;
-      if (cm === 'メール') f = form.contact_mail_address;
-      if (cm === 'LINE') f = form.contact_line_name;
-      if (cm === 'Instagram DM') f = form.contact_insta_name;
-      if (f) f.setCustomValidity('入力してください');
-      valid = false;
-    } else {
-      ['contact_phone_tel','contact_mail_address','contact_line_name','contact_insta_name'].forEach(id=>{
-        if (form[id]) form[id].setCustomValidity('');
-      });
-    }
-
-    return valid;
-  }
-
-  // 送信内容の確認ボタンにも適用
-  btn.addEventListener('click', function(e) {
-    if (!form.checkValidity() || !validateForm()) {
+  // ↓↓↓ ここだけ要修正 ↓↓↓
+  btn.addEventListener('click', function(e){
+    // まず必ずカスタムバリデーション
+    if (!validateForm() || !form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    // ここから下は既存のモーダル表示処理に繋げる
-    // （省略しているが、btnのクリックでモーダルを開くJSが既に入っていればOK）
+    // ここでモーダル表示処理
+    let html = "";
+    html += "<b>お名前：</b>" + (form.lastname.value || "") + " " + (form.firstname.value || "") + "<br>";
+    html += "<b>ふりがな：</b>" + (form.furigana_last.value || "") + " " + (form.furigana_first.value || "") + "<br>";
+    html += "<b>年齢：</b>" + (form.age.value || "") + "<br>";
+    html += "<b>性別：</b>" + (form.gender.value || "") + "<br>";
+    html += "<b>希望するコース：</b>" + (form.course.value || "") + "<br>";
+    // レッスン理由
+    let course = form.course.value;
+    if(course && reasonBlocks[course]){
+      const block = reasonBlocks[course];
+      const reasons = Array.from(block.querySelectorAll('input[type="checkbox"]:checked')).map(el=>el.value);
+      html += "<b>レッスン理由：</b>" + (reasons.length ? reasons.join('、') : "未選択") + "<br>";
+      let etc = block.querySelector('textarea');
+      if(etc && etc.value) html += "<b>その他理由：</b>" + etc.value + "<br>";
+    }
+    // 曜日・時間
+    const days = Array.from(form.querySelectorAll('input[name="weekday"]:checked')).map(el=>el.value);
+    html += "<b>希望曜日：</b>" + (days.length ? days.join('、') : "未選択") + "<br>";
+    if(days.length){
+      days.forEach(day=>{
+        const times = Array.from(form.querySelectorAll(`input[name="time_${day}"]:checked`)).map(el=>el.value);
+        html += "&nbsp;&nbsp;・"+day+"：";
+        html += (times.length ? times.join('、') : "（時間未選択）") + "<br>";
+      });
+    }
+    if(form.free_request.value) html += "<b>要相談：</b>" + form.free_request.value + "<br>";
+    // 連絡方法
+    const cm = form.contact_method.value;
+    html += "<b>ご希望の連絡方法：</b>" + cm + "<br>";
+    if(cm === "電話"){
+      html += "<b>お電話番号：</b>"+ (form.contact_phone_tel.value || "") + "<br>";
+      const cTimes = Array.from(form.querySelectorAll('input[name="contact_phone_time"]:checked')).map(el=>el.value);
+      html += "<b>ご都合の良いお時間：</b>" + (cTimes.length ? cTimes.join('、') : "未指定") + "<br>";
+    }
+    if(cm === "メール"){
+      html += "<b>メールアドレス：</b>"+ (form.contact_mail_address.value || "") + "<br>";
+    }
+    if(cm === "LINE"){
+      html += "<b>LINEアカウント名：</b>"+ (form.contact_line_name.value || "") + "<br>";
+    }
+    if(cm === "Instagram DM"){
+      html += "<b>Instagramアカウント名：</b>"+ (form.contact_insta_name.value || "") + "<br>";
+    }
+    confirmContents.innerHTML = html;
+    confirmModal.classList.remove('hidden');
   });
 
-  // 本送信にも必ず適用
+  // ...あとのイベント（モーダルの閉じる・送信）はそのまま...
+  // 本送信（form.submit）時も同じvalidateFormで防御
+
   form.addEventListener('submit', function(e) {
     if (!validateForm()) {
       e.preventDefault();
