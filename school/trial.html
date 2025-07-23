@@ -651,5 +651,192 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 });
   </script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('.trial-form');
+
+  // 必須入力フィールドのid一覧
+  const requiredTextIds = [
+    'lastname', 'firstname', 'furigana-last', 'furigana-first'
+  ];
+  const requiredSelectIds = ['age', 'course'];
+  const requiredRadioNames = ['gender', 'contact_method'];
+
+  // 動的なチェックボックス/ラジオグループのチェック
+  function groupChecked(name) {
+    return form.querySelectorAll(`[name="${name}"]:checked`).length > 0;
+  }
+
+  // コース別「理由」グループの判定
+  function courseReasonChecked() {
+    const course = form.course.value;
+    if (!course) return true; // コース未選択なら理由は問わない
+    if (course === 'ピアノ')        return groupChecked('reason_piano');
+    if (course === 'ピアノ弾き語り') return groupChecked('reason_singplay');
+    if (course === 'ボイストレーニング') return groupChecked('reason_voice');
+    return true;
+  }
+
+  // 曜日・時間（曜日も時間も最低ひとつは必要）
+  function weekdayChecked() {
+    return groupChecked('weekday');
+  }
+  function timeForEachDayChecked() {
+    // 曜日が選択されていたら、各曜日でひとつ以上時間帯がチェックされているか判定
+    let valid = true;
+    form.querySelectorAll('input[name="weekday"]:checked').forEach(cb => {
+      const times = form.querySelectorAll(`input[name="time_${cb.value}"]:checked`);
+      if (!times.length) valid = false;
+    });
+    return valid;
+  }
+
+  // 連絡方法ごとの個別入力
+  function contactFieldsValid() {
+    const method = form.contact_method.value;
+    if (method === '電話' && !form.contact_phone_tel.value) return false;
+    if (method === 'メール' && !form.contact_mail_address.value) return false;
+    if (method === 'LINE' && !form.contact_line_name.value) return false;
+    if (method === 'Instagram DM' && !form.contact_insta_name.value) return false;
+    return true;
+  }
+
+  // 各フィールドにリアルタイムバリデーション
+  requiredTextIds.forEach(id => {
+    const el = form.querySelector(`#${id}`);
+    if (el) {
+      el.addEventListener('input', () => {
+        el.setCustomValidity(el.value ? '' : '入力してください');
+      });
+    }
+  });
+  requiredSelectIds.forEach(id => {
+    const el = form.querySelector(`#${id}`);
+    if (el) {
+      el.addEventListener('change', () => {
+        el.setCustomValidity(el.value ? '' : '選択してください');
+      });
+    }
+  });
+
+  // ラジオボタンはchangeイベント
+  requiredRadioNames.forEach(name => {
+    form.querySelectorAll(`[name="${name}"]`).forEach(radio => {
+      radio.addEventListener('change', () => {
+        // グループすべて解除
+        form.querySelectorAll(`[name="${name}"]`).forEach(r => r.setCustomValidity(''));
+      });
+    });
+  });
+
+  // 送信時にまとめてカスタムバリデーション
+  form.addEventListener('submit', function(e) {
+    let valid = true;
+
+    // テキスト必須
+    requiredTextIds.forEach(id => {
+      const el = form.querySelector(`#${id}`);
+      if (el && !el.value) {
+        el.setCustomValidity('入力してください');
+        valid = false;
+      } else if (el) {
+        el.setCustomValidity('');
+      }
+    });
+
+    // セレクト必須
+    requiredSelectIds.forEach(id => {
+      const el = form.querySelector(`#${id}`);
+      if (el && !el.value) {
+        el.setCustomValidity('選択してください');
+        valid = false;
+      } else if (el) {
+        el.setCustomValidity('');
+      }
+    });
+
+    // ラジオ必須
+    requiredRadioNames.forEach(name => {
+      if (!groupChecked(name)) {
+        // 最初の要素にエラーセット
+        const radios = form.querySelectorAll(`[name="${name}"]`);
+        if (radios.length) radios[0].setCustomValidity('選択してください');
+        valid = false;
+      } else {
+        form.querySelectorAll(`[name="${name}"]`).forEach(r => r.setCustomValidity(''));
+      }
+    });
+
+    // コース理由
+    if (!courseReasonChecked()) {
+      // 表示中の理由グループに1つセット
+      const course = form.course.value;
+      let reasonGroup = null;
+      if (course === 'ピアノ') reasonGroup = form.querySelectorAll('[name="reason_piano"]');
+      if (course === 'ピアノ弾き語り') reasonGroup = form.querySelectorAll('[name="reason_singplay"]');
+      if (course === 'ボイストレーニング') reasonGroup = form.querySelectorAll('[name="reason_voice"]');
+      if (reasonGroup && reasonGroup.length) reasonGroup[0].setCustomValidity('選択してください');
+      valid = false;
+    } else {
+      ['reason_piano','reason_singplay','reason_voice'].forEach(name =>
+        form.querySelectorAll(`[name="${name}"]`).forEach(cb => cb.setCustomValidity(''))
+      );
+    }
+
+    // 曜日
+    if (!weekdayChecked()) {
+      const cb = form.querySelector('input[name="weekday"]');
+      if (cb) cb.setCustomValidity('選択してください');
+      valid = false;
+    } else {
+      form.querySelectorAll('input[name="weekday"]').forEach(cb => cb.setCustomValidity(''));
+    }
+
+    // 各曜日の時間帯
+    if (weekdayChecked() && !timeForEachDayChecked()) {
+      // 各曜日ごとに一つも選択がなければエラー（最初のチェックボックスにセット）
+      form.querySelectorAll('input[name="weekday"]:checked').forEach(cb => {
+        const day = cb.value;
+        const timeBoxes = form.querySelectorAll(`input[name="time_${day}"]`);
+        if (timeBoxes.length && !Array.from(timeBoxes).some(tb => tb.checked)) {
+          timeBoxes[0].setCustomValidity('選択してください');
+          valid = false;
+        } else {
+          timeBoxes.forEach(tb => tb.setCustomValidity(''));
+        }
+      });
+    } else {
+      // 全曜日クリア
+      ['月曜日','火曜日','水曜日','木曜日','金曜日','土曜日','日曜日'].forEach(day =>
+        form.querySelectorAll(`input[name="time_${day}"]`).forEach(cb => cb.setCustomValidity(''))
+      );
+    }
+
+    // 連絡方法ごとの必須
+    if (!contactFieldsValid()) {
+      const cm = form.contact_method.value;
+      let f = null;
+      if (cm === '電話') f = form.contact_phone_tel;
+      if (cm === 'メール') f = form.contact_mail_address;
+      if (cm === 'LINE') f = form.contact_line_name;
+      if (cm === 'Instagram DM') f = form.contact_insta_name;
+      if (f) f.setCustomValidity('入力してください');
+      valid = false;
+    } else {
+      ['contact_phone_tel','contact_mail_address','contact_line_name','contact_insta_name'].forEach(id=>{
+        if (form[id]) form[id].setCustomValidity('');
+      });
+    }
+
+    // 不正時は標準バリデーション出す
+    if (!valid) {
+      e.preventDefault();
+      form.reportValidity();
+    }
+  });
+});
+</script>
+  
 </body>
 </html>
