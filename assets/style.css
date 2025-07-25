@@ -58,11 +58,19 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 .overview-grid img{width:100%;border-radius:8px}
 
 /*──────────────────────────────
-6. セクション共通
+6. セクション共通（下線付き見出し）
 ──────────────────────────────*/
-.section{margin-bottom:2rem}
-.section h2{margin-bottom:.5rem;font-family:"M PLUS 1p",sans-serif;font-weight:700;font-size:1.8rem;text-align:center}
-.section-divider{border:none;border-top:1px solid #ddd;margin:2rem 0}
+.section h2 {
+  margin-bottom: 1em;
+  font-family: "M PLUS 1p", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  display: inline-block;              /* 下線をテキスト幅に合わせる */
+  border-bottom: 2px solid #bed3da;   /* お好みの色に */
+  padding-bottom: 0.5em;              /* テキストと下線の間隔 */
+}
+
 
 /*──────────────────────────────
 7. 講師
