@@ -175,3 +175,29 @@ SNSリンク
   transition:opacity .3s;
 }
 #trial .btn:hover{opacity:.8}
+
+/* 体験レッスン CTA ボタン ----------------------- */
+#trial .trial-btn{
+  display:inline-block;
+  padding:1rem 2.2rem;               /* 少し大きめの余白 */
+  background:#fff;                   /* 白い楕円 */
+  color:#333;                        /* 文字色はダークグレー */
+  border:3px solid #bed3da;          /* ミント色の枠線 */
+  border-radius:9999px;              /* 完全な楕円 */
+  font-family:"M PLUS 1p",sans-serif;
+  font-size:1.1rem;                  /* 文字をやや大きく */
+  line-height:1.45;                  /* 改行時の行間 */
+  font-weight:700;
+  text-align:center;
+  text-decoration:none;
+  box-shadow:0 4px 8px rgba(0,0,0,.08);
+  transition:opacity .25s,transform .15s;
+}
+#trial .trial-btn:hover{
+  opacity:.85;
+  transform:translateY(-2px);        /* ふわっと浮く */
+}
+#trial .trial-btn:active{
+  transform:translateY(0);
+  opacity:.9;
+}
