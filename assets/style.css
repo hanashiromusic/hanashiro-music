@@ -113,68 +113,59 @@ SNSセクション
 .social-icons li img{width:40px;height:40px}
 .social-icons a:hover img{opacity:.8}
 
+
 /*──────────────────────────────
-★ 体験レッスン CTA 専用スタイル
+体験レッスン受付セクション
 ──────────────────────────────*/
-/* セクション本体 */
-.cta{
-  /* 既存サイトカラー（淡いミント）の濃淡グラデ */
-  background:linear-gradient(135deg,#d1e3ea 0%,#a9cdd9 100%);
-  border-radius:14px;
-  text-align:center;
-  padding:2.8rem 1.2rem;
-  margin-top:3rem;
-  box-shadow:0 4px 14px rgba(0,0,0,.08);
-  overflow:hidden;
+#trial {
+  position: relative;
+  background: linear-gradient(135deg, rgba(190,211,218,0.6), rgba(190,211,218,0.2));
+  padding: 2rem 1rem;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 2rem;
+  overflow: hidden;
 }
-/* モバイルは少しタイトに */
-@media(max-width:480px){
-  .cta{padding:2.4rem 1rem;}
+
+/* 内側の白い角丸枠 */
+#trial::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  pointer-events: none;
 }
 
 /* 見出し */
-.cta h2{
-  font-family:"M PLUS 1p",sans-serif;
-  font-size:1.9rem;
-  margin-bottom:.8rem;
-  letter-spacing:.05em;
-  color:#6B4C3B;              /* ブラウンでアクセント */
+#trial h2 {
+  position: relative;
+  z-index: 1;
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 1.6rem;
+  color: #7d5a50; /* ブラウン */
+  margin-bottom: 1.5rem;
 }
 
-/* リード文（サブコピー） */
-.cta-lead{
-  font-size:1.05rem;
-  line-height:1.7;
-  margin:0 0 1.8rem;
+/* 申し込みボタン */
+#trial .btn {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  background: #fff;
+  color: #333;
+  border: 2px solid #0077b6;
+  border-radius: 50px;
+  font-family: "M PLUS 1p", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: opacity 0.3s;
 }
-/* スマホだけ改行を効かせる */
-.sp-br{display:none;}
-@media(max-width:480px){.sp-br{display:inline;}}
-
-/* ボタン（通常：白 / ホバー：アクセント色へ反転） */
-.btn-cta{
-  display:inline-flex;
-  align-items:center;
-  gap:.55em;
-  background:#fff;             /* 白背景 */
-  color:#000;                  /* 黒文字 */
-  border:2px solid #0077b6;    /* サイトの濃ブルーで縁取り */
-  padding:.9rem 2.4rem;
-  font-size:1.1rem;
-  font-weight:700;
-  border-radius:40px;
-  box-shadow:0 3px 10px rgba(0,0,0,.10);
-  transition:all .25s cubic-bezier(.2,.8,.3,1);
-}
-.btn-cta:hover{
-  background:#0077b6;          /* ホバー時色反転 */
-  color:#fff;
-  transform:translateY(-3px);
-}
-
-/* 矢印アイコン（↗︎） */
-.btn-cta .arrow{
-  font-size:1.2em;
-  line-height:1;
-  transform:translateY(-1px);
+#trial .btn:hover {
+  opacity: 0.8;
 }
