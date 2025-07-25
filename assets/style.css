@@ -133,3 +133,10 @@ SNSリンクセクション
   /* font-size: 1.08rem;   ←ちょっと大きくしたければ */
 }
 
+.teacher-bio {
+  /* もともとの指定＋下記を追加（または調整） */
+  max-width: 540px;       /* 講師写真の実際の横幅に合わせる（お好みで調整OK） */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5em;
+}
