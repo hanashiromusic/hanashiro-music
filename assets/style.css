@@ -150,7 +150,7 @@ SNSリンク
 #trial-form img[src$="instagram.png"]{
   display:block;
   margin:1rem auto;
-  max-width:55px;    /* 約1/4サイズに */
+  max-width:65px;    /* 約1/4サイズに */
   width:100%;
   height:auto;
 }
