@@ -114,55 +114,65 @@ SNSセクション
 .social-icons a:hover img{opacity:.8}
 
 /*──────────────────────────────
-CTA  (無料体験レッスン)
+★ 体験レッスン CTA 専用スタイル
 ──────────────────────────────*/
+/* セクション本体 */
 .cta{
-  /* 既存の淡いブルーを濃淡グラデにして存在感アップ */
+  /* 既存サイトカラー（淡いミント）の濃淡グラデ */
   background:linear-gradient(135deg,#d1e3ea 0%,#a9cdd9 100%);
   border-radius:14px;
   text-align:center;
   padding:2.8rem 1.2rem;
+  margin-top:3rem;
   box-shadow:0 4px 14px rgba(0,0,0,.08);
   overflow:hidden;
 }
+/* モバイルは少しタイトに */
 @media(max-width:480px){
   .cta{padding:2.4rem 1rem;}
 }
 
+/* 見出し */
 .cta h2{
   font-family:"M PLUS 1p",sans-serif;
   font-size:1.9rem;
   margin-bottom:.8rem;
   letter-spacing:.05em;
-  color:#004a67;               /* 少し落ち着いた濃ブルー */
+  color:#6B4C3B;              /* ブラウンでアクセント */
 }
 
-/* キャッチコピー */
+/* リード文（サブコピー） */
 .cta-lead{
   font-size:1.05rem;
   line-height:1.7;
   margin:0 0 1.8rem;
 }
-.sp-br{display:none;}          /* 文中の <br class="sp-br"> 制御用 */
+/* スマホだけ改行を効かせる */
+.sp-br{display:none;}
 @media(max-width:480px){.sp-br{display:inline;}}
 
- /* ボタン */
+/* ボタン（通常：白 / ホバー：アクセント色へ反転） */
 .btn-cta{
   display:inline-flex;
   align-items:center;
-  gap:.5em;
-  background:#0077b6;
-  color:#fff;
+  gap:.55em;
+  background:#fff;             /* 白背景 */
+  color:#000;                  /* 黒文字 */
+  border:2px solid #0077b6;    /* サイトの濃ブルーで縁取り */
   padding:.9rem 2.4rem;
   font-size:1.1rem;
   font-weight:700;
   border-radius:40px;
-  box-shadow:0 3px 10px rgba(0,0,0,.12);
-  transition:transform .25s cubic-bezier(.2,.8,.3,1);
+  box-shadow:0 3px 10px rgba(0,0,0,.10);
+  transition:all .25s cubic-bezier(.2,.8,.3,1);
 }
 .btn-cta:hover{
+  background:#0077b6;          /* ホバー時色反転 */
+  color:#fff;
   transform:translateY(-3px);
 }
+
+/* 矢印アイコン（↗︎） */
 .btn-cta .arrow{
   font-size:1.2em;
   line-height:1;
