@@ -125,3 +125,9 @@ SNSリンクセクション
   /* background: none;      ← 万が一残っていれば消す */
   /* border-radius: 0;      ← 角丸不要なら省略OK */
 }
+
+.teacher-bio p {
+  margin: 1em 0;        /* 段落ごとの上下余白 */
+  text-indent: 1.2em;   /* 1行目だけ字下げ */
+  line-height: 1.7;     /* 行間はちょっと広め。お好みで */
+}
