@@ -134,6 +134,15 @@ SNSリンク
 .social-icons li img{width:40px;height:40px}
 .social-icons a:hover img{opacity:.8}
 
+/* ── SNS／LINE アイコンを小さめに ───────────── */
+.info-image {
+  display: block;
+  max-width: 55px;  /* 元の220px の ¼ 程度 */
+  width: auto;      /* 横幅固定 */
+  height: auto;     /* 縦横比を維持 */
+  margin: 1rem auto;/* 上下余白・中央寄せ */
+}
+
 /*──────────────────────────────
 13. 体験レッスン受付セクション (#trial)
 ──────────────────────────────*/
