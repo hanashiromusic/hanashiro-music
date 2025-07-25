@@ -4,7 +4,7 @@
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /*──────────────────────────────
-0.5 ページフェード（白→透明）
+0.5 ページフェード
 ──────────────────────────────*/
 @keyframes pageFade{from{opacity:1}to{opacity:0}}
 body::before{content:"";position:fixed;inset:0;background:#fff;z-index:9999;pointer-events:none;animation:pageFade 1s ease-out forwards}
@@ -14,21 +14,11 @@ body::before{content:"";position:fixed;inset:0;background:#fff;z-index:9999;poin
 ──────────────────────────────*/
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line-height:1.6;padding:1rem}
-.wrapper{
-  width:100%;
-  max-width:960px;
-  margin:1.5rem auto;
-  background:#fff;
-  border-radius:18px;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-  padding:3rem;
-}
-@media(max-width:480px){
-  .wrapper{padding:2rem 1.5rem}
-}
+.wrapper{width:100%;max-width:960px;margin:1.5rem auto;background:#fff;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:3rem}
+@media(max-width:480px){.wrapper{padding:2rem 1.5rem}}
 
 /*──────────────────────────────
-2. フェードイン共通
+2. 共通フェードイン
 ──────────────────────────────*/
 @keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
@@ -58,19 +48,21 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 .overview-grid img{width:100%;border-radius:8px}
 
 /*──────────────────────────────
-6. セクション共通（下線付き見出し）
+6. セクション共通 〈見出し下線〉
 ──────────────────────────────*/
-.section h2 {
-  margin-bottom: 1em;
-  font-family: "M PLUS 1p", sans-serif;
-  font-weight: 700;
-  font-size: 1.8rem;
-  text-align: center;
-  display: inline-block;              /* 下線をテキスト幅に合わせる */
-  border-bottom: 2px solid #bed3da;   /* お好みの色に */
-  padding-bottom: 0.5em;              /* テキストと下線の間隔 */
+.section{margin-bottom:2rem}
+.section h2{
+  display:inline-block;
+  margin-bottom:.5rem;
+  font-family:"M PLUS 1p",sans-serif;
+  font-weight:700;
+  font-size:1.8rem;
+  text-align:center;
+  border-bottom:2px solid #bed3da;
+  padding-bottom:.5rem;
+  line-height:1.2;
 }
-
+.section-divider{border:none;border-top:1px solid #ddd;margin:2rem 0}
 
 /*──────────────────────────────
 7. 講師
@@ -92,10 +84,10 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 #access iframe{width:100%;height:320px;border:0;margin-bottom:1rem}
 
 /*──────────────────────────────
-10. CTA
+10. 汎用 CTA ボタン
 ──────────────────────────────*/
 .cta{padding:1.5rem;background:rgba(190,211,218,.2);text-align:center}
-.btn{display:inline-block;padding:.6rem 1.2rem;background:#bed3da;color:#000;text-decoration:none;border-radius:6px;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,.05)}
+.btn{display:inline-block;padding:.6rem 1.2rem;background:#bed3da;color:#000;text-decoration:none;border-radius:6px;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,.05);transition:opacity .3s}
 .btn:hover{opacity:.9}
 
 /*──────────────────────────────
@@ -104,13 +96,13 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 .site-footer{text-align:center;font-size:.7rem;color:#333}
 
 /*──────────────────────────────
-12. 調整
+12. 見出しサイズ調整
 ──────────────────────────────*/
 @media(max-width:480px){.section h2{font-size:1.3rem;line-height:1.4}}
 @media(min-width:481px)and(max-width:768px){.section h2{font-size:1.6rem;line-height:1.5}}
 
 /*──────────────────────────────
-SNSセクション
+SNSリンク
 ──────────────────────────────*/
 .sns-links{text-align:center;background:rgba(190,211,218,.1);padding:2rem 1rem;border-radius:12px;margin-top:3rem}
 .sns-links h2{font-size:1.5rem;margin-bottom:1rem;font-family:"M PLUS 1p",sans-serif}
@@ -122,59 +114,43 @@ SNSセクション
 .social-icons a:hover img{opacity:.8}
 
 /*──────────────────────────────
-体験レッスン受付セクション
+13. 体験レッスン受付セクション (#trial)
 ──────────────────────────────*/
-#trial {
-  position: relative;
-  background: linear-gradient(135deg, rgba(190,211,218,0.6), rgba(190,211,218,0.2));
-  padding: 2rem 1rem;
-  border-radius: 16px;
-  text-align: center;
-  margin-bottom: 2rem;
-  overflow: hidden;
+#trial{
+  position:relative;
+  /* ←グラデーションに戻す */
+  background:linear-gradient(135deg,rgba(190,211,218,.6),rgba(190,211,218,.2));
+  padding:2rem 1rem;
+  border-radius:16px;
+  text-align:center;
+  margin-bottom:2rem;
+  overflow:hidden;
 }
-
-/* 内側の白い角丸枠 */
-#trial::before {
-  content: "";
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-  border: 2px solid #fff;
-  border-radius: 12px;
-  pointer-events: none;
+#trial::before{
+  content:"";
+  position:absolute;
+  top:1rem;left:1rem;right:1rem;bottom:1rem;
+  border:2px solid #fff;
+  border-radius:12px;
+  pointer-events:none;
 }
-
-/* 見出し */
-#trial h2 {
-  position: relative;
-  z-index: 1;
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 1.6rem;
-  color: #7d5a50; /* ブラウン */
-  margin-bottom: 1.5rem;
+#trial h2{
+  position:relative;z-index:1;
+  font-family:"M PLUS 1p",sans-serif;
+  font-size:1.6rem;
+  color:#7d5a50;
+  margin-bottom:1.5rem;
 }
-
-/* 申し込みボタン */
-#trial .btn {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  padding: 0.8rem 1.6rem;
-  background: #fff;
-  color: #333;
-  border: 2px solid #0077b6;
-  border-radius: 50px;
-  font-family: "M PLUS 1p", sans-serif;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: opacity 0.3s;
+#trial .btn{
+  position:relative;z-index:1;
+  display:inline-block;
+  padding:.8rem 1.6rem;
+  background:#fff;color:#333;
+  border:2px solid #0077b6;
+  border-radius:50px;
+  font-family:"M PLUS 1p",sans-serif;
+  font-weight:600;text-decoration:none;
+  box-shadow:0 4px 8px rgba(0,0,0,.1);
+  transition:opacity .3s;
 }
-#trial .btn:hover {
-  opacity: 0.8;
-}
-　
-   
+#trial .btn:hover{opacity:.8}
