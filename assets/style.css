@@ -120,7 +120,6 @@ SNSリンクセクション
 ──────────────────────────────*/
 .teacher-bio {
   padding: 1.5em;
-  background: #fafafd;     /* お好みでほんのり白っぽく */
   border-radius: 10px;     /* 角まるく（必要なければ削除） */
   /* box-shadow: 0 2px 8px rgba(0,0,0,.04); ←影つけたいなら */
   margin-top: 2rem;        /* 上にすこし余白 */
