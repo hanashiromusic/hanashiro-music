@@ -232,3 +232,14 @@ SNSリンク
   .notice-block{padding:1.5rem 1rem}
   .notice-block h3{font-size:1.1rem}
 }
+
+/* ── ご案内 / 個人情報 text 設定 ───────────────── */
+.notice-block{
+  font-family: "Sawarabi Mincho", serif;  /* ← フォントを明朝系に */
+}
+
+/* 見出しより本文だけ少し小さくして 1 行 20 文字前後 */
+.notice-block p{
+  font-size: 0.9rem;          /* 16px → 14.4px 相当 */
+  line-height: 1.8;           /* 読みやすさをキープ */
+}
