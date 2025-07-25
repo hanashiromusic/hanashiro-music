@@ -201,3 +201,34 @@ SNSリンク
   transform:translateY(0);
   opacity:.9;
 }
+
+/* ── ご案内 / 個人情報 box ───────────────── */
+.notice-block{
+  margin-top:2.5rem;           /* ボタンと離す */
+  padding:1.8rem 1.4rem;
+  background:#fafafa;
+  border-radius:12px;
+}
+.notice-block h3{
+  display:flex;
+  align-items:center;
+  font-family:"M PLUS 1p",sans-serif;
+  font-size:1.25rem;
+  margin-bottom:1rem;
+}
+.notice-bar{
+  display:inline-block;
+  width:5px;
+  height:1.4em;
+  background:#bed3da;          /* 既存フォームと同じミント */
+  border-radius:3px;
+  margin-right:.6em;
+}
+.notice-block p{
+  font-size:1rem;
+  line-height:1.7;
+}
+@media(max-width:480px){
+  .notice-block{padding:1.5rem 1rem}
+  .notice-block h3{font-size:1.1rem}
+}
