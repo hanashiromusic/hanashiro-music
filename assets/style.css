@@ -47,23 +47,42 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line
 .overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:2rem}
 .overview-grid img{width:100%;border-radius:8px}
 
-/*──────────────────────────────
-6. セクション共通 〈見出し下線〉
-──────────────────────────────*/
-.section{margin-bottom:2rem}
+/* ──────────────────────────────
+A. セクション見出し（h2）
+──────────────────────────────── */
 .section h2{
-  display:inline-block;
-  margin-bottom:.5rem;
+  /* 位置・余白 */
+  margin:0 0 .6rem;          /* →文字のすぐ下に線が来るよう詰める */
+  padding-bottom:.15rem;     /* ほぼスレスレに見せる */
+  text-align:center;         /* 中央寄せ */
+  /* 書体など既存指定はそのまま */  
   font-family:"M PLUS 1p",sans-serif;
   font-weight:700;
   font-size:1.8rem;
-  text-align:center;
-  border-bottom:2px solid #bed3da;
-  padding-bottom:.5rem;
-  line-height:1.2;
+  line-height:1.25;
+  /* 下線 */
+  border-bottom:2px solid #bed3da;   /* 色は従来、太さは2px程度 */
 }
-.section-divider{border:none;border-top:1px solid #ddd;margin:2rem 0}
 
+/* 体験レッスンの見出しだけは下線を消す */
+#trial h2{border-bottom:none;padding-bottom:0;margin-bottom:1.5rem}
+
+/* ──────────────────────────────
+B. セクション区切り線  (.section-divider)
+──────────────────────────────── */
+.section-divider{
+  border:none;
+  border-top:1px solid rgba(0,0,0,.08);  /* 細く&薄く */
+  margin:2rem 0;
+}
+
+/* ──────────────────────────────
+C. 体験レッスン受付ボタンの下線を消す
+──────────────────────────────── */
+#trial .btn{
+  text-decoration:none;   /* （念のため） */
+  border-bottom:none;     /* 余計な下線が付く場合に備えて */
+}
 /*──────────────────────────────
 7. 講師
 ──────────────────────────────*/
