@@ -201,5 +201,26 @@
       links.forEach(link => link.addEventListener('click', close));
     });
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.overview-grid a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target); // 一度だけ実行したい場合
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    images.forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+  });
+</script>
 </body>
 </html>
