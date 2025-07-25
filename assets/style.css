@@ -51,7 +51,7 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Mincho",sans-serif;font
 A. セクション見出し（h2）
 ──────────────────────────────*/
 .section h2{
-  margin:0 0 .3rem;
+  margin:0 0 1rem;
   padding-bottom:.15rem;
   text-align:center;
   font-family:"M PLUS 1p",sans-serif;
