@@ -115,57 +115,48 @@ SNSセクション
 
 
 /*──────────────────────────────
-体験レッスン受付セクション
+7. 無料体験レッスン受付セクション
 ──────────────────────────────*/
 #trial {
-  position: relative;
-  background: linear-gradient(135deg, rgba(190,211,218,0.6), rgba(190,211,218,0.2));
+  /* 背景は紫（グラデなし） */
+  background: #9575CD;
   padding: 2rem 1rem;
-  border-radius: 16px;
+  border-radius: 12px;
   text-align: center;
   margin-bottom: 2rem;
-  overflow: hidden;
 }
 
-/* 内側の白い角丸枠 */
-#trial::before {
-  content: "";
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-  border: 2px solid #fff;
-  border-radius: 12px;
-  pointer-events: none;
-}
-
-/* 見出し */
 #trial h2 {
-  position: relative;
-  z-index: 1;
+  /* 見出しは白字で強調 */
+  color: #FFFFFF;
   font-family: "M PLUS 1p", sans-serif;
-  font-size: 1.6rem;
-  color: #7d5a50; /* ブラウン */
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4;
   margin-bottom: 1.5rem;
 }
 
-/* 申し込みボタン */
+/* ボタン全体のスタイル */
 #trial .btn {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  padding: 0.8rem 1.6rem;
-  background: #fff;
-  color: #333;
-  border: 2px solid #0077b6;
+  /* ボタン背景は黄色、文字は濃いめの黒 */
+  background: #FDD835;
+  color: #333333;
+  /* 白い枠線でくっきり */
+  border: 2px solid #FFFFFF;
+  /* 丸みを大きく */
   border-radius: 50px;
-  font-family: "M PLUS 1p", sans-serif;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: opacity 0.3s;
+  display: inline-block;
+  /* ちょっと立体感 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s, transform 0.2s;
 }
+
+/* ホバーでさりげなく沈み込むアクション */
 #trial .btn:hover {
-  opacity: 0.8;
+  opacity: 0.9;
+  transform: translateY(2px);
 }
