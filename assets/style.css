@@ -169,8 +169,9 @@ SNSリンク
   transform: translateY(0);
 }
 
-/* ───────── 区切り線を消す ───────── */
+/* ───────── セクション区切り線（余白だけ残す） ───────── */
 .section-divider{
-  display:none;       /* ← これだけで OK  */
-  /* or  border:none; でも可 */
+  border:none;          /* 線は描かない */
+  height:1.5rem;        /* ← ここが “空き” の量（お好みで調整） */
+  margin:0;             /* 既存の margin は不要なので 0 に */
 }
