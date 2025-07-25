@@ -112,3 +112,59 @@ SNSセクション
 .social-icons{list-style:none;display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;padding:0}
 .social-icons li img{width:40px;height:40px}
 .social-icons a:hover img{opacity:.8}
+
+/*──────────────────────────────
+CTA  (無料体験レッスン)
+──────────────────────────────*/
+.cta{
+  /* 既存の淡いブルーを濃淡グラデにして存在感アップ */
+  background:linear-gradient(135deg,#d1e3ea 0%,#a9cdd9 100%);
+  border-radius:14px;
+  text-align:center;
+  padding:2.8rem 1.2rem;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+@media(max-width:480px){
+  .cta{padding:2.4rem 1rem;}
+}
+
+.cta h2{
+  font-family:"M PLUS 1p",sans-serif;
+  font-size:1.9rem;
+  margin-bottom:.8rem;
+  letter-spacing:.05em;
+  color:#004a67;               /* 少し落ち着いた濃ブルー */
+}
+
+/* キャッチコピー */
+.cta-lead{
+  font-size:1.05rem;
+  line-height:1.7;
+  margin:0 0 1.8rem;
+}
+.sp-br{display:none;}          /* 文中の <br class="sp-br"> 制御用 */
+@media(max-width:480px){.sp-br{display:inline;}}
+
+ /* ボタン */
+.btn-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:.5em;
+  background:#0077b6;
+  color:#fff;
+  padding:.9rem 2.4rem;
+  font-size:1.1rem;
+  font-weight:700;
+  border-radius:40px;
+  box-shadow:0 3px 10px rgba(0,0,0,.12);
+  transition:transform .25s cubic-bezier(.2,.8,.3,1);
+}
+.btn-cta:hover{
+  transform:translateY(-3px);
+}
+.btn-cta .arrow{
+  font-size:1.2em;
+  line-height:1;
+  transform:translateY(-1px);
+}
