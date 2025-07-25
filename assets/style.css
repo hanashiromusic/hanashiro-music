@@ -13,7 +13,7 @@ body::before{content:"";position:fixed;inset:0;background:#fff;z-index:9999;poin
 1. ベース
 ──────────────────────────────*/
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#bed3da;color:#333;font-family:"Sawarabi Gothic",sans-serif;line-height:1.6;padding:1rem}
+body{background:#bed3da;color:#333;font-family:"Sawarabi Mincho",sans-serif;font-size: 15px; line-height:1.6;padding:1rem}
 .wrapper{width:100%;max-width:960px;margin:1.5rem auto;background:#fff;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:3rem}
 @media(max-width:480px){.wrapper{padding:2rem 1.5rem}}
 
