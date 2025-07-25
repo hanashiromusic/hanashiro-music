@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <link rel="stylesheet" href="assets/style.css">
   <meta charset="UTF-8">
-  <title>花城音楽教室｜沖縄市 ピアノ教室</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- さわらび明朝（サイト全体で採用したフォント） -->
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+  <!-- このトップ専用の CSS -->
+  <link rel="stylesheet" href="assets/style-root.css">
+  <title>花城音楽事務所｜沖縄市 与儀</title>
 </head>
+
 <body>
-  <h1>花城音楽事務所</h1>
-  <p>沖縄市与儀にあるピアノ／ピアノ弾き語り／ボイストレーニング教室のHPです。</p>
-  <a href="school/index.html">教室ページへ</a>
-  <a href="artist/index.html">アーティスト紹介へ</a>
+  <main class="hero">
+    <h1 class="site-title">花城音楽事務所</h1>
+
+    <p class="lead">
+      沖縄市与儀にある<br>
+      ピアノ・ピアノ弾き語り・ボイストレーニング教室と<br>
+      アーティスト活動のご案内サイトです。
+    </p>
+
+    <div class="card-grid">
+      <!-- 教室ページ -->
+      <a href="school/index.html" class="card">
+        <span class="card-heading">花城音楽教室<br>(School)</span>
+        <span class="card-desc">ピアノ／弾き語り／ボイトレ</span>
+      </a>
+
+      <!-- アーティストページ -->
+      <a href="artist/index.html" class="card">
+        <span class="card-heading">花城&nbsp;光<br>(Artist)</span>
+        <span class="card-desc">ライブ・作品情報はこちら</span>
+      </a>
+    </div>
+  </main>
 </body>
 </html>
