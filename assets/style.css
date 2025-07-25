@@ -133,3 +133,6 @@ SNSリンクセクション
   line-height: 1.7;        /* 行間はちょっと広め。お好みで */
   /* font-size: 1.08rem;   ←ちょっと大きくしたければ */
 }
+
+
+body { background: pink !important; }
