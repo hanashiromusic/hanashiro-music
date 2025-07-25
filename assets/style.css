@@ -67,6 +67,17 @@ A. セクション見出し（h2）
 /* 体験レッスンの見出しだけは下線を消す */
 #trial h2{border-bottom:none;padding-bottom:0;margin-bottom:1.5rem}
 
+
+/* ──────────────────────────────
+B. セクション区切り線  (.section-divider)
+──────────────────────────────── */
+.section-divider{
+  border:none;
+  border-top:1px solid rgba(0,0,0,.08);  /* 細く&薄く */
+  margin:2rem 0;
+}
+
+
 /* ──────────────────────────────
 C. 体験レッスン受付ボタンの下線を消す
 ──────────────────────────────── */
