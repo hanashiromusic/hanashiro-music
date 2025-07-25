@@ -13,7 +13,7 @@ body::before{content:"";position:fixed;inset:0;background:#fff;z-index:9999;poin
 1. ベース
 ──────────────────────────────*/
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#bed3da;color:#333;font-family:"Sawarabi Mincho",sans-serif;font-size: 15px; line-height:1.6;padding:1rem}
+body{background:#bed3da;color:#333;font-family:"Sawarabi Mincho",sans-serif;font-size:15px;line-height:1.6;padding:1rem}
 .wrapper{width:100%;max-width:960px;margin:1.5rem auto;background:#fff;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:3rem}
 @media(max-width:480px){.wrapper{padding:2rem 1.5rem}}
 
@@ -47,44 +47,32 @@ body{background:#bed3da;color:#333;font-family:"Sawarabi Mincho",sans-serif;font
 .overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:2rem}
 .overview-grid img{width:100%;border-radius:8px}
 
-/* ──────────────────────────────
+/*──────────────────────────────
 A. セクション見出し（h2）
-──────────────────────────────── */
+──────────────────────────────*/
 .section h2{
-  /* 位置・余白 */
-  margin:0 0 .3rem;          /* →文字のすぐ下に線が来るよう詰める */
-  padding-bottom:.15rem;     /* ほぼスレスレに見せる */
-  text-align:center;         /* 中央寄せ */
-  /* 書体など既存指定はそのまま */  
+  margin:0 0 .3rem;
+  padding-bottom:.15rem;
+  text-align:center;
   font-family:"M PLUS 1p",sans-serif;
   font-weight:700;
   font-size:1.8rem;
   line-height:1.25;
-  /* 下線 */
-  border-bottom:1px solid #bed3da;   /* 色は従来、太さは2px程度 */
+  border-bottom:1px solid #bed3da;
 }
-
 /* 体験レッスンの見出しだけは下線を消す */
 #trial h2{border-bottom:none;padding-bottom:0;margin-bottom:1.5rem}
 
-
-/* ──────────────────────────────
+/*──────────────────────────────
 B. セクション区切り線  (.section-divider)
-──────────────────────────────── */
-.section-divider{
-  border:none;
-  border-top:1px solid fff(0,0,0,.08);  /* 細く&薄く */
-  margin:2rem 0;
-}
+──────────────────────────────*/
+.section-divider{border:none;border-top:1px solid rgba(0,0,0,.08);margin:2rem 0}
 
-
-/* ──────────────────────────────
+/*──────────────────────────────
 C. 体験レッスン受付ボタンの下線を消す
-──────────────────────────────── */
-#trial .btn{
-  text-decoration:none;   /* （念のため） */
-  border-bottom:none;     /* 余計な下線が付く場合に備えて */
-}
+──────────────────────────────*/
+#trial .btn{text-decoration:none;border-bottom:none}
+
 /*──────────────────────────────
 7. 講師
 ──────────────────────────────*/
@@ -134,114 +122,36 @@ SNSリンク
 .social-icons li img{width:40px;height:40px}
 .social-icons a:hover img{opacity:.8}
 
-
-
 /*──────────────────────────────
 13. 体験レッスン受付セクション (#trial)
 ──────────────────────────────*/
-#trial{
-  position:relative;
-  /* ←グラデーションに戻す */
-  background:linear-gradient(135deg,rgba(190,211,218,.6),rgba(190,211,218,.2));
-  padding:2rem 1rem;
-  border-radius:16px;
-  text-align:center;
-  margin-bottom:2rem;
-  overflow:hidden;
-}
-#trial::before{
-  content:"";
-  position:absolute;
-  top:1rem;left:1rem;right:1rem;bottom:1rem;
-  border:2px solid #fff;
-  border-radius:12px;
-  pointer-events:none;
-}
-#trial h2{
-  position:relative;z-index:1;
-  font-family:"M PLUS 1p",sans-serif;
-  font-size:1.6rem;
-  color:#7d5a50;
-  margin-bottom:1.5rem;
-}
-#trial .btn{
-  position:relative;z-index:1;
-  display:inline-block;
-  padding:.8rem 1.6rem;
-  background:#fff;color:#333;
-  border:2px solid #0077b6;
-  border-radius:50px;
-  font-family:"M PLUS 1p",sans-serif;
-  font-weight:600;text-decoration:none;
-  box-shadow:0 4px 8px rgba(0,0,0,.1);
-  transition:opacity .3s;
-}
+#trial{position:relative;background:linear-gradient(135deg,rgba(190,211,218,.6),rgba(190,211,218,.2));padding:2rem 1rem;border-radius:16px;text-align:center;margin-bottom:2rem;overflow:hidden}
+#trial::before{content:"";position:absolute;top:1rem;left:1rem;right:1rem;bottom:1rem;border:2px solid #fff;border-radius:12px;pointer-events:none}
+#trial h2{position:relative;z-index:1;font-family:"M PLUS 1p",sans-serif;font-size:1.6rem;color:#7d5a50;margin-bottom:1.5rem}
+#trial .btn{position:relative;z-index:1;display:inline-block;padding:.8rem 1.6rem;background:#fff;color:#333;border:2px solid #0077b6;border-radius:50px;font-family:"M PLUS 1p",sans-serif;font-weight:600;text-decoration:none;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:opacity .3s}
 #trial .btn:hover{opacity:.8}
+#trial .trial-btn{display:inline-block;padding:1rem 2.2rem;background:#fff;color:#333;border:3px solid #bed3da;border-radius:9999px;font-family:"M PLUS 1p",sans-serif;font-size:1.1rem;line-height:1.45;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 8px rgba(0,0,0,.08);transition:opacity .25s,transform .15s}
+#trial .trial-btn:hover{opacity:.85;transform:translateY(-2px)}
+#trial .trial-btn:active{transform:translateY(0);opacity:.9}
 
-/* 体験レッスン CTA ボタン ----------------------- */
-#trial .trial-btn{
-  display:inline-block;
-  padding:1rem 2.2rem;               /* 少し大きめの余白 */
-  background:#fff;                   /* 白い楕円 */
-  color:#333;                        /* 文字色はダークグレー */
-  border:3px solid #bed3da;          /* ミント色の枠線 */
-  border-radius:9999px;              /* 完全な楕円 */
-  font-family:"M PLUS 1p",sans-serif;
-  font-size:1.1rem;                  /* 文字をやや大きく */
-  line-height:1.45;                  /* 改行時の行間 */
-  font-weight:700;
-  text-align:center;
-  text-decoration:none;
-  box-shadow:0 4px 8px rgba(0,0,0,.08);
-  transition:opacity .25s,transform .15s;
-}
-#trial .trial-btn:hover{
-  opacity:.85;
-  transform:translateY(-2px);        /* ふわっと浮く */
-}
-#trial .trial-btn:active{
-  transform:translateY(0);
-  opacity:.9;
-}
+/*──────────────────────────────
+14. ご案内 / 個人情報 box
+──────────────────────────────*/
+.notice-block{margin-top:2.5rem;padding:1.8rem 1.4rem;background:#fafafa;border-radius:12px;font-family:"Sawarabi Mincho",serif}
+.notice-block h3{display:flex;align-items:center;font-family:"M PLUS 1p",sans-serif;font-size:1.25rem;margin-bottom:1rem}
+.notice-bar{display:inline-block;width:5px;height:1.4em;background:#bed3da;border-radius:3px;margin-right:.6em}
+.notice-block p{font-size:.9rem;line-height:1.8}
+@media(max-width:480px){.notice-block{padding:1.5rem 1rem}.notice-block h3{font-size:1.1rem}}
 
-/* ── ご案内 / 個人情報 box ───────────────── */
-.notice-block{
-  margin-top:2.5rem;           /* ボタンと離す */
-  padding:1.8rem 1.4rem;
-  background:#fafafa;
-  border-radius:12px;
+/*──────────────────────────────
+★ 15. trial ページの LINE / Instagram アイコンを縮小
+──────────────────────────────*/
+#trial-form img[src$="line.jpeg"],
+#trial-form img[src$="instagram.png"]{
+  display:block;
+  margin:1rem auto;
+  max-width:55px;    /* 約1/4サイズに */
+  width:100%;
+  height:auto;
 }
-.notice-block h3{
-  display:flex;
-  align-items:center;
-  font-family:"M PLUS 1p",sans-serif;
-  font-size:1.25rem;
-  margin-bottom:1rem;
-}
-.notice-bar{
-  display:inline-block;
-  width:5px;
-  height:1.4em;
-  background:#bed3da;          /* 既存フォームと同じミント */
-  border-radius:3px;
-  margin-right:.6em;
-}
-.notice-block p{
-  font-size:1rem;
-  line-height:1.7;
-}
-@media(max-width:480px){
-  .notice-block{padding:1.5rem 1rem}
-  .notice-block h3{font-size:1.1rem}
-}
-
-/* ── ご案内 / 個人情報 text 設定 ───────────────── */
-.notice-block{
-  font-family: "Sawarabi Mincho", serif;  /* ← フォントを明朝系に */
-}
-
-/* 見出しより本文だけ少し小さくして 1 行 20 文字前後 */
-.notice-block p{
-  font-size: 0.9rem;          /* 16px → 14.4px 相当 */
-  line-height: 1.8;           /* 読みやすさをキープ */
-}
+/*──────────────────────────────*/
