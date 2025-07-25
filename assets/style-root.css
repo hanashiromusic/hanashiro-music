@@ -1,1 +1,64 @@
+/* ===== ベース ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  height:100dvh;                       /* 1 画面に収める */
+  display:flex;align-items:center;justify-content:center;
+  background:#bed3da;                  /* ミント系ベース */
+  color:#333;font-family:'Sawarabi Mincho',serif;
+  text-align:center;line-height:1.6;
+  padding:2rem;
+}
 
+/* ===== ヒーローブロック ===== */
+.hero{
+  width:100%;max-width:680px;
+}
+
+/* タイトル */
+.site-title{
+  font-size:clamp(1.8rem,4.8vw,2.4rem);
+  margin-bottom:1rem;
+  letter-spacing:.05em;
+}
+
+/* リード文 */
+.lead{
+  font-size:1rem;margin-bottom:2.5rem;
+}
+
+/* ===== 2 枚のリンクカード ===== */
+.card-grid{
+  display:grid;gap:1.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+/* カード本体 */
+.card{
+  display:flex;flex-direction:column;justify-content:center;
+  gap:.6rem;
+  background:#fff;
+  border-radius:16px;
+  padding:2.2rem 1rem;
+  text-decoration:none;
+  color:#333;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  transition:transform .25s,box-shadow .25s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+/* カード見出し・説明 */
+.card-heading{
+  font-size:1.25rem;font-weight:700;line-height:1.4;
+}
+.card-desc{
+  font-size:.9rem;color:#555;
+}
+
+/* ===== スマホ向け微調整 ===== */
+@media(max-width:480px){
+  .card{padding:1.8rem 1rem}
+  .card-heading{font-size:1.1rem}
+}
