@@ -118,7 +118,8 @@ SNSセクション
 ──────────────────────────────*/
 #trial {
   position: relative;
-  background: linear-gradient(135deg, rgba(190,211,218,0.6), rgba(190,211,218,0.2));
+  /* グラデーションをやめてミント一色に */
+  background: #bed3da;
   padding: 2rem 1rem;
   border-radius: 16px;
   text-align: center;
