@@ -52,7 +52,7 @@ A. セクション見出し（h2）
 ──────────────────────────────── */
 .section h2{
   /* 位置・余白 */
-  margin:0 0 .6rem;          /* →文字のすぐ下に線が来るよう詰める */
+  margin:0 0 .3rem;          /* →文字のすぐ下に線が来るよう詰める */
   padding-bottom:.15rem;     /* ほぼスレスレに見せる */
   text-align:center;         /* 中央寄せ */
   /* 書体など既存指定はそのまま */  
@@ -61,7 +61,7 @@ A. セクション見出し（h2）
   font-size:1.8rem;
   line-height:1.25;
   /* 下線 */
-  border-bottom:2px solid #bed3da;   /* 色は従来、太さは2px程度 */
+  border-bottom:1px solid #bed3da;   /* 色は従来、太さは2px程度 */
 }
 
 /* 体験レッスンの見出しだけは下線を消す */
