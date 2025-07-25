@@ -220,6 +220,11 @@
       el.classList.add('fade-in');
       observer.observe(el);
     });
+    
+       /* ★ 追加：.section 全体を順番にフェードインさせる ------------- */
+   document.querySelectorAll('.section').forEach(sec=>{
+     sec.classList.add('fade-in'); observer.observe(sec);
+   });
   });
 </script>
 </body>
