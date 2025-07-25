@@ -73,7 +73,7 @@ B. セクション区切り線  (.section-divider)
 ──────────────────────────────── */
 .section-divider{
   border:none;
-  border-top:1px solid rgba(0,0,0,.08);  /* 細く&薄く */
+  border-top:1px solid fff(0,0,0,.08);  /* 細く&薄く */
   margin:2rem 0;
 }
 
