@@ -216,7 +216,7 @@ SNSリンク
 .usagi-illust{
   display:block;
   margin: 1.2rem auto 0;      /* 中央寄せ */
-  width: min(520px, 88%);     /* スマホでは88%、PCでも最大520px */
+  width: min(520px, 50%);     /* スマホでは88%、PCでも最大520px */
   height:auto;
 }
 
