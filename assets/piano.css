@@ -78,3 +78,13 @@
 /* スクロール時フェードイン（index と同じ動き） */
 .reveal{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease; }
 .reveal.in{ opacity:1; transform:translateY(0); }
+
+/* セクションの上下マージンを拡げる（このページだけ） */
+.section{
+  margin: 2.5rem 0 3rem;   /* 好みで 3rem〜4rem に */
+}
+
+/* 見出し下の余白も気持ち増やす */
+.section h2{ 
+  margin-bottom: .9rem;    /* 既存より少し広めに */
+}
