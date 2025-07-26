@@ -208,3 +208,19 @@ SNSリンク
 .figure.figure--plain.is-tight{
   margin: .5rem auto; /* 必要なら 0 にして完全フラットに */
 }
+
+/* 影なし・角丸なし（以前の指定を活かす） */
+.figure.figure--plain{ box-shadow:none; border-radius:0; background:transparent; }
+
+/* うさぎ画像：SNSカードより少し小さく */
+.usagi-illust{
+  display:block;
+  margin: 1.2rem auto 0;      /* 中央寄せ */
+  width: min(520px, 88%);     /* スマホでは88%、PCでも最大520px */
+  height:auto;
+}
+
+/* 画面が広い時は、ほんの少しだけ広げる（SNSカードより小さめを維持） */
+@media (min-width: 768px){
+  .usagi-illust{ width: min(560px, 62%); }
+}
