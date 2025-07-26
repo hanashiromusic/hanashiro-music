@@ -204,5 +204,34 @@
 ).forEach(el=>io.observe(el));
   </script>
   
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn   = document.querySelector('.menu-toggle');
+  const nav   = document.querySelector('.section-nav');
+  const links = nav.querySelectorAll('a');
+
+  const close = () => {
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+    btn.setAttribute('aria-label', 'メニューを開く');
+  };
+
+  btn.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    btn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+  });
+
+  links.forEach(link => link.addEventListener('click', close));
+
+  // お好みで ESC キーでも閉じる
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+});
+</script>
+
 </body>
 </html>
