@@ -183,3 +183,16 @@ SNSリンク
 }
 .btn-outline:hover{ background:#bed3da; color:#000; }
 
+/* 一行化＆モバイルだけ少しだけ縮める */
+.btn-nowrap{
+  white-space: nowrap;       /* 改行させない */
+  word-break: keep-all;      /* CJKでも極力改行しない */
+}
+
+@media (max-width: 480px){
+  .btn-nowrap{
+    font-size: .95rem;       /* ほんの少し小さく */
+    padding: .6rem 1.1rem;   /* 余白も少しだけ縮める */
+    letter-spacing: 0;       /* 文字間を詰める（任意） */
+  }
+}
