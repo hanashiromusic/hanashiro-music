@@ -182,3 +182,6 @@ SNSリンク
   text-decoration:none; transition:background .2s, color .2s;
 }
 .btn-outline:hover{ background:#bed3da; color:#000; }
+
+.piano-page .p-intro{ text-align:center; max-width:34em; margin:0 auto 2rem; }
+.piano-page .p-intro p{ margin:0 0 1.1rem; text-indent:0; }
