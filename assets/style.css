@@ -231,3 +231,11 @@ SNSリンク
   margin-top:  clamp(2.8rem, 4.5vw, 2.4rem);  /* 上：画面に応じて 1.4〜2.4rem */
   margin-bottom: clamp(3.0rem, 6.5vw, 3.4rem);/* 下：少し広め 2.0〜3.4rem */
 }
+
+/* ボタンを厳密に中央に置く */
+.btn-center{
+  display:table;        /* 内容幅で縮む（fit-content の代替で互換性◎） */
+  margin:1rem auto 0;   /* 左右 auto で中央 */
+}
+/* 念のため、ボタン行でインデントを無効化 */
+.btn-row{ text-align:center; margin-top:1rem; text-indent:0; }
