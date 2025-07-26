@@ -91,3 +91,5 @@
 .section h2{ 
   margin-bottom: .9rem;    /* 既存より少し広めに */
 }
+.piano-page .p-intro{ text-align:center; max-width:34em; margin:0 auto 2rem; }
+.piano-page .p-intro p{ margin:0 0 1.1rem; text-indent:0; }
