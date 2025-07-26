@@ -106,3 +106,22 @@
 }
 /* <br>で区切っている場合の応急処置（使わなければ消してOK） */
 /* .p-intro br{ content:""; display:block; margin-bottom:1.1rem; } */
+
+/* リード全体（中央寄せのブロック） */
+.p-intro{
+  text-align: center;
+  max-width: 28em;        /* ← 行の長さを少しだけ短く */
+  margin: 0 auto 2.2rem;  /* 下の余白を気持ち増やす */
+}
+
+/* リード内の各段落 */
+.p-intro p{
+  line-height: 1.95;      /* 行間を少し広げて読みやすく */
+  letter-spacing: .015em; /* わずかに字間を広げる */
+  margin: .75rem 0;       /* 段落間の余白を整える */
+}
+
+/* 最初の2行だけ軽く強調（必要なら） */
+.p-intro p:nth-child(-n+2){
+  font-weight: 700;
+}
