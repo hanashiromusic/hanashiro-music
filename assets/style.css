@@ -175,3 +175,10 @@ SNSリンク
   height:3.5rem;        /* ← ここが “空き” の量（お好みで調整） */
   margin:0;             /* 既存の margin は不要なので 0 に */
 }
+
+.btn-outline{
+  background:#fff; color:#333; border:2px solid #bed3da;
+  border-radius:9999px; padding:.7rem 1.4rem; font-weight:700;
+  text-decoration:none; transition:background .2s, color .2s;
+}
+.btn-outline:hover{ background:#bed3da; color:#000; }
