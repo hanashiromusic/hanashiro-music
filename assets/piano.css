@@ -121,10 +121,7 @@
   margin: .75rem 0;       /* 段落間の余白を整える */
 }
 
-/* 最初の1行だけ軽く強調（必要なら） */
-.p-intro p:nth-child(-n+1){
-  font-weight: 700;
-}
+
 
 /* 講師より：段落の折り返しと余白を強制（弾き語りページ限定） */
 .piano-page #teacher-message {
