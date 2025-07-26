@@ -125,3 +125,18 @@
 .p-intro p:nth-child(-n+2){
   font-weight: 700;
 }
+
+/* 講師より：段落の折り返しと余白を強制（弾き語りページ限定） */
+.piano-page #teacher-message {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.piano-page #teacher-message p {
+  display: block;            /* 念のため */
+  white-space: normal;       /* nowrap/pre を打ち消す */
+  word-break: break-word;    /* 長い語を折り返し */
+  overflow-wrap: anywhere;   /* Safari/Chrome での保険 */
+  line-height: 1.9;          /* 行間を他セクションと揃える */
+  margin: 0 0 1rem;          /* 段落間の余白 */
+  text-indent: 0;            /* 先頭字下げが入っていた場合の打ち消し */
+}
