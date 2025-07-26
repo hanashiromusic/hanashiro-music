@@ -196,3 +196,15 @@ SNSリンク
     letter-spacing: 0;       /* 文字間を詰める（任意） */
   }
 }
+
+/* 影なし・角丸なしで白背景に溶け込ませる */
+.figure.figure--plain{
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* 余白も最小限にしたい場合（任意） */
+.figure.figure--plain.is-tight{
+  margin: .5rem auto; /* 必要なら 0 にして完全フラットに */
+}
