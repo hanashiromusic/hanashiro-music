@@ -140,3 +140,13 @@
   margin: 0 0 1rem;          /* 段落間の余白 */
   text-indent: 0;            /* 先頭字下げが入っていた場合の打ち消し */
 }
+
+/* 講師より：段落の余白を増やす */
+#teacher-message p{
+  margin: 0;            /* まず上下マージンをリセット */
+  line-height: 1.9;     /* 読みやすい行間（お好みで） */
+  /* text-indent: 1em;  ← 1行目の字下げを入れたい場合だけ有効化 */
+}
+#teacher-message p + p{
+  margin-top: 1.1rem;   /* 2段落目以降の“上”だけ空ける（0.9〜1.4remで調整） */
+}
