@@ -93,3 +93,16 @@
 }
 .piano-page .p-intro{ text-align:center; max-width:34em; margin:0 auto 2rem; }
 .piano-page .p-intro p{ margin:0 0 1.1rem; text-indent:0; }
+
+/* ピアノコース：リード文を中央寄せ */
+.piano-page .p-intro{
+  text-align:center;
+  max-width:34em;
+  margin:0 auto 2rem;
+}
+.piano-page .p-intro p{
+  margin:0 0 1.1rem;
+  text-indent:0;
+}
+/* <br>で区切っている場合の応急処置（使わなければ消してOK） */
+/* .p-intro br{ content:""; display:block; margin-bottom:1.1rem; } */
