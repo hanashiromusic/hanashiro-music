@@ -67,6 +67,17 @@
 @media(min-width:640px){ .two-col{ grid-template-columns:1fr 1fr; } }
 .two-col img{ width:100%; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,.08); }
 
+/* いつでも2列（スマホでも横並び）にする */
+.two-col{
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: .8rem;                 /* モバイルで少し目地を狭く */
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+
 /* FAQ（details/summary） */
 .faq details{ max-width:720px; margin:.6rem auto; background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:10px; padding:.75rem 1rem; }
 .faq summary{
