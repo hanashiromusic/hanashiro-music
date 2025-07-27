@@ -239,3 +239,11 @@ SNSリンク
 }
 /* 念のため、ボタン行でインデントを無効化 */
 .btn-row{ text-align:center; margin-top:1rem; text-indent:0; }
+
+/* ボタンを確実に中央寄せ、段落の字下げも無効化 */
+.btn-center{
+  display:block;
+  width:fit-content;     /* 中身の幅だけ */
+  margin:1rem auto 0;    /* 中央寄せ */
+  text-indent:0;         /* 段落の字下げを打ち消す */
+}
