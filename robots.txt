@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hanashiromusic.com/sitemap.xml
